@@ -1,0 +1,150 @@
+<a href="#end">Jump to Last</a>
+<br/>
+<br/>
+<div class='transactions_header'>
+    <div class="trans_header" style="text-align:center;float:left;width:200px">Date</div>
+    <div class="trans_header" style="text-align:center;float:left;width:85px">Num</div>
+    <div class="trans_header" style="text-align:center;float:left;width:344px">Payee / Category / Memo</div>
+    <div class="trans_header" style="text-align:center;float:left;width:54px">Type</div>
+    <div class="trans_header" style="text-align:center;float:left;width:23px">Clr</div>
+    <div class="trans_header" style="text-align:center;float:left;width:65px">Amount</div>
+    <div class="trans_header" style="text-align:center;float:left;width:75px">Balance</div>
+</div>
+<!--
+-->
+<div class='transactions'>
+  <% balance = @starting_balance %> 
+  <% i=0 %>
+  <% for @transaction in @transactions %>
+    <% if @transaction.type.id == Global[:DEB]
+         balance -= @transaction.amount 
+       else
+         balance += @transaction.amount 
+       end 
+       i += 1 %>
+    <% remote_form_for(:transaction,
+              @transaction,
+               :url => { :controller => 'transactions', 
+               :action => 'remote_update', :id => @transaction },
+               :update => 'update_status_'+@transaction.id.to_s,
+               :complete => visual_effect(:highlight, 'update_status_'+@transaction.id.to_s)
+           ) do |f| %>
+      <div class='transaction'>
+            <div class='trans_date'>
+              <div class="even">
+                <%= f.date_select :date %>
+              </div>
+              <div class="odd">
+                <%= link_to 'Delete', @transaction, :confirm => 'Are you sure?', :method => :delete, :class=>'link_button' %>
+                <%= f.submit "Update" %>
+              </div>
+            </div>
+            <div class='trans_num'>
+              <div class="even">
+                <%= f.text_field :check_num, :size=>10 %>
+              </div>
+              <div class="odd">
+                <div id='update_status_<%=@transaction.id.to_s%>'></div>
+              </div>
+            </div>
+            <div class='trans_payee'>
+              <div class="even">
+                <%= f.text_field :name, :size=>48  %>
+              </div>
+              <div class="odd">
+                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %>
+                <%= f.text_field :description, :size=>30  %>
+              </div>
+            </div>
+            <div class='trans_type'>
+              <div class="even">
+                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', @transaction.transaction_type_id) %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_clr'>
+              <div class="even">
+                <%= f.check_box :registered %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_amount'>
+              <div class="even">
+                <%= text_field_tag "transaction[amount]", number_with_precision(@transaction.amount, 2), {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.type.id == Global[:DEB] then 'debit' else 'credit' end} %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_balance'>
+              <div class="even">
+                <%= number_with_precision(balance,2) %>
+              </div>
+              <div class="odd">
+                <a name="<%=@transaction.id.to_s%>"/>
+              </div>
+            </div>
+      </div>
+    <% end %>
+  <% end %>
+  <% form_for(@new_transaction) do |f| %>
+      <div class='transaction'>
+            <div class='trans_date'>
+              <div class="even">
+                <%= f.date_select :date %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_num'>
+              <div class="even">
+                <%= f.text_field :check_num, :size=>10 %>
+                <%= f.hidden_field :account_id %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_payee'>
+              <div class="even">
+                <%= f.text_field :name, :size=>48  %>
+              </div>
+              <div class="odd">
+                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', Global[:CAT_NONE]) %>
+                <%= f.text_field :description, :size=>30  %>
+              </div>
+            </div>
+            <div class='trans_type'>
+              <div class="even">
+                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', Global[:DEB]) %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_clr'>
+              <div class="even">
+                <%= f.check_box :registered %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_amount'>
+              <div class="even">
+                <%= text_field_tag "transaction[amount]", number_with_precision(0, 2), {:size =>7, :text_align=>'right', :id=>'transaction_amount' } %>
+              </div>
+              <div class="odd">
+              </div>
+            </div>
+            <div class='trans_balance'>
+              <div class="even">
+                <%= f.submit "Create" %>
+              </div>
+              <div class="odd">
+                <a name="end"/>
+              </div>
+            </div>
+      </div>
+  <%= f.error_messages %>
+  <% end %>
+</div>
+<br/>

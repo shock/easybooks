@@ -1,0 +1,38 @@
+<div>
+  <b>Account Name:</b>
+  <%=h @account.name %>
+</div>
+
+<!--
+<div>
+  <b>Description:</b>
+  <%=h @account.description %>
+</div>
+
+<div>
+  <b>Account #:</b>
+  <%=h @account.account_number %>
+</div>
+
+<div>
+  <b>Institution:</b>
+  <%=h @account.institution.name %>
+</div>
+
+<div>
+  <b>Balance:</b>
+  <%=h number_to_currency @account.balance %>
+</div>
+-->
+
+<%= render :partial => 'accounts/trans_edit_list' %>
+  
+<div>
+  <b>Balance:</b>
+  <%=h number_to_currency @account.balance %>
+</div>
+<!--
+<%= link_to 'New Transaction', url_for( :controller => :transactions, :action => 'new', :account_id => @account.id ) %> |
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
+-->

@@ -1,0 +1,99 @@
+<a href="#end">Jump to Last</a>
+<br/>
+<br/>
+<table border=2 cellpadding=2>
+  <th colspan="1">Date</th>
+  <th colspan="1">Num</th>
+  <th colspan="1">Payee / Category / Memo</th>
+  <th colspan="1">Type</th>
+  <th colspan="1">Clr</th>
+  <th colspan="1">Amount</th>
+  <th colspan="1">Balance</th>
+  <% balance = @starting_balance %>
+  <% i=0 %>
+  <% for @transaction in @transactions %>
+  <% if @transaction.type.id == Global[:DEB]
+       balance -= @transaction.amount 
+     else
+       balance += @transaction.amount 
+     end 
+     i += 1 %>
+  <tr class='transaction'> 
+    <% form_for(@transaction) do |f| %>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td colspan="2" align=center ><%= f.date_select :date %></td>
+        </tr>
+        <tr class='even'>
+          <td align=center><%= link_to 'Delete', @transaction, :confirm => 'Are you sure?', :method => :delete, :class=>'link_button' %></td>
+          <td> <%= f.submit "Update" %></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td><%= f.text_field :check_num, :size=>10 %></td>
+        </tr>
+        <tr class='even'>
+          <td><a name='<%=@transaction.id%>'/></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td colspan="2"><%= f.text_field :name, :size=>48  %></td>
+        </tr>
+        <tr class='even'>
+          <td><%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %></td>
+          <td colspan=1><%= f.text_field :description, :size=>30  %></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td align=center><%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', @transaction.transaction_type_id) %></td>
+        </tr>
+        <tr class='even'>
+          <td/>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td><%= f.check_box :registered %></td>
+        </tr>
+        <tr class='even'>
+          <td/>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td colspan=1 align=right><%= text_field_tag "transaction[amount]", number_with_precision(@transaction.amount, 2), {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.type.id == Global[:DEB] then 'debit' else 'credit' end} %></td>
+        </tr>
+        <tr class='even'>
+          <td/>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr class='odd'>
+          <td class='balance' align=right><%= number_with_precision(balance,2) %></td>
+        </tr>
+        <tr class='even'>
+          <td/>
+        </tr>
+      </table>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  <%= render :partial => 'new_trans' %>
+</table>

@@ -1,0 +1,54 @@
+<h1>Editing transaction</h1>
+
+<% remote_form_for(:transaction,
+            @transaction,
+             :url => { :action => 'save_remote', :id => @transaction },
+             :update => 'result',
+             :complete => visual_effect(:highlight, 'result')
+             
+     ) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :check_num %><br />
+    <%= f.text_field :check_num %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= collection_select(:transaction, :transaction_type_id, @transaction_types, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :category_id %><br />
+    <%= collection_select(:transaction, :category_id, @all_categories, :id, :long_name) %>
+  </p>
+  <p>
+    <%= f.label :account_id %><br />
+    <%= collection_select(:transaction, :account_id, @all_accounts, :id, :long_name) %>
+  </p>
+  <p>
+    <%= f.label :registered %><br />
+    <%= f.check_box :registered %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @transaction %> |
+<%= link_to 'Back', transactions_path %>

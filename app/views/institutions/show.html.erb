@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @institution.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @institution.description %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @institution.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_institution_path(@institution) %> |
+<%= link_to 'Back', institutions_path %>

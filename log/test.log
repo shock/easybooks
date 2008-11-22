@@ -1,0 +1,1077 @@
+# Logfile created on Tue Oct 07 15:54:22 -0500 2008  [4;36;1mSQL (0.000567)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000699)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000377)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000312)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000646)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000275)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000339)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000272)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000925)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000507)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000309)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000831)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+
+
+Processing AccountsController#create (for 0.0.0.0 at 2008-10-07 15:54:26) [POST]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"create", "controller"=>"accounts"}
+  [4;36;1mSQL (0.000728)[0m   [0;1mINSERT INTO "accounts" ("name", "updated_at", "description", "institution_id", "account_number", "created_at") VALUES(NULL, '2008-10-07 20:54:26.136853', NULL, NULL, NULL, '2008-10-07 20:54:26.136853') RETURNING "id"[0m
+Redirected to http://test.host/accounts/996332878
+Completed in 0.01135 (88 reqs/sec) | DB: 0.03306 (291%) | 302 Found [http://test.host/accounts?]
+  [4;35;1mSQL (0.000924)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;36;1mSQL (0.000810)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000605)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000751)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mAccount Load (0.000889)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#destroy (for 0.0.0.0 at 2008-10-07 15:54:26) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.000887)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+  [4;35;1mAccount Destroy (0.000707)[0m   [0m DELETE FROM "accounts"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/accounts
+Completed in 0.00307 (325 reqs/sec) | DB: 0.00557 (181%) | 302 Found [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.001265)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mSQL (0.000631)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000556)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Load (0.001485)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#edit (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.001062)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/edit
+Completed in 0.00999 (100 reqs/sec) | Rendering: 0.00589 (59%) | DB: 0.00500 (50%) | 200 OK [http://test.host/accounts/953125641/edit]
+  [4;35;1mSQL (0.000660)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001119)[0m   [0;1mBEGIN[0m
+
+
+Processing AccountsController#index (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.001624)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/accounts
+Rendering accounts/index
+Completed in 0.00613 (163 reqs/sec) | Rendering: 0.00353 (57%) | DB: 0.00340 (55%) | 200 OK [http://test.host/accounts]
+  [4;36;1mSQL (0.000729)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000642)[0m   [0mBEGIN[0m
+
+
+Processing AccountsController#new (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+Rendering template within layouts/accounts
+Rendering accounts/new
+Completed in 0.00458 (218 reqs/sec) | Rendering: 0.00400 (87%) | DB: 0.00137 (29%) | 200 OK [http://test.host/accounts/new]
+  [4;36;1mSQL (0.000712)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000638)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.000854)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#show (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.000752)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/show
+Completed in 0.00492 (203 reqs/sec) | Rendering: 0.00223 (45%) | DB: 0.00296 (60%) | 200 OK [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.000368)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000562)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.001388)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#update (for 0.0.0.0 at 2008-10-07 15:54:26) [PUT]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.002313)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Redirected to http://test.host/accounts/953125641
+Completed in 0.00429 (233 reqs/sec) | DB: 0.00463 (108%) | 302 Found [http://test.host/accounts/953125641?]
+  [4;36;1mSQL (0.001117)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000611)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000800)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+
+
+Processing CategoriesController#create (for 0.0.0.0 at 2008-10-07 15:54:26) [POST]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"create", "controller"=>"categories"}
+  [4;35;1mSQL (0.000827)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "parent_id", "created_at") VALUES(NULL, '2008-10-07 20:54:26.242262', NULL, '2008-10-07 20:54:26.242262') RETURNING "id"[0m
+Redirected to http://test.host/categories/996332878
+Completed in 0.01216 (82 reqs/sec) | DB: 0.00336 (27%) | 302 Found [http://test.host/categories?]
+  [4;36;1mSQL (0.000997)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.001039)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000551)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000715)[0m   [0mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;36;1mCategory Load (0.000876)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#destroy (for 0.0.0.0 at 2008-10-07 15:54:26) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.002796)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.000755)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories".parent_id = 953125641) [0m
+  [4;35;1mCategory Destroy (0.000662)[0m   [0m DELETE FROM "categories"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/categories
+Completed in 0.00629 (159 reqs/sec) | DB: 0.00839 (133%) | 302 Found [http://test.host/categories/953125641]
+  [4;36;1mSQL (0.000793)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.000721)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000748)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.001937)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#edit (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.002661)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.000918)[0m   [0mselect * from categories where id != 953125641[0m
+Rendering template within layouts/categories
+Rendering categories/edit
+Completed in 0.01021 (97 reqs/sec) | Rendering: 0.00570 (55%) | DB: 0.00778 (76%) | 200 OK [http://test.host/categories/953125641/edit]
+  [4;36;1mSQL (0.000657)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001189)[0m   [0mBEGIN[0m
+
+
+Processing CategoriesController#index (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.001614)[0m   [0;1mSELECT * FROM "categories" ORDER BY name[0m
+Rendering template within layouts/categories
+Rendering categories/index
+Completed in 0.00595 (168 reqs/sec) | Rendering: 0.00337 (56%) | DB: 0.00346 (58%) | 200 OK [http://test.host/categories]
+  [4;35;1mSQL (0.000631)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000489)[0m   [0;1mBEGIN[0m
+
+
+Processing CategoriesController#new (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000900)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/categories
+Rendering categories/new
+Completed in 0.00537 (186 reqs/sec) | Rendering: 0.00370 (68%) | DB: 0.00202 (37%) | 200 OK [http://test.host/categories/new]
+  [4;36;1mSQL (0.001680)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000863)[0m   [0mBEGIN[0m
+  [4;36;1mCategory Load (0.001006)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#show (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.001057)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Rendering template within layouts/categories
+Rendering categories/show
+Completed in 0.00364 (274 reqs/sec) | Rendering: 0.00140 (38%) | DB: 0.00461 (126%) | 200 OK [http://test.host/categories/953125641]
+  [4;36;1mSQL (0.000690)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000888)[0m   [0mBEGIN[0m
+  [4;36;1mCategory Load (0.001007)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#update (for 0.0.0.0 at 2008-10-07 15:54:26) [PUT]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000925)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Redirected to http://test.host/categories/953125641
+Completed in 0.00339 (295 reqs/sec) | DB: 0.00351 (103%) | 302 Found [http://test.host/categories/953125641?]
+  [4;36;1mSQL (0.000970)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000638)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000890)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+
+
+Processing InstitutionsController#create (for 0.0.0.0 at 2008-10-07 15:54:26) [POST]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"create", "controller"=>"institutions"}
+  [4;35;1mSQL (0.001061)[0m   [0mINSERT INTO "institutions" ("name", "updated_at", "description", "phone", "created_at") VALUES(NULL, '2008-10-07 20:54:26.348393', NULL, NULL, '2008-10-07 20:54:26.348393') RETURNING "id"[0m
+Redirected to http://test.host/institutions/996332878
+Completed in 0.01113 (89 reqs/sec) | DB: 0.00356 (31%) | 302 Found [http://test.host/institutions?]
+  [4;36;1mSQL (0.000854)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;35;1mSQL (0.000661)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000711)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000774)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;36;1mInstitution Load (0.000347)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#destroy (for 0.0.0.0 at 2008-10-07 15:54:26) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.000999)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+  [4;36;1mInstitution Destroy (0.000803)[0m   [0;1m DELETE FROM "institutions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/institutions
+Completed in 0.00333 (300 reqs/sec) | DB: 0.00515 (154%) | 302 Found [http://test.host/institutions/953125641]
+  [4;35;1mSQL (0.001146)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;36;1mSQL (0.000854)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000556)[0m   [0mBEGIN[0m
+  [4;36;1mInstitution Load (0.001026)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#edit (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.000966)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/edit
+Completed in 0.00858 (116 reqs/sec) | Rendering: 0.00694 (80%) | DB: 0.00455 (52%) | 200 OK [http://test.host/institutions/953125641/edit]
+  [4;36;1mSQL (0.000714)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000632)[0m   [0mBEGIN[0m
+
+
+Processing InstitutionsController#index (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.000711)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/institutions
+Rendering institutions/index
+Completed in 0.00473 (211 reqs/sec) | Rendering: 0.00297 (62%) | DB: 0.00206 (43%) | 200 OK [http://test.host/institutions]
+  [4;35;1mSQL (0.000713)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000547)[0m   [0;1mBEGIN[0m
+
+
+Processing InstitutionsController#new (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"institutions"}
+Rendering template within layouts/institutions
+Rendering institutions/new
+Completed in 0.00455 (219 reqs/sec) | Rendering: 0.00421 (92%) | DB: 0.00126 (27%) | 200 OK [http://test.host/institutions/new]
+  [4;35;1mSQL (0.000778)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.003250)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstitution Load (0.002643)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#show (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.001043)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/show
+Completed in 0.00435 (229 reqs/sec) | Rendering: 0.00243 (55%) | DB: 0.00771 (177%) | 200 OK [http://test.host/institutions/953125641]
+  [4;35;1mSQL (0.001082)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000876)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstitution Load (0.001872)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#update (for 0.0.0.0 at 2008-10-07 15:54:26) [PUT]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.001142)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Redirected to http://test.host/institutions/953125641
+Completed in 0.00289 (346 reqs/sec) | DB: 0.00497 (172%) | 302 Found [http://test.host/institutions/953125641?]
+  [4;35;1mSQL (0.000928)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000548)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001087)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+
+
+Processing TransactionsController#create (for 0.0.0.0 at 2008-10-07 15:54:26) [POST]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"create", "controller"=>"transactions"}
+  [4;36;1mSQL (0.000838)[0m   [0;1mINSERT INTO "transactions" ("name", "updated_at", "account_id", "date", "description", "amount", "category_id", "created_at") VALUES(NULL, '2008-10-07 20:54:26.457869', NULL, NULL, NULL, NULL, NULL, '2008-10-07 20:54:26.457869') RETURNING "id"[0m
+Redirected to http://test.host/transactions/996332878
+Completed in 0.01331 (75 reqs/sec) | DB: 0.00340 (25%) | 302 Found [http://test.host/transactions?]
+  [4;35;1mSQL (0.001033)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;36;1mSQL (0.000927)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000554)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000736)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;35;1mTransaction Load (0.000791)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#destroy (for 0.0.0.0 at 2008-10-07 15:54:26) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.001320)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;35;1mTransaction Destroy (0.000311)[0m   [0m DELETE FROM "transactions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/transactions
+Completed in 0.00338 (295 reqs/sec) | DB: 0.00567 (167%) | 302 Found [http://test.host/transactions/953125641]
+  [4;36;1mSQL (0.000768)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;35;1mSQL (0.000870)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000854)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Load (0.001347)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#edit (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.000814)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.001885)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mAccount Load (0.000633)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/edit
+  [4;35;1mInstitution Load (0.000871)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001036)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000517)[0m   [0mBEGIN[0m
+
+
+Processing TransactionsController#index (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.000989)[0m   [0;1mSELECT * FROM "transactions" [0m
+Rendering template within layouts/transactions
+Rendering transactions/index
+Completed in 0.00757 (132 reqs/sec) | Rendering: 0.00556 (73%) | DB: 0.00341 (45%) | 200 OK [http://test.host/transactions]
+  [4;35;1mSQL (0.000652)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000536)[0m   [0;1mBEGIN[0m
+
+
+Processing TransactionsController#new (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"transactions"}
+  [4;35;1mCategory Load (0.000851)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mAccount Load (0.000689)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/new
+  [4;35;1mInstitution Load (0.001012)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000553)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (0.000864)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#show (for 0.0.0.0 at 2008-10-07 15:54:26) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.001054)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.000491)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" IS NULL) LIMIT 1[0m
+  [4;35;1mAccount Load (0.000886)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/transactions
+Rendering transactions/show
+  [4;36;1mSQL (0.000803)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000690)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (0.001040)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#update (for 0.0.0.0 at 2008-10-07 15:54:26) [PUT]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.001093)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+Redirected to http://test.host/transactions/953125641
+Completed in 0.00365 (273 reqs/sec) | DB: 0.00363 (99%) | 302 Found [http://test.host/transactions/953125641?]
+  [4;36;1mSQL (0.000714)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000633)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000481)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000297)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000318)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000305)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000000)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000339)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000271)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000273)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000338)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000716)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000506)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000546)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001101)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+
+
+Processing AccountsController#create (for 0.0.0.0 at 2008-10-07 15:58:49) [POST]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"create", "controller"=>"accounts"}
+  [4;36;1mSQL (0.001684)[0m   [0;1mINSERT INTO "accounts" ("name", "updated_at", "description", "institution_id", "account_number", "created_at") VALUES(NULL, '2008-10-07 20:58:49.087769', NULL, NULL, NULL, '2008-10-07 20:58:49.087769') RETURNING "id"[0m
+Redirected to http://test.host/accounts/996332878
+Completed in 0.01139 (87 reqs/sec) | DB: 0.02399 (210%) | 302 Found [http://test.host/accounts?]
+  [4;35;1mSQL (0.000846)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;36;1mSQL (0.000688)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000616)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001097)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mAccount Load (0.000506)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#destroy (for 0.0.0.0 at 2008-10-07 15:58:49) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.001191)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+  [4;35;1mAccount Destroy (0.000653)[0m   [0m DELETE FROM "accounts"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/accounts
+Completed in 0.00331 (301 reqs/sec) | DB: 0.00560 (168%) | 302 Found [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.001321)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mSQL (0.000912)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000576)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Load (0.000863)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#edit (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.000532)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/edit
+Completed in 0.00674 (148 reqs/sec) | Rendering: 0.00568 (84%) | DB: 0.00420 (62%) | 200 OK [http://test.host/accounts/953125641/edit]
+  [4;35;1mSQL (0.000647)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000586)[0m   [0;1mBEGIN[0m
+
+
+Processing AccountsController#index (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.000958)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/accounts
+Rendering accounts/index
+Completed in 0.00549 (182 reqs/sec) | Rendering: 0.00357 (65%) | DB: 0.00219 (39%) | 200 OK [http://test.host/accounts]
+  [4;36;1mSQL (0.001055)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000548)[0m   [0mBEGIN[0m
+
+
+Processing AccountsController#new (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+Rendering template within layouts/accounts
+Rendering accounts/new
+Completed in 0.00407 (245 reqs/sec) | Rendering: 0.00347 (85%) | DB: 0.00160 (39%) | 200 OK [http://test.host/accounts/new]
+  [4;36;1mSQL (0.000741)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000629)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.000343)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#show (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.000815)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/show
+Completed in 0.00426 (234 reqs/sec) | Rendering: 0.00221 (51%) | DB: 0.00253 (59%) | 200 OK [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.001754)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000594)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.000883)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#update (for 0.0.0.0 at 2008-10-07 15:58:49) [PUT]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.001148)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Redirected to http://test.host/accounts/953125641
+Completed in 0.00215 (464 reqs/sec) | DB: 0.00438 (203%) | 302 Found [http://test.host/accounts/953125641?]
+  [4;36;1mSQL (0.000731)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000942)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000830)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+
+
+Processing CategoriesController#create (for 0.0.0.0 at 2008-10-07 15:58:49) [POST]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"create", "controller"=>"categories"}
+  [4;35;1mSQL (0.000766)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "parent_id", "created_at") VALUES(NULL, '2008-10-07 20:58:49.191038', NULL, '2008-10-07 20:58:49.191038') RETURNING "id"[0m
+Redirected to http://test.host/categories/996332878
+Completed in 0.01287 (77 reqs/sec) | DB: 0.00327 (25%) | 302 Found [http://test.host/categories?]
+  [4;36;1mSQL (0.001149)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.000740)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000523)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000690)[0m   [0mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;36;1mCategory Load (0.000793)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#destroy (for 0.0.0.0 at 2008-10-07 15:58:49) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000928)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.001708)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories".parent_id = 953125641) [0m
+  [4;35;1mCategory Destroy (0.000724)[0m   [0m DELETE FROM "categories"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/categories
+Completed in 0.00590 (169 reqs/sec) | DB: 0.00725 (122%) | 302 Found [http://test.host/categories/953125641]
+  [4;36;1mSQL (0.000724)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.000560)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000643)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.000812)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#edit (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.000738)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.000992)[0m   [0mselect * from categories where id != 953125641[0m
+Rendering template within layouts/categories
+Rendering categories/edit
+Completed in 0.00976 (102 reqs/sec) | Rendering: 0.00679 (69%) | DB: 0.00447 (45%) | 200 OK [http://test.host/categories/953125641/edit]
+  [4;36;1mSQL (0.000694)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.002396)[0m   [0mBEGIN[0m
+
+
+Processing CategoriesController#index (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.001529)[0m   [0;1mSELECT * FROM "categories" ORDER BY name[0m
+Rendering template within layouts/categories
+Rendering categories/index
+Completed in 0.00637 (157 reqs/sec) | Rendering: 0.00367 (57%) | DB: 0.00462 (72%) | 200 OK [http://test.host/categories]
+  [4;35;1mSQL (0.001234)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000562)[0m   [0;1mBEGIN[0m
+
+
+Processing CategoriesController#new (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000802)[0m   [0mSELECT * FROM "categories" [0m
+Rendering template within layouts/categories
+Rendering categories/new
+Completed in 0.00619 (161 reqs/sec) | Rendering: 0.00428 (69%) | DB: 0.00260 (41%) | 200 OK [http://test.host/categories/new]
+  [4;36;1mSQL (0.000571)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000500)[0m   [0mBEGIN[0m
+  [4;36;1mCategory Load (0.000667)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#show (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000801)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Rendering template within layouts/categories
+Rendering categories/show
+Completed in 0.00369 (271 reqs/sec) | Rendering: 0.00189 (51%) | DB: 0.00254 (68%) | 200 OK [http://test.host/categories/953125641]
+  [4;36;1mSQL (0.000614)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000497)[0m   [0mBEGIN[0m
+  [4;36;1mCategory Load (0.000972)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#update (for 0.0.0.0 at 2008-10-07 15:58:49) [PUT]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000785)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Redirected to http://test.host/categories/953125641
+Completed in 0.00243 (411 reqs/sec) | DB: 0.00287 (118%) | 302 Found [http://test.host/categories/953125641?]
+  [4;36;1mSQL (0.000554)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000511)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001840)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+
+
+Processing InstitutionsController#create (for 0.0.0.0 at 2008-10-07 15:58:49) [POST]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"create", "controller"=>"institutions"}
+  [4;35;1mSQL (0.000722)[0m   [0mINSERT INTO "institutions" ("name", "updated_at", "description", "phone", "created_at") VALUES(NULL, '2008-10-07 20:58:49.300527', NULL, NULL, '2008-10-07 20:58:49.300527') RETURNING "id"[0m
+Redirected to http://test.host/institutions/996332878
+Completed in 0.01214 (82 reqs/sec) | DB: 0.00363 (29%) | 302 Found [http://test.host/institutions?]
+  [4;36;1mSQL (0.000798)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;35;1mSQL (0.000604)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000733)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000655)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;36;1mInstitution Load (0.000620)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#destroy (for 0.0.0.0 at 2008-10-07 15:58:49) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.000764)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+  [4;36;1mInstitution Destroy (0.000921)[0m   [0;1m DELETE FROM "institutions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/institutions
+Completed in 0.00307 (326 reqs/sec) | DB: 0.00510 (166%) | 302 Found [http://test.host/institutions/953125641]
+  [4;35;1mSQL (0.000924)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;36;1mSQL (0.000573)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000555)[0m   [0mBEGIN[0m
+  [4;36;1mInstitution Load (0.000944)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#edit (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.001190)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/edit
+Completed in 0.00698 (143 reqs/sec) | Rendering: 0.00511 (73%) | DB: 0.00419 (60%) | 200 OK [http://test.host/institutions/953125641/edit]
+  [4;36;1mSQL (0.000593)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000615)[0m   [0mBEGIN[0m
+
+
+Processing InstitutionsController#index (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.000692)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/institutions
+Rendering institutions/index
+Completed in 0.00529 (189 reqs/sec) | Rendering: 0.00340 (64%) | DB: 0.00190 (35%) | 200 OK [http://test.host/institutions]
+  [4;35;1mSQL (0.000620)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000570)[0m   [0;1mBEGIN[0m
+
+
+Processing InstitutionsController#new (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"institutions"}
+Rendering template within layouts/institutions
+Rendering institutions/new
+Completed in 0.00523 (191 reqs/sec) | Rendering: 0.00475 (90%) | DB: 0.00119 (22%) | 200 OK [http://test.host/institutions/new]
+  [4;35;1mSQL (0.000649)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000512)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstitution Load (0.000755)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#show (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.000804)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/show
+Completed in 0.00354 (282 reqs/sec) | Rendering: 0.00166 (46%) | DB: 0.00272 (76%) | 200 OK [http://test.host/institutions/953125641]
+  [4;35;1mSQL (0.000718)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000552)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstitution Load (0.001130)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#update (for 0.0.0.0 at 2008-10-07 15:58:49) [PUT]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.000861)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Redirected to http://test.host/institutions/953125641
+Completed in 0.00287 (348 reqs/sec) | DB: 0.00326 (113%) | 302 Found [http://test.host/institutions/953125641?]
+  [4;35;1mSQL (0.000659)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000611)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000851)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+
+
+Processing TransactionsController#create (for 0.0.0.0 at 2008-10-07 15:58:49) [POST]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"create", "controller"=>"transactions"}
+  [4;36;1mSQL (0.000735)[0m   [0;1mINSERT INTO "transactions" ("name", "updated_at", "account_id", "date", "description", "amount", "category_id", "created_at") VALUES(NULL, '2008-10-07 20:58:49.398853', NULL, NULL, NULL, NULL, NULL, '2008-10-07 20:58:49.398853') RETURNING "id"[0m
+Redirected to http://test.host/transactions/996332878
+Completed in 0.01298 (77 reqs/sec) | DB: 0.00286 (22%) | 302 Found [http://test.host/transactions?]
+  [4;35;1mSQL (0.000984)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;36;1mSQL (0.000648)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001044)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001053)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;35;1mTransaction Load (0.001126)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#destroy (for 0.0.0.0 at 2008-10-07 15:58:49) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.001897)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;35;1mTransaction Destroy (0.000936)[0m   [0m DELETE FROM "transactions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/transactions
+Completed in 0.00449 (222 reqs/sec) | DB: 0.00769 (171%) | 302 Found [http://test.host/transactions/953125641]
+  [4;36;1mSQL (0.000991)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;35;1mSQL (0.000515)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000509)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Load (0.000703)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#edit (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.000959)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.000577)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mAccount Load (0.000796)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/edit
+  [4;35;1mInstitution Load (0.000994)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000874)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001867)[0m   [0mBEGIN[0m
+
+
+Processing TransactionsController#index (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.001088)[0m   [0;1mSELECT * FROM "transactions" [0m
+Rendering template within layouts/transactions
+Rendering transactions/index
+Completed in 0.00679 (147 reqs/sec) | Rendering: 0.00463 (68%) | DB: 0.00482 (71%) | 200 OK [http://test.host/transactions]
+  [4;35;1mSQL (0.001314)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000844)[0m   [0;1mBEGIN[0m
+
+
+Processing TransactionsController#new (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"transactions"}
+  [4;35;1mCategory Load (0.000958)[0m   [0mSELECT * FROM "categories" [0m
+  [4;36;1mAccount Load (0.000694)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/new
+  [4;35;1mInstitution Load (0.001637)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001069)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000892)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (0.000944)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#show (for 0.0.0.0 at 2008-10-07 15:58:49) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.001340)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.000814)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) LIMIT 1[0m
+  [4;35;1mAccount Load (0.001291)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/transactions
+Rendering transactions/show
+  [4;36;1mSQL (0.000761)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000616)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (0.000877)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#update (for 0.0.0.0 at 2008-10-07 15:58:49) [PUT]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.001031)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+Redirected to http://test.host/transactions/953125641
+Completed in 0.00319 (313 reqs/sec) | DB: 0.00328 (103%) | 302 Found [http://test.host/transactions/953125641?]
+  [4;36;1mSQL (0.001061)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000899)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000534)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000328)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000320)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000317)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000341)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000304)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000377)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000542)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000789)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000542)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000653)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000793)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+
+
+Processing AccountsController#create (for 0.0.0.0 at 2008-10-07 15:59:39) [POST]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"create", "controller"=>"accounts"}
+  [4;36;1mSQL (0.001048)[0m   [0;1mINSERT INTO "accounts" ("name", "updated_at", "description", "institution_id", "account_number", "created_at") VALUES(NULL, '2008-10-07 20:59:39.239727', NULL, NULL, NULL, '2008-10-07 20:59:39.239727') RETURNING "id"[0m
+Redirected to http://test.host/accounts/996332878
+Completed in 0.01117 (89 reqs/sec) | DB: 0.03572 (319%) | 302 Found [http://test.host/accounts?]
+  [4;35;1mSQL (0.001303)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;36;1mSQL (0.000659)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000578)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000786)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mAccount Load (0.000884)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#destroy (for 0.0.0.0 at 2008-10-07 15:59:39) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.000957)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+  [4;35;1mAccount Destroy (0.000685)[0m   [0m DELETE FROM "accounts"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/accounts
+Completed in 0.00324 (308 reqs/sec) | DB: 0.00585 (180%) | 302 Found [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.000775)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mSQL (0.000658)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000578)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Load (0.000824)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#edit (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.001048)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/edit
+Completed in 0.00739 (135 reqs/sec) | Rendering: 0.00571 (77%) | DB: 0.00388 (52%) | 200 OK [http://test.host/accounts/953125641/edit]
+  [4;35;1mSQL (0.000718)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000921)[0m   [0;1mBEGIN[0m
+
+
+Processing AccountsController#index (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.000828)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/accounts
+Rendering accounts/index
+Completed in 0.00453 (220 reqs/sec) | Rendering: 0.00279 (61%) | DB: 0.00247 (54%) | 200 OK [http://test.host/accounts]
+  [4;36;1mSQL (0.000645)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000568)[0m   [0mBEGIN[0m
+
+
+Processing AccountsController#new (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+Rendering template within layouts/accounts
+Rendering accounts/new
+Completed in 0.00457 (218 reqs/sec) | Rendering: 0.00405 (88%) | DB: 0.00121 (26%) | 200 OK [http://test.host/accounts/new]
+  [4;36;1mSQL (0.000699)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000648)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.000874)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#show (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.000784)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Rendering template within layouts/accounts
+Rendering accounts/show
+Completed in 0.00430 (232 reqs/sec) | Rendering: 0.00207 (48%) | DB: 0.00301 (69%) | 200 OK [http://test.host/accounts/953125641]
+  [4;36;1mSQL (0.000595)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000644)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (0.000929)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+
+
+Processing AccountsController#update (for 0.0.0.0 at 2008-10-07 15:59:39) [PUT]
+  Session ID: 
+  Parameters: {"account"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.001302)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 953125641) [0m
+Redirected to http://test.host/accounts/953125641
+Completed in 0.00321 (311 reqs/sec) | DB: 0.00347 (108%) | 302 Found [http://test.host/accounts/953125641?]
+  [4;36;1mSQL (0.000769)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000648)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000811)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+
+
+Processing CategoriesController#create (for 0.0.0.0 at 2008-10-07 15:59:39) [POST]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"create", "controller"=>"categories"}
+  [4;35;1mSQL (0.000752)[0m   [0mINSERT INTO "categories" ("name", "updated_at", "parent_id", "created_at") VALUES(NULL, '2008-10-07 20:59:39.339405', NULL, '2008-10-07 20:59:39.339405') RETURNING "id"[0m
+Redirected to http://test.host/categories/996332878
+Completed in 0.01251 (79 reqs/sec) | DB: 0.00298 (23%) | 302 Found [http://test.host/categories?]
+  [4;36;1mSQL (0.000802)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.000640)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001065)[0m   [0mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;36;1mCategory Load (0.000705)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#destroy (for 0.0.0.0 at 2008-10-07 15:59:39) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.001169)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.000757)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories".parent_id = 953125641) [0m
+  [4;35;1mCategory Destroy (0.000618)[0m   [0m DELETE FROM "categories"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/categories
+Completed in 0.00455 (219 reqs/sec) | DB: 0.00637 (139%) | 302 Found [http://test.host/categories/953125641]
+  [4;36;1mSQL (0.000746)[0m   [0;1mSELECT count(*) AS count_all FROM "categories" [0m
+  [4;35;1mSQL (0.000739)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000560)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.000698)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#edit (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.000847)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.000445)[0m   [0mselect * from categories where id != 953125641[0m
+Rendering template within layouts/categories
+Rendering categories/edit
+  [4;36;1mCategory Load (0.000870)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+Completed in 0.01055 (94 reqs/sec) | Rendering: 0.00751 (71%) | DB: 0.00491 (46%) | 200 OK [http://test.host/categories/953125641/edit]
+  [4;35;1mSQL (0.001062)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000581)[0m   [0;1mBEGIN[0m
+
+
+Processing CategoriesController#index (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"categories"}
+  [4;35;1mCategory Load (0.000974)[0m   [0mSELECT * FROM "categories" ORDER BY name[0m
+Rendering template within layouts/categories
+Rendering categories/index
+  [4;36;1mCategory Load (0.000765)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+  [4;35;1mCategory Load (0.000656)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 0) [0m
+Completed in 0.00815 (122 reqs/sec) | Rendering: 0.00476 (58%) | DB: 0.00404 (49%) | 200 OK [http://test.host/categories]
+  [4;36;1mSQL (0.000798)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000578)[0m   [0mBEGIN[0m
+
+
+Processing CategoriesController#new (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.001839)[0m   [0;1mSELECT * FROM "categories" [0m
+Rendering template within layouts/categories
+Rendering categories/new
+  [4;35;1mCategory Load (0.001611)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+  [4;36;1mCategory Load (0.002198)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 0) [0m
+Completed in 0.01189 (84 reqs/sec) | Rendering: 0.00525 (44%) | DB: 0.00702 (59%) | 200 OK [http://test.host/categories/new]
+  [4;35;1mSQL (0.000713)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000535)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.001162)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#show (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.000859)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Rendering template within layouts/categories
+Rendering categories/show
+Completed in 0.00407 (245 reqs/sec) | Rendering: 0.00179 (44%) | DB: 0.00327 (80%) | 200 OK [http://test.host/categories/953125641]
+  [4;35;1mSQL (0.000696)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000603)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Load (0.001023)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+
+
+Processing CategoriesController#update (for 0.0.0.0 at 2008-10-07 15:59:39) [PUT]
+  Session ID: 
+  Parameters: {"category"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"categories"}
+  [4;36;1mCategory Load (0.001221)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 953125641) [0m
+Redirected to http://test.host/categories/953125641
+Completed in 0.00457 (218 reqs/sec) | DB: 0.00354 (77%) | 302 Found [http://test.host/categories/953125641?]
+  [4;35;1mSQL (0.000742)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000569)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001260)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+
+
+Processing InstitutionsController#create (for 0.0.0.0 at 2008-10-07 15:59:39) [POST]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"create", "controller"=>"institutions"}
+  [4;36;1mSQL (0.000821)[0m   [0;1mINSERT INTO "institutions" ("name", "updated_at", "description", "phone", "created_at") VALUES(NULL, '2008-10-07 20:59:39.451260', NULL, NULL, '2008-10-07 20:59:39.451260') RETURNING "id"[0m
+Redirected to http://test.host/institutions/996332878
+Completed in 0.01122 (89 reqs/sec) | DB: 0.00339 (30%) | 302 Found [http://test.host/institutions?]
+  [4;35;1mSQL (0.001218)[0m   [0mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;36;1mSQL (0.000708)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000848)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000760)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;35;1mInstitution Load (0.000738)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#destroy (for 0.0.0.0 at 2008-10-07 15:59:39) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.001918)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+  [4;35;1mInstitution Destroy (0.000780)[0m   [0m DELETE FROM "institutions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/institutions
+Completed in 0.00438 (228 reqs/sec) | DB: 0.00697 (159%) | 302 Found [http://test.host/institutions/953125641]
+  [4;36;1mSQL (0.001173)[0m   [0;1mSELECT count(*) AS count_all FROM "institutions" [0m
+  [4;35;1mSQL (0.000643)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000519)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstitution Load (0.002041)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#edit (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"institutions"}
+  [4;36;1mInstitution Load (0.000810)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/edit
+Completed in 0.00755 (132 reqs/sec) | Rendering: 0.00570 (75%) | DB: 0.00519 (68%) | 200 OK [http://test.host/institutions/953125641/edit]
+  [4;35;1mSQL (0.000676)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000179)[0m   [0;1mBEGIN[0m
+
+
+Processing InstitutionsController#index (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.001086)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/institutions
+Rendering institutions/index
+Completed in 0.00587 (170 reqs/sec) | Rendering: 0.00325 (55%) | DB: 0.00194 (33%) | 200 OK [http://test.host/institutions]
+  [4;36;1mSQL (0.000642)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000571)[0m   [0mBEGIN[0m
+
+
+Processing InstitutionsController#new (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"institutions"}
+Rendering template within layouts/institutions
+Rendering institutions/new
+Completed in 0.00437 (228 reqs/sec) | Rendering: 0.00322 (73%) | DB: 0.00121 (27%) | 200 OK [http://test.host/institutions/new]
+  [4;36;1mSQL (0.000725)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000558)[0m   [0mBEGIN[0m
+  [4;36;1mInstitution Load (0.000706)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#show (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.000959)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Rendering template within layouts/institutions
+Rendering institutions/show
+Completed in 0.00411 (243 reqs/sec) | Rendering: 0.00209 (50%) | DB: 0.00295 (71%) | 200 OK [http://test.host/institutions/953125641]
+  [4;36;1mSQL (0.000650)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000558)[0m   [0mBEGIN[0m
+  [4;36;1mInstitution Load (0.000752)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+
+
+Processing InstitutionsController#update (for 0.0.0.0 at 2008-10-07 15:59:39) [PUT]
+  Session ID: 
+  Parameters: {"institution"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"institutions"}
+  [4;35;1mInstitution Load (0.000898)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 953125641) [0m
+Redirected to http://test.host/institutions/953125641
+Completed in 0.00427 (234 reqs/sec) | DB: 0.00286 (66%) | 302 Found [http://test.host/institutions/953125641?]
+  [4;36;1mSQL (0.001791)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000612)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000839)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+
+
+Processing TransactionsController#create (for 0.0.0.0 at 2008-10-07 15:59:39) [POST]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"create", "controller"=>"transactions"}
+  [4;35;1mSQL (0.000801)[0m   [0mINSERT INTO "transactions" ("name", "updated_at", "account_id", "date", "description", "amount", "category_id", "created_at") VALUES(NULL, '2008-10-07 20:59:39.554860', NULL, NULL, NULL, NULL, NULL, '2008-10-07 20:59:39.554860') RETURNING "id"[0m
+Redirected to http://test.host/transactions/996332878
+Completed in 0.01211 (82 reqs/sec) | DB: 0.00404 (33%) | 302 Found [http://test.host/transactions?]
+  [4;36;1mSQL (0.001044)[0m   [0;1mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;35;1mSQL (0.000673)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000621)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000403)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;36;1mTransaction Load (0.000984)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#destroy (for 0.0.0.0 at 2008-10-07 15:59:39) [DELETE]
+  Session ID: 
+  Parameters: {"action"=>"destroy", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.001890)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;36;1mTransaction Destroy (0.001106)[0m   [0;1m DELETE FROM "transactions"
+ WHERE "id" = 953125641
+[0m
+Redirected to http://test.host/transactions
+Completed in 0.00454 (220 reqs/sec) | DB: 0.00672 (147%) | 302 Found [http://test.host/transactions/953125641]
+  [4;35;1mSQL (0.000859)[0m   [0mSELECT count(*) AS count_all FROM "transactions" [0m
+  [4;36;1mSQL (0.001291)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000394)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (0.000853)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#edit (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"edit", "id"=>"953125641", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.000904)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;36;1mCategory Load (0.000643)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mAccount Load (0.000583)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/edit
+  [4;36;1mCategory Load (0.000892)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+  [4;35;1mCategory Load (0.001262)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 0) [0m
+  [4;36;1mInstitution Load (0.000828)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000986)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000597)[0m   [0;1mBEGIN[0m
+
+
+Processing TransactionsController#index (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"index", "controller"=>"transactions"}
+  [4;35;1mTransaction Load (0.000997)[0m   [0mSELECT * FROM "transactions" [0m
+Rendering template within layouts/transactions
+Rendering transactions/index
+Completed in 0.00705 (141 reqs/sec) | Rendering: 0.00448 (63%) | DB: 0.00556 (78%) | 200 OK [http://test.host/transactions]
+  [4;36;1mSQL (0.000571)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000774)[0m   [0mBEGIN[0m
+
+
+Processing TransactionsController#new (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"new", "controller"=>"transactions"}
+  [4;36;1mCategory Load (0.000488)[0m   [0;1mSELECT * FROM "categories" [0m
+  [4;35;1mAccount Load (0.000740)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/transactions
+Rendering transactions/new
+  [4;36;1mCategory Load (0.001041)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."id" = 1) [0m
+  [4;35;1mCategory Load (0.000670)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 0) [0m
+  [4;36;1mInstitution Load (0.001052)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000671)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000547)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Load (0.001194)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#show (for 0.0.0.0 at 2008-10-07 15:59:39) [GET]
+  Session ID: 
+  Parameters: {"action"=>"show", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.002593)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+  [4;35;1mCategory Load (0.000917)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."id" = 1) LIMIT 1[0m
+  [4;36;1mAccount Load (0.001262)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/transactions
+Rendering transactions/show
+  [4;35;1mSQL (0.001043)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001131)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Load (0.001216)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+
+
+Processing TransactionsController#update (for 0.0.0.0 at 2008-10-07 15:59:39) [PUT]
+  Session ID: 
+  Parameters: {"transaction"=>{}, "action"=>"update", "id"=>"953125641", "controller"=>"transactions"}
+  [4;36;1mTransaction Load (0.001149)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 953125641) [0m
+Redirected to http://test.host/transactions/953125641
+Completed in 0.00399 (250 reqs/sec) | DB: 0.00454 (113%) | 302 Found [http://test.host/transactions/953125641?]
+  [4;35;1mSQL (0.000770)[0m   [0mROLLBACK[0m

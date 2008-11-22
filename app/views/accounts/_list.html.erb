@@ -1,0 +1,31 @@
+<% @accounts = Account.find(:all, :order => "name") %>
+
+<table border=2>
+  <tr>
+    <th>Name</th>
+    <th>Institution</th>
+    <th>Account #</th>
+    <th>Balance</th>
+    <th colspan=3>Action</th>
+  </tr>
+
+<% for account in @accounts %>
+  <tr>
+    <td><%= link_to account.name, url_for(account)+'#end' %></td>
+    <td><%=h account.institution.name %></td>
+    <td><%=h account.account_number %></td>
+    <td align=right><%=h number_to_currency account.balance %></td>
+<!--
+    <td align=center><%= link_to 'Show', account %></td>
+    <td align=center><%= link_to 'New Trans', url_for( :controller => 'transactions', :action => 'new') %></td>
+-->
+    <td align='center'><%= link_to 'Edit', edit_account_path(account) %></td>
+<!--
+    <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
+-->
+  </tr>
+<% end %>
+</table>
+<div>
+Net value: <%= number_to_currency @net_value %>
+</div>

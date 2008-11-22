@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Easy Books: <%= controller.controller_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'ebmain' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+<h1>Easy Books</h1>
+<div class='menu_bar' style="float:left">
+  <div class="menu_item">
+    <%=link_to "Accounts", url_for(:action => 'index', :controller => 'accounts'), :class=>"menu_item" %>
+  </div>
+  <div>
+    <%=link_to "Categories", url_for(:action => 'index', :controller => 'categories'), :class=>"menu_item" %>
+  </div class="menu_item">
+  <div>
+  </div class="menu_item">
+    <%=link_to "Institutions", url_for(:action => 'index', :controller => 'institutions'), :class=>"menu_item" %>
+  </div>
+</div>
+<div class="main_container">
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= yield  %>
+  <br/>
+</div>
+<!--
+<%= image_tag 'quicken_trans.png' %> 
+-->
+</body>
+</html>

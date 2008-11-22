@@ -1,0 +1,31 @@
+<table border=2 cellpadding=2>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Check Num</th>
+  <th>Category</th>
+  <th>Date</th>
+  <th>Type</th>
+  <th>Amount</th>
+  <th>Balance</th>
+  <th>Action</th>
+  <% balance = @starting_balance %>
+<% for t in @transactions %>
+  <% if t.type.id == Global[:DEB]
+       balance -= t.amount 
+     else
+       balance += t.amount 
+     end %>
+  <tr>
+    <td><%= link_to t.name, url_for( :controller => 'transactions', :action => 'edit', :id => t.id)  %></td>
+    <td><%= t.description %></td>
+    <td><%= t.check_num %></td>
+    <td><%= link_to t.category.long_name, url_for( :controller => 'categories', :action => 'index')  %></td>
+    <td><%= link_to t.date, url_for( :controller => 'transactions', :action => 'edit', :id => t.id)  %></td>
+    <td><%= t.type.name %></td>
+    <td align=right><%= number_to_currency(t.amount) %></td>
+    <td align=right><%= number_to_currency(balance) %></td>
+    <td align=center><%= link_to 'del', t, :confirm => 'Are you sure?', :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>

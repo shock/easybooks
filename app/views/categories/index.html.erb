@@ -1,0 +1,30 @@
+<h1>Listing categories</h1>
+
+<table border=1 cellspacing=0 cellpadding=2>
+  <tr>
+    <th>Name</th>
+    <th colspan=2>Action</th>
+  </tr>
+
+<% for category in @categories %>
+  <tr>
+    <td>
+    <% if category.parent && category.parent.name != 'None'
+        concat link_to (category.ancestors_name, url_for(:controller => 'categories', :action => 'edit', :id => category.parent_id)) , binding
+    end 
+    if !category.parent
+        concat category.name , binding
+    else
+        concat link_to (category.name, edit_category_path(category)) , binding
+    end %>
+    </td>
+    <td><%= link_to 'Child', url_for( :controller => 'categories', :action => 'new', :params => { :parent_id => category.id} ) %></td>
+    <td><%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add category', new_category_path %>
+<br />

@@ -1,0 +1,43 @@
+<p>
+  <b>Name:</b>
+  <%=h @transaction.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @transaction.description %>
+</p>
+
+<p>
+  <b>Check Num:</b>
+  <%=h @transaction.check_num %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @transaction.type.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @transaction.amount %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @transaction.date %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @category.long_name %>
+</p>
+
+<p>
+  <b>Account:</b>
+  <%= link_to @account.long_name, url_for( :controller => 'accounts', :action => 'show', :id => @account.id) %>
+</p>
+
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', url_for( :controller => 'accounts', :action => 'show', :id => @account.id) %>
