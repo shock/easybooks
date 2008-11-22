@@ -43,7 +43,7 @@ body {
 
 .transactions { 
   height: 500px; 
-  width: 880px; 
+  width: 890px; 
   overflow: auto;
   border: 4px solid black;
 }
@@ -58,7 +58,7 @@ body {
   text-align: center;
 }
 
-.trans_date { width: 200px; }
+.trans_date { width: 206px; }
 .trans_num { width: 85px; }
 .trans_payee { width: 344px; }
 .trans_type { width: 54px; }
