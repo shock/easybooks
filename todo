@@ -1,4 +1,5 @@
-make transactions nested resources of Accounts.  
-Make Accounts nested resources of Institutions.
+* Make Transactions nested resources of Accounts.  
+* Make Accounts nested resources of Institutions.
 
+* Allow creation of new categories via a popup windows while a new transaction is being created.
 
