@@ -30,6 +30,9 @@
 <div>
   <b>Balance:</b>
   <%=h number_to_currency @account.balance %>
+  <br/>
+  <b>Cleared Balance:</b>
+  <%=h number_to_currency @account.cleared_balance %>
 </div>
 <!--
 <%= link_to 'New Transaction', url_for( :controller => :transactions, :action => 'new', :account_id => @account.id ) %> |

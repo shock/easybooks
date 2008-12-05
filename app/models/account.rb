@@ -28,5 +28,20 @@ class Account < ActiveRecord::Base
     balance
   end
 
+  def cleared_balance
+    transactions = Transaction.find(:all, :conditions => { :account_id => id})
+    balance = 0.0
+    for t in transactions
+      if t.registered == true
+        if t.type.id == Global[:DEB]
+          balance -= t.amount
+        else
+          balance += t.amount
+        end
+      end
+    end
+    balance
+  end
+
 
 end

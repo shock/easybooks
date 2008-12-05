@@ -124,7 +124,9 @@ class TransactionsController < ApplicationController
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@account) }
+      rd_url = url_for(@account)+ "#end"
+      format.html { redirect_to(rd_url) }
+
       format.xml  { head :ok }
     end
   end
