@@ -29,8 +29,11 @@ class Category < ActiveRecord::Base
   def self.sorted_find_all
     results = []
     root = find(:first, :conditions => { :parent_id => nil })
-    results[0] = root
-    results += self.find_tree( root.id )
+    if( root )
+      results[0] = root
+      results += self.find_tree( root.id )
+    end
+    results
   end
   
 end
