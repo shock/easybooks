@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081025000603) do
+ActiveRecord::Schema.define(:version => 20100802010814) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20081025000603) do
     t.integer  "institution_id"
     t.string   "info"
     t.string   "phone"
+    t.string   "type"
   end
 
   create_table "categories", :force => true do |t|
@@ -53,8 +54,27 @@ ActiveRecord::Schema.define(:version => 20081025000603) do
     t.integer  "category_id"
     t.integer  "account_id"
     t.integer  "transaction_type_id"
-    t.boolean  "registered"
+    t.boolean  "registered",          :null => false
     t.string   "check_num"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "login",                              :null => false
+    t.string   "email",                              :null => false
+    t.string   "crypted_password",                   :null => false
+    t.string   "password_salt",                      :null => false
+    t.string   "persistence_token",                  :null => false
+    t.string   "single_access_token",                :null => false
+    t.string   "perishable_token",                   :null => false
+    t.integer  "login_count",         :default => 0, :null => false
+    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

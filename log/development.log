@@ -1,0 +1,844 @@
+# Logfile created on Fri May 29 07:21:12 -0500 2009  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 07:21:46) [GET]
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM `accounts` [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM `accounts` ORDER BY name[0m
+Rendered accounts/_list (3.0ms)
+Completed in 73ms (View: 57, DB: 1) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#new (for ::1 at 2009-05-29 08:59:18) [GET]
+  [4;36;1mAccount Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering accounts/new
+Completed in 30ms (View: 12, DB: 8) | 200 OK [http://localhost/accounts/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:04:17) [GET]
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/models/category.rb:33:in `sorted_find_all'
+  app/controllers/categories_controller.rb:5:in `index'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (95.9ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:06:16) [GET]
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/categories/index.html.erb:
+6:     <th colspan=2>Action</th>
+7:   </tr>
+8: 
+9: <% for category in @categories %>
+10:   <tr>
+11:     <td>
+12:     <% if category.parent && category.parent.name != 'None'
+
+    app/views/categories/index.html.erb:9
+    app/controllers/categories_controller.rb:7:in `index'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (45.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:06:31) [GET]
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/index
+Completed in 9ms (View: 2, DB: 1) | 200 OK [http://localhost/categories]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 10:06:42) [GET]
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM `accounts` [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM `accounts` ORDER BY name[0m
+Rendered accounts/_list (3.2ms)
+Completed in 12ms (View: 6, DB: 1) | 200 OK [http://localhost/accounts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:06:44) [GET]
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/index
+Completed in 9ms (View: 2, DB: 1) | 200 OK [http://localhost/categories]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#index (for ::1 at 2009-05-29 10:06:46) [GET]
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering institutions/index
+Completed in 14ms (View: 8, DB: 0) | 200 OK [http://localhost/institutions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#new (for ::1 at 2009-05-29 10:06:58) [GET]
+  [4;36;1mInstitution Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+Rendering template within layouts/application
+Rendering institutions/new
+Completed in 19ms (View: 10, DB: 4) | 200 OK [http://localhost/institutions/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#create (for ::1 at 2009-05-29 10:07:09) [POST]
+  Parameters: {"commit"=>"Create", "institution"=>{"name"=>"FIB", "description"=>"First Internet Bank of Indiana", "phone"=>""}, "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;36;1mInstitution Columns (3.1ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mInstitution Create (0.4ms)[0m   [0;1mINSERT INTO `institutions` (`name`, `updated_at`, `description`, `phone`, `created_at`) VALUES('FIB', '2009-05-29 15:07:09', 'First Internet Bank of Indiana', '', '2009-05-29 15:07:09')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/institutions/1
+Completed in 14ms (DB: 4) | 302 Found [http://localhost/institutions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#show (for ::1 at 2009-05-29 10:07:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mInstitution Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering institutions/show
+Completed in 19ms (View: 9, DB: 3) | 200 OK [http://localhost/institutions/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#index (for ::1 at 2009-05-29 10:07:13) [GET]
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering institutions/index
+  [4;35;1mInstitution Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+Completed in 14ms (View: 6, DB: 3) | 200 OK [http://localhost/institutions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#show (for ::1 at 2009-05-29 10:07:15) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mInstitution Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering institutions/show
+Completed in 13ms (View: 4, DB: 4) | 200 OK [http://localhost/institutions/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 10:07:17) [GET]
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM `accounts` ORDER BY name[0m
+Rendered accounts/_list (3.0ms)
+Completed in 11ms (View: 5, DB: 1) | 200 OK [http://localhost/accounts]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#new (for ::1 at 2009-05-29 10:07:19) [GET]
+  [4;35;1mAccount Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering accounts/new
+  [4;35;1mInstitution Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+Completed in 21ms (View: 7, DB: 5) | 200 OK [http://localhost/accounts/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#create (for ::1 at 2009-05-29 10:07:29) [POST]
+  Parameters: {"commit"=>"Create", "account"=>{"name"=>"Checking", "info"=>"", "institution_id"=>"1", "description"=>"", "phone"=>"", "account_number"=>"12374"}, "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;35;1mAccount Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Create (0.3ms)[0m   [0mINSERT INTO `accounts` (`name`, `updated_at`, `info`, `description`, `institution_id`, `phone`, `account_number`, `created_at`) VALUES('Checking', '2009-05-29 15:07:29', '', '', 1, '', '12374', '2009-05-29 15:07:29')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3001/accounts/1
+Completed in 16ms (DB: 5) | 302 Found [http://localhost/accounts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 10:07:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mAccount Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;36;1mTransaction Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.3ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mTransactionType Load (0.2ms)[0m   [0;1mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mTransaction Load (0.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (168.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 284ms (View: 249, DB: 10) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:07:38) [GET]
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/index
+Completed in 9ms (View: 2, DB: 1) | 200 OK [http://localhost/categories]
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#new (for ::1 at 2009-05-29 10:07:39) [GET]
+  [4;35;1mCategory Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (1.0ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/new
+Completed in 22ms (View: 11, DB: 6) | 200 OK [http://localhost/categories/new]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#create (for ::1 at 2009-05-29 10:07:44) [POST]
+  Parameters: {"category"=>{"name"=>"Income"}, "commit"=>"Create", "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;36;1mCategory Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Create (0.2ms)[0m   [0mINSERT INTO `categories` (`name`, `updated_at`, `parent_id`, `created_at`) VALUES('Income', '2009-05-29 15:07:44', NULL, '2009-05-29 15:07:44')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3001/categories
+Completed in 15ms (DB: 4) | 302 Found [http://localhost/categories]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 10:07:44) [GET]
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+Rendering template within layouts/application
+Rendering categories/index
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.. (called from _run_erb_app47views47categories47index46html46erb at /Users/billdoughty/src/easybooks/app/views/categories/index.html.erb:16)
+Completed in 17ms (View: 5, DB: 3) | 200 OK [http://localhost/categories]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#new (for ::1 at 2009-05-29 10:08:00) [GET]
+  [4;36;1mCategory Columns (3.4ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+Rendering template within layouts/application
+Rendering categories/new
+Completed in 86ms (View: 6, DB: 4) | 200 OK [http://localhost/categories/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 10:08:11) [GET]
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+  [4;35;1mAccount Columns (3.3ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mTransaction Load (0.6ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM `accounts` ORDER BY name[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstitution Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Rendered accounts/_list (15.7ms)
+Completed in 33ms (View: 16, DB: 7) | 200 OK [http://localhost/accounts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 10:08:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mAccount Columns (3.4ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;36;1mTransaction Columns (3.3ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.3ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mTransactionType Load (0.3ms)[0m   [0;1mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (5.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 56ms (View: 16, DB: 14) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#create (for ::1 at 2009-05-29 12:00:58) [POST]
+  Parameters: {"transaction"=>{"name"=>"test", "date(1i)"=>"2009", "registered"=>"0", "account_id"=>"1", "date(2i)"=>"5", "date(3i)"=>"29", "amount"=>"10.00", "description"=>"commet", "category_id"=>"1", "check_num"=>""}, "commit"=>"Create", "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;35;1mTransaction Columns (4.2ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mAccount Load (0.2ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Create (0.3ms)[0m   [0mINSERT INTO `transactions` (`name`, `updated_at`, `account_id`, `transaction_type_id`, `registered`, `date`, `description`, `amount`, `category_id`, `check_num`, `created_at`) VALUES('test', '2009-05-29 17:00:58', 1, NULL, 0, '2009-05-29', 'commet', 10.0, 1, '', '2009-05-29 17:00:58')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+Redirected to http://localhost:3001/accounts/1#1
+Completed in 40ms (DB: 11) | 302 Found [http://localhost/transactions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 12:00:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAccount Columns (8.2ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;35;1mTransaction Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mTransaction Load (1.1ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstitution Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` IS NULL) LIMIT 1[0m
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #24 of app/views/accounts/show.html.erb:
+21: 
+22: <div>
+23:   <b>Balance:</b>
+24:   <%=h number_to_currency @account.balance %>
+25: </div>
+26: -->
+27: 
+
+    app/models/account.rb:22:in `balance'
+    app/models/account.rb:21:in `each'
+    app/models/account.rb:21:in `balance'
+    app/views/accounts/show.html.erb:24
+    app/controllers/accounts_controller.rb:31:in `show'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (47.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (77.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mdescribe `accounts`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `accounts`[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mdescribe `institutions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `institutions`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mdescribe `transaction_types`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `transaction_types`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mdescribe `transactions`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `transactions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CategoriesController#index (for ::1 at 2009-05-29 12:07:26) [GET]
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (1.1ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+Rendering template within layouts/application
+Rendering categories/index
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.. (called from _run_erb_app47views47categories47index46html46erb at /Users/billdoughty/src/easybooks/app/views/categories/index.html.erb:16)
+Completed in 19ms (View: 6, DB: 4) | 200 OK [http://localhost/categories]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mCategory Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCategory Create (0.4ms)[0m   [0mINSERT INTO `categories` (`name`, `updated_at`, `parent_id`, `created_at`) VALUES('All', '2009-05-29 17:43:40', NULL, '2009-05-29 17:43:40')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mTransactionType Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransactionType Create (0.3ms)[0m   [0mINSERT INTO `transaction_types` (`name`, `updated_at`, `created_at`) VALUES('DEB', '2009-05-29 17:43:40', '2009-05-29 17:43:40')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransactionType Create (0.2ms)[0m   [0;1mINSERT INTO `transaction_types` (`name`, `updated_at`, `created_at`) VALUES('CRD', '2009-05-29 17:43:40', '2009-05-29 17:43:40')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 13:11:03) [GET]
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM `accounts` [0m
+  [4;36;1mAccount Columns (3.4ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mTransaction Columns (6.3ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` IS NULL) LIMIT 1[0m
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/models/account.rb:22:in `balance'
+  app/models/account.rb:21:in `each'
+  app/models/account.rb:21:in `balance'
+  app/controllers/accounts_controller.rb:9:in `index'
+  app/controllers/accounts_controller.rb:8:in `each'
+  app/controllers/accounts_controller.rb:8:in `index'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (36.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for ::1 at 2009-05-29 13:11:30) [GET]
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM `accounts` [0m
+  [4;36;1mAccount Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mTransaction Load (0.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM `accounts` ORDER BY name[0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Rendered accounts/_list (18.4ms)
+Completed in 35ms (View: 18, DB: 7) | 200 OK [http://localhost/accounts]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 13:11:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAccount Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;35;1mTransaction Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mInstitution Load (2.1ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstitution Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mTransaction Load (0.6ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mTransactionType Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (10.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 144ms (View: 18, DB: 18) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#create (for ::1 at 2009-05-29 13:11:41) [POST]
+  Parameters: {"transaction"=>{"name"=>"asdf", "date(1i)"=>"2009", "registered"=>"0", "transaction_type_id"=>"1", "account_id"=>"1", "date(2i)"=>"5", "date(3i)"=>"29", "amount"=>"10.00", "description"=>"asdf", "category_id"=>"1", "check_num"=>"sa"}, "commit"=>"Create", "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;35;1mTransaction Columns (3.6ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Create (0.2ms)[0m   [0mINSERT INTO `transactions` (`name`, `updated_at`, `account_id`, `transaction_type_id`, `registered`, `date`, `description`, `amount`, `category_id`, `check_num`, `created_at`) VALUES('asdf', '2009-05-29 18:11:42', 1, 1, 0, '2009-05-29', 'asdf', 10.0, 1, 'sa', '2009-05-29 18:11:42')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+Redirected to http://localhost:3001/accounts/1#2
+Completed in 38ms (DB: 11) | 302 Found [http://localhost/transactions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 13:11:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAccount Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mAccount Load (0.6ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;35;1mTransaction Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstitution Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mTransaction Load (0.3ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransactionType Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `transaction_types`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:75)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:82)
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (11.1ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 68ms (View: 21, DB: 13) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#create (for ::1 at 2009-05-29 13:11:52) [POST]
+  Parameters: {"transaction"=>{"name"=>"", "date(1i)"=>"2009", "registered"=>"0", "transaction_type_id"=>"2", "account_id"=>"1", "date(2i)"=>"5", "date(3i)"=>"29", "amount"=>"30.00", "description"=>"", "category_id"=>"1", "check_num"=>""}, "commit"=>"Create", "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;35;1mTransaction Columns (3.3ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mAccount Load (0.2ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `accounts` [0m
+Rendering template within layouts/application
+Rendering transactions/new
+  [4;35;1mTransactionType Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+  [4;36;1mAccount Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mInstitution Load (0.3ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+Completed in 62ms (View: 22, DB: 14) | 200 OK [http://localhost/transactions]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#create (for ::1 at 2009-05-29 13:12:02) [POST]
+  Parameters: {"transaction"=>{"name"=>"asdf", "date(1i)"=>"2009", "registered"=>"0", "account_id"=>"1", "date(2i)"=>"5", "transaction_type_id"=>"2", "date(3i)"=>"29", "category_id"=>"1", "amount"=>"30.00", "description"=>"", "check_num"=>""}, "commit"=>"Create", "authenticity_token"=>"pTuoiqMrZwYp8IIzas/Vn7MKgnkxD4h0E3NcVdrkfDk="}
+  [4;36;1mTransaction Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mAccount Load (0.6ms)[0m   [0mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) LIMIT 1[0m
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM `accounts` [0m
+  [4;36;1mTransactionType Load (0.3ms)[0m   [0;1mSELECT * FROM `transaction_types` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Create (0.3ms)[0m   [0;1mINSERT INTO `transactions` (`name`, `updated_at`, `account_id`, `transaction_type_id`, `registered`, `date`, `description`, `amount`, `category_id`, `check_num`, `created_at`) VALUES('asdf', '2009-05-29 18:12:02', 1, 2, 0, '2009-05-29', '', 30.0, 1, '', '2009-05-29 18:12:02')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+Redirected to http://localhost:3001/accounts/1#3
+Completed in 42ms (DB: 12) | 302 Found [http://localhost/transactions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for ::1 at 2009-05-29 13:12:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mAccount Columns (5.3ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mAccount Load (1.2ms)[0m   [0mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;36;1mTransaction Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mInstitution Load (1.0ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;35;1mCategory Load (0.3ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;36;1mCategory Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `categories`[0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;36;1mTransactionType Load (0.3ms)[0m   [0;1mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mTransaction Load (0.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mTransactionType Load (0.2ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;35;1mTransactionType Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+  [4;36;1mTransactionType Load (0.3ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:75)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:82)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:75)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:82)
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (18.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 75ms (View: 31, DB: 18) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (20.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-03-23 15:55:54) [GET]
+  [4;35;1mAccount Load (143.7ms)[0m   [0mSELECT * FROM `accounts` [0m
+  [4;36;1mAccount Columns (4.3ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mTransaction Load (55.3ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mTransaction Columns (18.2ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mTransactionType Load (57.1ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransactionType Columns (35.6ms)[0m   [0;1mSHOW FIELDS FROM `transaction_types`[0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (1.3ms)[0m   [0;1mSELECT * FROM `accounts` ORDER BY name[0m
+  [4;35;1mInstitution Load (18.1ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (56.5ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+Rendered accounts/_list (121.7ms)
+Completed in 611ms (View: 68, DB: 411) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-03-23 15:56:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAccount Columns (3.9ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mAccount Load (1.4ms)[0m   [0;1mSELECT * FROM `accounts` WHERE (`accounts`.`id` = 1) [0m
+  [4;35;1mTransaction Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.4ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (44.9ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` IS NULL) LIMIT 1[0m
+  [4;35;1mCategory Columns (18.5ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`parent_id` = 1) ORDER BY name[0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` [0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstitution Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+  [4;36;1mTransaction Load (0.3ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransactionType Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `transaction_types`[0m
+  [4;35;1mTransactionType Load (0.2ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:75)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:82)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:75)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:82)
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (309.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+Completed in 440ms (View: 330, DB: 77) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#remote_update (for 127.0.0.1 at 2010-03-23 15:57:30) [POST]
+  Parameters: {"transaction"=>{"name"=>"asdf", "date(1i)"=>"2009", "registered"=>"0", "transaction_type_id"=>"1", "date(2i)"=>"5", "date(3i)"=>"29", "amount"=>"10.00", "description"=>"asdf", "category_id"=>"1", "check_num"=>"101"}, "commit"=>"Update", "authenticity_token"=>"PaeMGEFRrU5Vd+rtS+TA/24CtlCPNxD1GMzeZcxoFhA=", "id"=>"2"}
+  [4;35;1mTransaction Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`id` = 2) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Update (0.3ms)[0m   [0;1mUPDATE `transactions` SET `updated_at` = '2010-03-23 20:57:30', `check_num` = '101' WHERE `id` = 2[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+Rendered transactions/_status (0.5ms)
+Completed in 24ms (View: 9, DB: 4) | 200 OK [http://localhost/transactions/remote_update/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TransactionsController#remote_update (for 127.0.0.1 at 2010-03-23 15:57:40) [POST]
+  Parameters: {"transaction"=>{"name"=>"asdf", "date(1i)"=>"2009", "registered"=>"0", "transaction_type_id"=>"1", "date(2i)"=>"5", "date(3i)"=>"29", "amount"=>"10.00", "description"=>"asdf", "category_id"=>"1", "check_num"=>"101"}, "commit"=>"Update", "authenticity_token"=>"PaeMGEFRrU5Vd+rtS+TA/24CtlCPNxD1GMzeZcxoFhA=", "id"=>"2"}
+  [4;35;1mTransaction Columns (3.3ms)[0m   [0mSHOW FIELDS FROM `transactions`[0m
+  [4;36;1mTransaction Load (0.6ms)[0m   [0;1mSELECT * FROM `transactions` WHERE (`transactions`.`id` = 2) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Rendered transactions/_status (0.1ms)
+Completed in 18ms (View: 2, DB: 4) | 200 OK [http://localhost/transactions/remote_update/2]
+  [4;36;1mSQL (41.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (48.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (147.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-01 18:11:50) [GET]
+  [4;35;1mAccount Load (36.2ms)[0m   [0mSELECT * FROM `accounts` [0m
+  [4;36;1mAccount Columns (33.1ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mTransaction Load (53.9ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mTransaction Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mTransactionType Load (44.1ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;36;1mTransactionType Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `transaction_types`[0m
+  [4;35;1mTransactionType Load (0.3ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM `accounts` ORDER BY name[0m
+  [4;35;1mInstitution Load (33.5ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) LIMIT 1[0m
+  [4;36;1mInstitution Columns (16.9ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transactions` WHERE (`transactions`.`account_id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `transaction_types` WHERE (`transaction_types`.`id` = 2) LIMIT 1[0m
+Rendered accounts/_list (107.3ms)
+Completed in 504ms (View: 93, DB: 223) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2010-08-01 18:12:02) [GET]
+  [4;35;1mAccount Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering accounts/new
+  [4;35;1mInstitution Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `institutions`[0m
+Completed in 29ms (View: 15, DB: 5) | 200 OK [http://localhost/accounts/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#index (for 127.0.0.1 at 2010-08-01 18:12:17) [GET]
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM `institutions` [0m
+Rendering template within layouts/application
+Rendering institutions/index
+  [4;36;1mInstitution Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+Completed in 18ms (View: 10, DB: 2) | 200 OK [http://localhost/institutions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstitutionsController#show (for 127.0.0.1 at 2010-08-01 18:12:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mInstitution Columns (3.7ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM `institutions` WHERE (`institutions`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering institutions/show
+Completed in 18ms (View: 8, DB: 4) | 200 OK [http://localhost/institutions/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (53.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+  [4;35;1mSQL (252.1ms)[0m   [0mALTER TABLE `accounts` ADD `type` varchar(255)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100801231301')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `accounts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `accounts`[0m
+  [4;35;1mSQL (28.6ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (14.7ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mdescribe `institutions`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `institutions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mdescribe `transaction_types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `transaction_types`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `transactions`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `transactions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `single_access_token` varchar(255) NOT NULL, `perishable_token` varchar(255) NOT NULL, `login_count` int(11) DEFAULT 0 NOT NULL, `failed_login_count` int(11) DEFAULT 0 NOT NULL, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100802010814')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mdescribe `accounts`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `accounts`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `institutions`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `institutions`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `institutions`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `transaction_types`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `transaction_types`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `transaction_types`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `transactions`[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mdescribe `transactions`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `transactions`[0m
+  [4;35;1mSQL (63.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m

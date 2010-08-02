@@ -1,0 +1,222 @@
+have_header: checking for sys/times.h... -------------------- yes
+
+"gcc -E -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sys/times.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_os_allocated_objects()... -------------------- yes
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_os_allocated_objects’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_os_allocated_objects(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_allocated_size()... -------------------- yes
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_allocated_size’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_allocated_size(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_collections()... -------------------- yes
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_collections’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_collections(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_time()... -------------------- yes
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_time’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_time(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_heap_total_mem()... -------------------- no
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_heap_total_mem’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+Undefined symbols:
+  "_rb_heap_total_mem", referenced from:
+      _t in ccgyvXQ9.o
+ld: symbol(s) not found
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_heap_total_mem(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_heap_info()... -------------------- no
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_heap_info’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+Undefined symbols:
+  "_rb_gc_heap_info", referenced from:
+      _t in ccbKJyGn.o
+ld: symbol(s) not found
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_heap_info(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_malloc_allocations()... -------------------- no
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_malloc_allocations’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_malloc_allocations; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+Undefined symbols:
+  "_rb_gc_malloc_allocations", referenced from:
+      _t in ccbFGIpH.o
+ld: symbol(s) not found
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_malloc_allocations(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_malloc_allocated_size()... -------------------- no
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘rb_gc_malloc_allocated_size’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))rb_gc_malloc_allocated_size; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/i686-darwin9.6.0 -I.   -g -O2 -pipe -fno-common conftest.c  -L. -L/opt/ruby-enterprise-1.8.6-20090610/lib -L.      -lruby-static  -ldl -lobjc  "
+Undefined symbols:
+  "_rb_gc_malloc_allocated_size", referenced from:
+      _t in ccHYxjL5.o
+ld: symbol(s) not found
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { rb_gc_malloc_allocated_size(); return 0; }
+/* end */
+
+--------------------
+
