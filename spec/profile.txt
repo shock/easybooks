@@ -1,0 +1,31 @@
+Profiling enabled.
+F.............F
+
+
+Top 10 slowest examples:
+0.0693900 TransactionType calculates balance to the transaction
+0.0689870 TransactionType calculates total balance correctly
+0.0664470 TransactionType calculates balance to the date
+0.0397910 TransactionType calculates last_interest_accrual date properly
+0.0378030 TransactionType calculates next_interest_accrual date properly
+0.0158370 TransactionType validates interest_accrual
+0.0121570 TransactionType stores interest rate with two decimal places
+0.0118340 TransactionType creates an opening balance transaction
+0.0092660 TransactionType validates opening_date
+0.0069480 TransactionType validates name
+
+1)
+'TransactionType validates a valid record' FAILED
+expected: true,
+     got: false (using ==)
+./spec/unit/models/account_spec.rb:5:
+
+2)
+'TransactionType creates one pending interest transaction due today' FAILED
+expected: Mon, 01 Mar 2010,
+     got: Thu, 01 Apr 2010 (using ==)
+./spec/unit/models/account_spec.rb:112:
+
+Finished in 0.434412 seconds
+
+15 examples, 2 failures

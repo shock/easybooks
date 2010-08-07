@@ -42,10 +42,12 @@ ActionController::Routing::Routes.draw do |map|
 
   # config/routes.rb
   map.resource :user_session
-  map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
+  map.root :controller => "accounts", :action => "index" # optional, this just sets the root route
 
-  map.resource :account, :controller => "users"
+  map.resource :user_account, :controller => "users"
   map.resources :users
+  map.connect 'logout', :controller => "user_sessions", :action=>'destroy'
+  map.connect 'register', :controller => "users", :action=>'new'
 
   # See how all your routes lay out with "rake routes"
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802010814) do
+ActiveRecord::Schema.define(:version => 20100806231511) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20100802010814) do
     t.string   "info"
     t.string   "phone"
     t.string   "type"
+    t.integer  "workgroup_id"
+    t.integer  "interest_rate",      :default => 0
+    t.string   "interest_accrual",   :default => "annually"
+    t.string   "interest_condition", :default => "none"
+    t.date     "opening_date"
   end
 
   create_table "categories", :force => true do |t|
@@ -28,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100802010814) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.integer  "workgroup_id"
   end
 
   create_table "institutions", :force => true do |t|
@@ -36,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20100802010814) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phone"
+    t.integer  "workgroup_id"
   end
 
   create_table "transaction_types", :force => true do |t|
@@ -45,9 +52,9 @@ ActiveRecord::Schema.define(:version => 20100802010814) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.string   "name"
+    t.string   "target"
     t.string   "description"
-    t.float    "amount"
+    t.integer  "amount"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,23 +63,39 @@ ActiveRecord::Schema.define(:version => 20100802010814) do
     t.integer  "transaction_type_id"
     t.boolean  "registered",          :null => false
     t.string   "check_num"
+    t.integer  "linked_account_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
-    t.string   "email",                              :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
-    t.string   "persistence_token",                  :null => false
-    t.string   "single_access_token",                :null => false
-    t.string   "perishable_token",                   :null => false
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.string   "login",                               :null => false
+    t.string   "email",                               :null => false
+    t.string   "crypted_password",                    :null => false
+    t.string   "password_salt",                       :null => false
+    t.string   "persistence_token",                   :null => false
+    t.string   "single_access_token",                 :null => false
+    t.string   "perishable_token",                    :null => false
+    t.integer  "login_count",          :default => 0, :null => false
+    t.integer  "failed_login_count",   :default => 0, :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "admin_flag"
+    t.integer  "default_workgroup_id"
+  end
+
+  create_table "workgroups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workgroups_users", :force => true do |t|
+    t.integer  "workgroup_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

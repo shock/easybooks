@@ -1,8 +1,15 @@
 class Category < ActiveRecord::Base
   has_many :transactions
+  belongs_to :workgroup
   acts_as_tree
  
-  validates_presence_of :name
+  validates_presence_of :name, :workgroup
+  before_validation :ensure_workgroup
+
+  def ensure_workgroup
+    workgroup ||= current_user.try(:default_workgroup)
+  end
+  private :ensure_workgroup
 
   def ancestors_name
     if parent && parent.id != 1

@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
-  
+    
   def new
     @user = User.new
   end
   
   def create
     @user = User.new(params[:user])
+    @user.admin_flag = false unless current_user && current_user.is_admin?
     if @user.save
       flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+      redirect_back_or_default user_account_url
     else
       render :action => :new
     end

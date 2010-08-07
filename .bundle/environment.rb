@@ -174,9 +174,9 @@ end
 module Bundler
   ENV_LOADED   = true
   LOCKED_BY    = '0.9.26'
-  FINGERPRINT  = "a08f5aafa7f7b9eb03ff54060e948054ef2bfc66"
+  FINGERPRINT  = "71e5cdf7431e9274cb3a419d4a5ec7328ca78314"
   HOME         = '/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/bundler'
-  AUTOREQUIRES = {:profile=>[["factory_girl", false], ["spork", false]], :test=>[["factory_girl", false], ["ruby-debug", false], ["spork", false]], :default=>[["authlogic", false], ["mysql", false], ["rails", false], ["ruby-prof", false], ["wdd-ruby-ext", false]]}
+  AUTOREQUIRES = {:profile=>[["factory_girl", false], ["rspec", false], ["rspec-rails", false], ["spork", false]], :test=>[["factory_girl", false], ["rspec", false], ["rspec-rails", false], ["ruby-debug", false], ["spork", false]], :development=>[["factory_girl", false]], :default=>[["authlogic", false], ["mysql", false], ["pg", false], ["rails", false], ["ruby-prof", false], ["settingslogic", false], ["wdd-ruby-ext", false]]}
   SPECS        = [
         {:name=>"rake", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/rake-0.8.7.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/rake-0.8.7/lib"]},
         {:name=>"activesupport", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/activesupport-2.3.5.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib"]},
@@ -185,15 +185,19 @@ module Bundler
         {:name=>"actionmailer", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/actionmailer-2.3.5.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/actionmailer-2.3.5/lib"]},
         {:name=>"activerecord", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/activerecord-2.3.5.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib"]},
         {:name=>"activeresource", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/activeresource-2.3.5.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/activeresource-2.3.5/lib"]},
-        {:name=>"authlogic", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/authlogic-2.1.5.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/authlogic-2.1.5/lib"]},
+        {:name=>"authlogic", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/authlogic-2.1.6.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/authlogic-2.1.6/lib"]},
         {:name=>"columnize", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/columnize-0.3.1.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/columnize-0.3.1/lib"]},
         {:name=>"factory_girl", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/factory_girl-1.2.4.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/factory_girl-1.2.4/lib"]},
         {:name=>"linecache", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/linecache-0.43.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/linecache-0.43/lib"]},
         {:name=>"mysql", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/mysql-2.8.1.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/mysql-2.8.1/lib", "/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/mysql-2.8.1/ext"]},
+        {:name=>"pg", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/pg-0.9.0.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/pg-0.9.0/lib", "/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/pg-0.9.0/ext"]},
         {:name=>"rails", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/rails-2.3.5.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/rails-2.3.5/lib"]},
+        {:name=>"rspec", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/rspec-1.3.0.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/rspec-1.3.0/lib"]},
+        {:name=>"rspec-rails", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/rspec-rails-1.3.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/rspec-rails-1.3.2/lib"]},
         {:name=>"ruby-debug-base", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/ruby-debug-base-0.10.3.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib"]},
         {:name=>"ruby-debug", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/ruby-debug-0.10.3.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/ruby-debug-0.10.3/cli"]},
         {:name=>"ruby-prof", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/ruby-prof-0.8.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/ruby-prof-0.8.2/lib"]},
+        {:name=>"settingslogic", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/settingslogic-2.0.6.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/settingslogic-2.0.6/lib"]},
         {:name=>"spork", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/spork-0.8.4.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/spork-0.8.4/lib"]},
         {:name=>"wdd-ruby-ext", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/wdd-ruby-ext-0.0.10.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/wdd-ruby-ext-0.0.10/lib"]},
       ].map do |hash|

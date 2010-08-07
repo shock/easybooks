@@ -1,0 +1,12 @@
+# config/application.yml
+defaults: &defaults
+  placeholder: true
+  
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

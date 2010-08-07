@@ -6,3 +6,11 @@
 <br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
+<br />
+<%= form.label :email %><br />
+<%= form.text_field :email %><br />
+<% if params[:action] == :edit && current_user.is_admin? %>
+  <br />
+  <%= form.label :admin_flag, "Admin" %><br />
+  <%= form.checkbox :admin_flag %><br />
+<% end -%>

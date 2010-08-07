@@ -10,18 +10,18 @@
   <th>Action</th>
   <% balance = @starting_balance %>
 <% for t in @transactions %>
-  <% if t.type.id == Global[:DEB]
+  <% if t.transaction_type.is_debit?
        balance -= t.amount 
      else
        balance += t.amount 
      end %>
   <tr>
-    <td><%= link_to t.name, url_for( :controller => 'transactions', :action => 'edit', :id => t.id)  %></td>
+    <td><%= link_to t.target, url_for( :controller => 'transactions', :action => 'edit', :id => t.id)  %></td>
     <td><%= t.description %></td>
     <td><%= t.check_num %></td>
     <td><%= link_to t.category.long_name, url_for( :controller => 'categories', :action => 'index')  %></td>
     <td><%= link_to t.date, url_for( :controller => 'transactions', :action => 'edit', :id => t.id)  %></td>
-    <td><%= t.type.name %></td>
+    <td><%= t.transaction_type.name %></td>
     <td align=right><%= number_to_currency(t.amount) %></td>
     <td align=right><%= number_to_currency(balance) %></td>
     <td align=center><%= link_to 'del', t, :confirm => 'Are you sure?', :method => :delete %></td>

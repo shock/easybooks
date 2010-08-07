@@ -28,7 +28,7 @@
     <td>
       <table>
         <tr class='odd'>
-          <td colspan="2"><%= f.text_field :name, :size=>48  %></td>
+          <td colspan="2"><%= f.text_field :target, :size=>48  %></td>
         </tr>
         <tr class='even'>
           <td><%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %></td>

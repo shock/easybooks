@@ -12,7 +12,7 @@
   <% balance = @starting_balance %>
   <% i=0 %>
   <% for @transaction in @transactions %>
-  <% if @transaction.type.id == Global[:DEB]
+  <% if @transaction.transaction_type.is_debit?
        balance -= @transaction.amount 
      else
        balance += @transaction.amount 
@@ -44,7 +44,7 @@
     <td>
       <table>
         <tr class='odd'>
-          <td colspan="2"><%= f.text_field :name, :size=>48  %></td>
+          <td colspan="2"><%= f.text_field :target, :size=>48  %></td>
         </tr>
         <tr class='even'>
           <td><%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %></td>
@@ -75,7 +75,7 @@
     <td>
       <table>
         <tr class='odd'>
-          <td colspan=1 align=right><%= text_field_tag "transaction[amount]", number_with_precision(@transaction.amount, 2), {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.type.id == Global[:DEB] then 'debit' else 'credit' end} %></td>
+          <td colspan=1 align=right><%= text_field_tag "transaction[amount]", @transaction.amount, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.transaction_type.is_debit? then 'debit' else 'credit' end} %></td>
         </tr>
         <tr class='even'>
           <td/>
@@ -85,7 +85,7 @@
     <td>
       <table>
         <tr class='odd'>
-          <td class='balance' align=right><%= number_with_precision(balance,2) %></td>
+          <td class='balance' align=right><%= balance %></td>
         </tr>
         <tr class='even'>
           <td/>

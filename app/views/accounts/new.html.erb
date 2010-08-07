@@ -2,30 +2,10 @@
 
 <% form_for(@account) do |f| %>
   <%= f.error_messages %>
-
+  <%= render :partial => 'form', :locals=>{:f=>f} %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :account_number %><br />
-    <%= f.text_field :account_number %>
-  </p>
-  <p>
-    <%= f.label :info %><br />
-    <%= f.text_field :info %>
-  </p>
-  <p>
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </p>
-  <p>
-    <%= f.label :institution_id %><br />
-    <%= collection_select(:account, :institution_id, @all_institutions, :id, :name) %>
+    <%= f.label :opening_balance %><br />
+    <%= f.text_field :opening_balance %>
   </p>
   <p>
     <%= f.submit "Create" %>

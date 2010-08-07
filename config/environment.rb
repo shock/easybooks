@@ -66,9 +66,13 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-# Global constants
+class ActiveRecord::Base
+  def current_user
+    Thread.current[:current_user]
+  end
+end
 
-Global = {}
-Global[:DEB] = 1
-Global[:CRD] = 2
-Global[:CAT_NONE] = 1
+def load_factory
+  require 'spec/spec_helpers/factory_helper'
+  require 'spec/factory/main_factory'
+end

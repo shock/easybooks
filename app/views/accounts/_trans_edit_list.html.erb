@@ -16,7 +16,7 @@
   <% balance = @starting_balance %> 
   <% i=0 %>
   <% for @transaction in @transactions %>
-    <% if @transaction.type.id == Global[:DEB]
+    <% if @transaction.transaction_type.is_debit?
          balance -= @transaction.amount 
        else
          balance += @transaction.amount 
@@ -49,7 +49,7 @@
             </div>
             <div class='trans_payee'>
               <div class="even">
-                <%= f.text_field :name, :size=>48  %>
+                <%= f.text_field :target, :size=>48  %>
               </div>
               <div class="odd">
                 <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %>
@@ -72,14 +72,14 @@
             </div>
             <div class='trans_amount'>
               <div class="even">
-                <%= text_field_tag "transaction[amount]", number_with_precision(@transaction.amount, 2), {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.type.id == Global[:DEB] then 'debit' else 'credit' end} %>
+                <%= text_field_tag "transaction[amount]", @transaction.amount.to_s, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.transaction_type.is_debit? then 'debit' else 'credit' end} %>
               </div>
               <div class="odd">
               </div>
             </div>
             <div class='trans_balance'>
               <div class="even">
-                <%= number_with_precision(balance,2) %>
+                <%= balance %>
               </div>
               <div class="odd">
                 <a name="<%=@transaction.id.to_s%>"/>
@@ -107,16 +107,16 @@
             </div>
             <div class='trans_payee'>
               <div class="even">
-                <%= f.text_field :name, :size=>48  %>
+                <%= f.text_field :target, :size=>48  %>
               </div>
               <div class="odd">
-                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', Global[:CAT_NONE]) %>
+                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', "None") %>
                 <%= f.text_field :description, :size=>26  %>
               </div>
             </div>
             <div class='trans_type'>
               <div class="even">
-                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', Global[:DEB]) %>
+                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', TransactionType::NAMES_TO_IDS['DEB']) %>
               </div>
               <div class="odd">
               </div>
