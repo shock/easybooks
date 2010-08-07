@@ -1,0 +1,24 @@
+log
+log/*
+tmp/**/*
+tmp/*
+.DS_Store
+doc/api
+doc/app
+# ignore object files
+*.o
+*.swp
+.*.swp
+public/javascripts/cache
+public/stylesheets/cache
+data/classifier/*
+data/classifier/**/*
+vendor/gems/*/ext
+config/sphinx*.conf
+config/buzzmanager.yml
+config/database.yml
+vendor/bundler_gems/**/*
+.bundle/environment.rb
+Gemfile.lock
+tmtags
+spec/profile.txt
