@@ -19,7 +19,7 @@ class Account < ActiveRecord::Base
   
   INTEREST_ACCRUALS = %w{monthly annually}
   INTEREST_CONDITIONS = %w{positive_balance negative_balance both none}
-  
+  INTEREST_RATE_PRECISION = 4
   def validate
     errors.add(:interest_accrual, "#{interest_accrual} is invalid") unless INTEREST_ACCRUALS.include?( interest_accrual )
     errors.add(:interest_condition, "#{interest_condition} is invalid") unless INTEREST_CONDITIONS.include?( interest_condition )
@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
   end
 
   def interest_rate= interest_rate
-    @interest_rate = Currency.new(interest_rate)
+    @interest_rate = Currency.new(interest_rate, nil, INTEREST_RATE_PRECISION)
     self[:interest_rate] = @interest_rate.value
   end
   
@@ -48,7 +48,7 @@ class Account < ActiveRecord::Base
   end
   
   def interest_rate
-    @interest_rate || Currency.new(0, self[:interest_rate])
+    @interest_rate || Currency.new(0, self[:interest_rate], INTEREST_RATE_PRECISION)
   end
 
   def long_name
@@ -85,16 +85,20 @@ class Account < ActiveRecord::Base
     puts "next_interest_accrual: #{next_interest_accrual}"
     balance = self.balance next_interest_accrual
     interest_amount = Currency.new(0)
+    puts "interest_rate: #{interest_rate}"
     case interest_condition
     when 'positive_balance'
       if balance > 0
+        puts "here1"
         interest_amount = balance * interest_rate / 100
       end
     when 'negative_balance'
       if balance < 0
+        puts "here2"
         interest_amount = balance * interest_rate / 100
       end
     when 'both'
+      puts "here3"
       interest_amount = balance * interest_rate / 100
     when 'none'
       return

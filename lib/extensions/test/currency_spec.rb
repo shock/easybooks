@@ -70,6 +70,32 @@ describe Currency do
     d.is_a?(Currency).should == true
     d.should == 1.11
   end
+  
+  it "adds with itself" do
+    a = Currency.new(11.12)
+    b = Currency.new(2.12)
+    (a+b).should == 13.24
+  end
+
+  it "multiplies with itself" do
+    a = Currency.new(11.12)
+    b = Currency.new(2.00)
+    (a*b).should == 22.24
+  end
+
+  it "multiplies with itself at different precisions" do
+    a = Currency.new(1000.00)
+    b = Currency.new(0.005, nil, 4)
+    c = (a*b)
+    c.should == 5
+  end
+
+  it "keeps the left operator's precision when multiplying with itself" do
+    a = Currency.new(1000.00)
+    b = Currency.new(0.005, nil, 4)
+    c = (b*a)
+    c.precision.should == 4
+  end
 
   it "compares to a Float" do
     c = Currency.new(3.33)

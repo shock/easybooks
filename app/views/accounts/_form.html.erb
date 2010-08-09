@@ -36,5 +36,5 @@
 </p>
 <p>
   <%= f.label :interest_rate %><br />
-  <%= f.text_field :interest_rate %>
+  <%= text_field_tag "account[interest_rate]", @account.interest_rate.to_s %>
 </p>

@@ -7039,3 +7039,1006 @@ Rendered accounts/_trans_edit_list (81.1ms)
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
   [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
 Completed in 380ms (View: 114, DB: 9) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-07 15:57:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mUser Load (2.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'V4p80WGr0cz65pKQiq0P', "last_request_at" = '2010-08-07 20:57:54.433478', "updated_at" = '2010-08-07 20:57:54.441943' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.3ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+  [4;35;1mTransaction Load (1.1ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (1.7ms)[0m   [0;1mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;35;1mInstitution Load (1.3ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (63.0ms)
+Completed in 519ms (View: 73, DB: 12) | 200 OK [http://localhost/accounts]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:19:52) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'gtsv7wNPlEKQBsoNkean', "last_request_at" = '2010-08-07 21:19:52.374207', "updated_at" = '2010-08-07 21:19:52.382821' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (12.9ms)
+Completed in 277ms (View: 183, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo3Decimals (20100807212437)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (2.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE (accounts.id >= 0) ORDER BY accounts.id ASC LIMIT 1000[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (2.2ms)[0m   [0;1mSELECT * FROM "accounts" WHERE (accounts.id >= 0) ORDER BY accounts.id ASC LIMIT 1000[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (2.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE (accounts.id >= 0) ORDER BY accounts.id ASC LIMIT 1000[0m
+  [4;35;1mWorkgroup Load (0.9ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.9ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;35;1mWorkgroup Load (0.5ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mAccount Update (0.8ms)[0m   [0mUPDATE "accounts" SET "interest_rate" = 530000, "updated_at" = '2010-08-07 21:30:15.625946' WHERE "id" = 8[0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mWorkgroup Load (0.3ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807212437')[0m
+  [4;36;1mSQL (83.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Load (2.2ms)[0m   [0mSELECT * FROM "accounts" WHERE (accounts.id >= 0) ORDER BY accounts.id ASC LIMIT 1000[0m
+  [4;36;1mWorkgroup Load (0.6ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.9ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mWorkgroup Load (0.4ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.3ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mAccount Update (0.7ms)[0m   [0;1mUPDATE "accounts" SET "interest_rate" = 53000000, "updated_at" = '2010-08-07 21:30:40.068521' WHERE "id" = 8[0m
+  [4;35;1mTransaction Load (1.6ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;36;1mWorkgroup Load (0.3ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.3ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20100807212437'[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mAccount Load (6.7ms)[0m   [0;1mSELECT * FROM "accounts" WHERE (accounts.id >= 0) ORDER BY accounts.id ASC LIMIT 1000[0m
+  [4;35;1mWorkgroup Load (0.6ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.8ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;35;1mWorkgroup Load (0.7ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mAccount Update (0.7ms)[0m   [0mUPDATE "accounts" SET "interest_rate" = 5300, "updated_at" = '2010-08-07 21:33:29.074929' WHERE "id" = 8[0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mWorkgroup Load (0.3ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807212437')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:34:04) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'HH4oTrp84gxxA5di9X', "last_request_at" = '2010-08-07 21:34:04.712616', "updated_at" = '2010-08-07 21:34:04.720777' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+
+ActionView::TemplateError (wrong number of arguments (3 for 2)) on line #39 of app/views/accounts/_form.html.erb:
+36: </p>
+37: <p>
+38:   <%= f.label :interest_rate %><br />
+39:   <%= text_field_tag "account[interest_rate]", @account.interest_rate.to_s %>
+40: </p>
+
+    app/models/account.rb:51:in `initialize'
+    app/models/account.rb:51:in `new'
+    app/models/account.rb:51:in `interest_rate'
+    app/views/accounts/_form.html.erb:39
+    app/views/accounts/edit.html.erb:5
+    app/views/accounts/edit.html.erb:3
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (66.7ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:34:37) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'ySUVZwfQSrqESYGCGd1L', "last_request_at" = '2010-08-07 21:34:38.044896', "updated_at" = '2010-08-07 21:34:38.057317' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (13.2ms)
+Completed in 301ms (View: 51, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 16:35:51) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'uvXFiqVn3qT4xNOnfdt0', "last_request_at" = '2010-08-07 21:35:51.483941', "updated_at" = '2010-08-07 21:35:51.492539' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mWorkgroup Load (0.5ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mAccount Update (0.6ms)[0m   [0;1mUPDATE "accounts" SET "interest_condition" = E'positive_balance', "interest_rate" = 5261, "updated_at" = '2010-08-07 21:35:51.557762' WHERE "id" = 8[0m
+  [4;35;1mTransaction Load (1.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 209ms (DB: 10) | 302 Found [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:35:51) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (2.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'wZAYVLyzepz4a6TfSUKJ', "last_request_at" = '2010-08-07 21:35:51.679682', "updated_at" = '2010-08-07 21:35:51.689063' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.4ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (0.9ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.6ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (90.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 288ms (View: 138, DB: 11) | 200 OK [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:36:45) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'U2dGMU9TRZqPydUYOcUI', "last_request_at" = '2010-08-07 21:36:45.186138', "updated_at" = '2010-08-07 21:36:45.194962' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.8ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.2ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (0.7ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+
+ActionView::TemplateError (undefined local variable or method `account' for #<ActionView::Base:0x2f833b8>) on line #3 of app/views/accounts/show.html.erb:
+1: <div>
+2:   <b>Account Name:</b>
+3:   <%= link_to @account.name, edit_account_path(account) %>
+4: </div>
+5: 
+6: <!--
+
+    app/views/accounts/show.html.erb:3
+    app/controllers/accounts_controller.rb:31:in `show'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (127.8ms)
+Rendered rescues/_request_and_response (2.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:36:51) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'urPlBptmgvvzJ3yKqofc', "last_request_at" = '2010-08-07 21:36:51.290134', "updated_at" = '2010-08-07 21:36:51.298999' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.2ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (0.7ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (78.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;36;1mTransaction Load (2.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 216ms (View: 97, DB: 11) | 200 OK [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:36:54) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'ShN92M0igKhypw6D3wXu', "last_request_at" = '2010-08-07 21:36:54.055800', "updated_at" = '2010-08-07 21:36:54.065145' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (10.6ms)
+Completed in 112ms (View: 19, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:37:37) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.0ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'NclQ29XQabuQtI4tUHW', "last_request_at" = '2010-08-07 21:37:37.661686', "updated_at" = '2010-08-07 21:37:37.671126' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.6ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (13.6ms)
+Completed in 180ms (View: 41, DB: 7) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 16:57:48) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'PpYg4uiwhQSbLlrrCzwD', "last_request_at" = '2010-08-07 21:57:48.566517', "updated_at" = '2010-08-07 21:57:48.575436' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mWorkgroup Load (1.5ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 214ms (DB: 9) | 302 Found [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:57:48) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'mU72RFNmvEMyz8x4IZ5', "last_request_at" = '2010-08-07 21:57:48.763632', "updated_at" = '2010-08-07 21:57:48.772819' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.9ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.7ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (89.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 234ms (View: 112, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing TransactionsController#destroy (for 127.0.0.1 at 2010-08-07 16:58:18) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"47", "controller"=>"transactions"}
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.0ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'JQA7CHOSbQKZGtLHMTB8', "last_request_at" = '2010-08-07 21:58:18.777976', "updated_at" = '2010-08-07 21:58:18.787255' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mTransaction Load (4.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 47) [0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Destroy (0.4ms)[0m   [0mDELETE FROM "transactions" WHERE "id" = 47[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8#end
+Completed in 130ms (DB: 11) | 302 Found [http://localhost/transactions/47]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:58:18) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'plJcClxgiq4Vgy5QCKu', "last_request_at" = '2010-08-07 21:58:18.967447', "updated_at" = '2010-08-07 21:58:18.976779' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.3ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (0.7ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.8ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (141.4ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;36;1mTransaction Load (0.9ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 277ms (View: 155, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing TransactionsController#destroy (for 127.0.0.1 at 2010-08-07 16:58:22) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"48", "controller"=>"transactions"}
+  [4;35;1mUser Load (8.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'FmTDBJPsmMb9OrtmVtek', "last_request_at" = '2010-08-07 21:58:22.744205', "updated_at" = '2010-08-07 21:58:22.753653' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mTransaction Load (0.9ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."id" = 48) [0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Destroy (0.3ms)[0m   [0;1mDELETE FROM "transactions" WHERE "id" = 48[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8#end
+Completed in 117ms (DB: 14) | 302 Found [http://localhost/transactions/48]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:58:22) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (4.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'dq3eGRTjkmtYp8LkgBf', "last_request_at" = '2010-08-07 21:58:22.919825', "updated_at" = '2010-08-07 21:58:22.928861' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.2ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.7ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.4ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (125.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 261ms (View: 138, DB: 11) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing TransactionsController#destroy (for 127.0.0.1 at 2010-08-07 16:58:25) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"49", "controller"=>"transactions"}
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'Fa6u3lDhKSyyYPEMthY', "last_request_at" = '2010-08-07 21:58:25.587186', "updated_at" = '2010-08-07 21:58:25.597814' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mTransaction Load (0.8ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."id" = 49) [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTransaction Destroy (0.3ms)[0m   [0mDELETE FROM "transactions" WHERE "id" = 49[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8#end
+Completed in 115ms (DB: 7) | 302 Found [http://localhost/transactions/49]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:58:25) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'AuQ7DTuUpPKOdJ5CZKRN', "last_request_at" = '2010-08-07 21:58:25.737766', "updated_at" = '2010-08-07 21:58:25.747453' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (1.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.9ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.2ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (1.1ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (1.0ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (130.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 277ms (View: 144, DB: 11) | 200 OK [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-07 16:58:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'9sf6YUyqEpQGCUvuQa', "last_request_at" = '2010-08-07 21:58:35.618733', "updated_at" = '2010-08-07 21:58:35.627807' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mTransaction Load (0.8ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mTransaction Load (0.4ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;36;1mTransaction Load (0.3ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;35;1mAccount Load (1.4ms)[0m   [0mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;36;1mInstitution Load (0.9ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (31.4ms)
+Completed in 147ms (View: 39, DB: 10) | 200 OK [http://localhost/accounts]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:58:39) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.0ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'QKRTCeg8AkQT8sSpmhw0', "last_request_at" = '2010-08-07 21:58:39.403260', "updated_at" = '2010-08-07 21:58:39.412106' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (10.5ms)
+Completed in 192ms (View: 19, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 16:58:42) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261 ", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'LfdWaEPEShZqfioyFEz', "last_request_at" = '2010-08-07 21:58:42.940861', "updated_at" = '2010-08-07 21:58:42.949639' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.9ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mWorkgroup Load (0.5ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (1.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-06-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 21:58:43.048683', 8, 3, 'f', '2010-06-01', E'Interest Accrued on $-14194.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 21:58:43.048683') RETURNING "id"[0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-07-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 21:58:43.101554', 8, 3, 'f', '2010-07-01', E'Interest Accrued on $-14194.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 21:58:43.101554') RETURNING "id"[0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-08-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 21:58:43.127013', 8, 3, 'f', '2010-08-01', E'Interest Accrued on $-13694.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 21:58:43.127013') RETURNING "id"[0m
+  [4;36;1mInstitution Load (1.7ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 250ms (DB: 17) | 302 Found [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 16:58:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'2F6khh7wHdYAxKAn4hRQ', "last_request_at" = '2010-08-07 21:58:43.236297', "updated_at" = '2010-08-07 21:58:43.245055' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.9ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.2ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (70.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 280ms (View: 83, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 16:58:54) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'PYrOsTzFG1cHPcbYfCtS', "last_request_at" = '2010-08-07 21:58:54.635198', "updated_at" = '2010-08-07 21:58:54.643942' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (10.2ms)
+Completed in 110ms (View: 19, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 17:00:35) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'tuGI98hCNQmco1RkuO', "last_request_at" = '2010-08-07 22:00:35.449061', "updated_at" = '2010-08-07 22:00:35.534460' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.1ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mWorkgroup Load (0.6ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 216ms (DB: 9) | 302 Found [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 17:00:35) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'kpkz4lU9ygrg6usnFyit', "last_request_at" = '2010-08-07 22:00:35.705891', "updated_at" = '2010-08-07 22:00:35.715118' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.2ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.7ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (68.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 203ms (View: 82, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-07 17:00:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'vYLGtbW5LUAhHwcUITP', "last_request_at" = '2010-08-07 22:00:46.502323', "updated_at" = '2010-08-07 22:00:46.511146' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+  [4;35;1mTransaction Load (0.9ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (1.2ms)[0m   [0;1mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;35;1mInstitution Load (1.0ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (29.9ms)
+Completed in 140ms (View: 31, DB: 10) | 200 OK [http://localhost/accounts]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 17:00:50) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'Q9DXI5fo0uFjOCX8Ckz', "last_request_at" = '2010-08-07 22:00:50.461221', "updated_at" = '2010-08-07 22:00:50.470156' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (10.2ms)
+Completed in 111ms (View: 18, DB: 6) | 200 OK [http://localhost/accounts/8/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 17:00:52) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261 ", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (1.5ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'oNnnfkiykFG2DJn1Bnlw', "last_request_at" = '2010-08-07 22:00:52.757316', "updated_at" = '2010-08-07 22:00:52.765963' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.8ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mWorkgroup Load (0.5ms)[0m   [0mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;36;1mInstitution Load (0.8ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (1.6ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 214ms (DB: 9) | 302 Found [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 17:00:52) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'eiGu135C89EN3cBAF4BS', "last_request_at" = '2010-08-07 22:00:53.017174', "updated_at" = '2010-08-07 22:00:53.027895' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mInstitution Load (1.0ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;35;1mTransaction Load (1.2ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;36;1mCategory Load (1.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.6ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (69.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 214ms (View: 82, DB: 11) | 200 OK [http://localhost/accounts/8]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-07 17:01:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'B4FgkGHqTSyVS2rr3p0', "last_request_at" = '2010-08-07 22:01:01.800992', "updated_at" = '2010-08-07 22:01:01.810257' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (1.1ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mTransaction Load (0.8ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;35;1mAccount Load (1.2ms)[0m   [0mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;36;1mInstitution Load (0.9ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mInstitution Load (0.4ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (27.9ms)
+Completed in 138ms (View: 29, DB: 10) | 200 OK [http://localhost/accounts]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2010-08-07 17:01:56) [GET]
+  Parameters: {"action"=>"edit", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (3.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'7ObpfX1JcOwZHRdcXKfW', "last_request_at" = '2010-08-07 22:01:56.361244', "updated_at" = '2010-08-07 22:01:56.370043' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" [0m
+Rendering template within layouts/application
+Rendering accounts/edit
+Rendered accounts/_form (11.6ms)
+Completed in 116ms (View: 21, DB: 7) | 200 OK [http://localhost/accounts/8/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2010-08-07 17:01:58) [PUT]
+  Parameters: {"commit"=>"Update", "account"=>{"opening_date(3i)"=>"1", "name"=>"Stimulant Loan", "interest_rate"=>"0.5261 ", "info"=>"", "interest_accrual"=>"monthly", "institution_id"=>"14", "description"=>"", "phone"=>"", "opening_date(1i)"=>"2010", "opening_date(2i)"=>"5", "account_number"=>"", "interest_condition"=>"positive_balance"}, "action"=>"update", "_method"=>"put", "authenticity_token"=>"WZ4rGAjWfZxQE6PX/6cAdh9o6VguiL5mOQo7bXWCqZY=", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.8ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'OBDaAnSA9kESy0rUIJp', "last_request_at" = '2010-08-07 22:01:58.583425', "updated_at" = '2010-08-07 22:01:58.591914' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.9ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mWorkgroup Load (0.6ms)[0m   [0;1mSELECT * FROM "workgroups" WHERE ("workgroups"."id" = 2) [0m
+  [4;35;1mInstitution Load (0.8ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mTransaction Load (1.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) AND (("transactions"."transaction_type_id" = 3) AND ("transactions".account_id = 8)) ORDER BY date DESC LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-06-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 22:01:58.787787', 8, 3, 'f', '2010-06-01', E'Interest Accrued on $-14194.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 22:01:58.787787') RETURNING "id"[0m
+  [4;36;1mInstitution Load (0.8ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-07-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 22:01:58.822499', 8, 3, 'f', '2010-07-01', E'Interest Accrued on $-14194.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 22:01:58.822499') RETURNING "id"[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.6ms)[0m   [0mSELECT * FROM "transactions" WHERE (date < '2010-08-01') AND ("transactions".account_id = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO "transactions" ("updated_at", "account_id", "transaction_type_id", "registered", "date", "description", "amount", "category_id", "check_num", "linked_account_id", "target", "created_at") VALUES('2010-08-07 22:01:58.854231', 8, 3, 'f', '2010-08-01', E'Interest Accrued on $-13694.04 balance.', 0, NULL, NULL, NULL, E'Interest Charge', '2010-08-07 22:01:58.854231') RETURNING "id"[0m
+  [4;36;1mInstitution Load (0.3ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/accounts/8
+Completed in 333ms (DB: 15) | 302 Found [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-07 17:01:58) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.1ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'iq6hs9Mb8IUq4MBobj8h', "last_request_at" = '2010-08-07 22:01:58.968714', "updated_at" = '2010-08-07 22:01:58.977680' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.2ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (71.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.8ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 205ms (View: 85, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-09 09:27:28) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'USAxExvfDKKAFoAJ3zK', "last_request_at" = '2010-08-09 14:27:28.856695', "updated_at" = '2010-08-09 14:27:28.866738' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.1ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (51.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 291ms (View: 85, DB: 9) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-09 09:28:12) [GET]
+  Parameters: {"action"=>"show", "id"=>"8", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'vM4hPIUuXSN7BQDZVwX', "last_request_at" = '2010-08-09 14:28:12.068775', "updated_at" = '2010-08-09 14:28:12.076625' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.9ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mInstitution Load (0.6ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) [0m
+  [4;36;1mTransaction Load (1.2ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 8) ORDER BY date[0m
+  [4;35;1mCategory Load (0.9ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;36;1mInstitution Load (0.5ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (69.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+  [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
+Completed in 195ms (View: 82, DB: 10) | 200 OK [http://localhost/accounts/8]

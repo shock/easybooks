@@ -1,6 +1,6 @@
 <div>
   <b>Account Name:</b>
-  <%=h @account.name %>
+  <%= link_to @account.name, edit_account_path(@account) %>
 </div>
 
 <!--

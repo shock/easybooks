@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100806231511) do
+ActiveRecord::Schema.define(:version => 20100807212437) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20100806231511) do
     t.string   "phone"
     t.string   "type"
     t.integer  "workgroup_id"
-    t.integer  "interest_rate",      :default => 0
+    t.integer  "interest_rate"
     t.string   "interest_accrual",   :default => "annually"
     t.string   "interest_condition", :default => "none"
     t.date     "opening_date"
