@@ -7,6 +7,7 @@ gem 'ruby-prof'
 gem 'authlogic'
 gem 'settingslogic'
 gem 'pg'
+gem 'ofx-parser'
 
 
 #gem 'metric_fu'

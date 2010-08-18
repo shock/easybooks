@@ -49,6 +49,10 @@ class Currency
     end
   end
   
+  def -@
+    Currency.new(0, -@value, @precision)
+  end
+  
   def *( arg )
     if arg.is_a? Currency
       result = (@value * arg.value)/arg.factor

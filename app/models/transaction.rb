@@ -62,6 +62,13 @@ class Transaction < ActiveRecord::Base
       end
     end
     
+    def method_missing method, *args
+      if matches = method.to_s.match( /is_type_(\w*)?/ )
+        eval "self.transaction_type.is_#{matches[1]}?"
+      else
+        super
+      end
+    end
     
 
 end

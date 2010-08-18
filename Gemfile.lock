@@ -20,10 +20,20 @@ specs:
     version: 0.3.1
 - factory_girl: 
     version: 1.2.4
+- json_pure: 
+    version: 1.4.6
+- rubyforge: 
+    version: 2.0.4
+- hoe: 
+    version: 2.6.1
+- hpricot: 
+    version: 0.8.2
 - linecache: 
     version: "0.43"
 - mysql: 
     version: 2.8.1
+- ofx-parser: 
+    version: 1.0.2
 - pg: 
     version: 0.9.0
 - rails: 
@@ -37,14 +47,14 @@ specs:
 - ruby-debug: 
     version: 0.10.3
 - ruby-prof: 
-    version: 0.8.2
+    version: 0.9.1
 - settingslogic: 
     version: 2.0.6
 - spork: 
     version: 0.8.4
 - wdd-ruby-ext: 
     version: 0.0.10
-hash: 71e5cdf7431e9274cb3a419d4a5ec7328ca78314
+hash: 91a295dc2d69e052c9a31bded10c57f4bf86477b
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -53,17 +63,21 @@ dependencies:
     version: ">= 0"
     group: 
     - :test
+  ofx-parser: 
+    version: ">= 0"
+    group: 
+    - :default
   spork: 
     version: = 0.8.4
     group: 
     - :test
     - :profile
-  pg: 
-    version: ">= 0"
-    group: 
-    - :default
   rails: 
     version: = 2.3.5
+    group: 
+    - :default
+  pg: 
+    version: ">= 0"
     group: 
     - :default
   rspec: 

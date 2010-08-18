@@ -38,7 +38,12 @@ describe Transaction do
     Factory.create(:transaction, :transaction_type=>:interest)
     Factory.create(:transaction, :transaction_type=>:credit)
     Transaction.by_type(:interest).count.should == 1
-    Transaction.by_type(:credit).count.should == 1
     Transaction.by_type(:debit).count.should == 0
+    Transaction.by_type(:credit).count.should == 3 # because the account creates an opening balance transaction
+  end
+
+  it "answers to is_type_x? appropriately" do
+    transaction = Factory.build(:transaction, :transaction_type=>:interest)
+    transaction.is_type_interest.should == true
   end
 end

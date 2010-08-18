@@ -8042,3 +8042,652 @@ Rendered accounts/_trans_edit_list (69.6ms)
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
   [4;35;1mTransaction Load (0.7ms)[0m   [0mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 8)) AND ("transactions".account_id = 8)) [0m
 Completed in 195ms (View: 82, DB: 10) | 200 OK [http://localhost/accounts/8]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (56.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (504.0ms)[0m   [0;1mDROP DATABASE IF EXISTS "easybooks_test"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (2262.7ms)[0m   [0;1mCREATE DATABASE "easybooks_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (210.2ms)[0m   [0mCREATE TABLE "accounts" ("id" serial primary key, "name" character varying(255), "description" character varying(255), "created_at" timestamp, "updated_at" timestamp, "account_number" character varying(255), "institution_id" integer, "info" character varying(255), "phone" character varying(255), "type" character varying(255), "workgroup_id" integer, "interest_rate" integer, "interest_accrual" character varying(255) DEFAULT E'annually', "interest_condition" character varying(255) DEFAULT E'none', "opening_date" date) [0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "parent_id" integer, "workgroup_id" integer) [0m
+  [4;35;1mSQL (26.0ms)[0m   [0mCREATE TABLE "institutions" ("id" serial primary key, "name" character varying(255), "description" character varying(255), "created_at" timestamp, "updated_at" timestamp, "phone" character varying(255), "workgroup_id" integer) [0m
+  [4;36;1mSQL (33.7ms)[0m   [0;1mCREATE TABLE "transaction_types" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (15.6ms)[0m   [0mCREATE TABLE "transactions" ("id" serial primary key, "target" character varying(255), "description" character varying(255), "amount" integer, "date" date, "created_at" timestamp, "updated_at" timestamp, "category_id" integer, "account_id" integer, "transaction_type_id" integer, "registered" boolean NOT NULL, "check_num" character varying(255), "linked_account_id" integer) [0m
+  [4;36;1mSQL (18.0ms)[0m   [0;1mCREATE TABLE "users" ("id" serial primary key, "login" character varying(255) NOT NULL, "email" character varying(255) NOT NULL, "crypted_password" character varying(255) NOT NULL, "password_salt" character varying(255) NOT NULL, "persistence_token" character varying(255) NOT NULL, "single_access_token" character varying(255) NOT NULL, "perishable_token" character varying(255) NOT NULL, "login_count" integer DEFAULT 0 NOT NULL, "failed_login_count" integer DEFAULT 0 NOT NULL, "last_request_at" timestamp, "current_login_at" timestamp, "last_login_at" timestamp, "current_login_ip" character varying(255), "last_login_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp, "admin_flag" boolean, "default_workgroup_id" integer) [0m
+  [4;35;1mSQL (10.9ms)[0m   [0mCREATE TABLE "workgroups" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (6.9ms)[0m   [0;1mCREATE TABLE "workgroups_users" ("id" serial primary key, "workgroup_id" integer, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;36;1mSQL (12.5ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807212437')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081007180329')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081007180353')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081007180602')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081007180903')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081007181612')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081007183225')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081007192553')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081007192635')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081007202704')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081007203007')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081008004451')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081008004632')[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081008220648')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20081020042312')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20081025000603')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100801231301')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802010814')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100802043730')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802043824')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100802044436')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802045650')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100802045707')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802045812')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100802051105')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802051740')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100802133948')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100802134125')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100805231921')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100805234928')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100806000211')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100806165006')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100806231511')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+  Parameters: {"1281720920"=>nil}
+
+ActionController::RoutingError (No route matches "/javascripts/jrails.js" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+  Parameters: {"1281720921"=>nil}
+
+ActionController::RoutingError (No route matches "/javascripts/plugins/jquery-autocomplete/jquery.autocomplete.js" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+  Parameters: {"1281720921"=>nil}
+
+ActionController::RoutingError (No route matches "/javascripts/plugins/jquery.simpletip.js" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+  Parameters: {"1281720920"=>nil}
+
+ActionController::RoutingError (No route matches "/javascripts/lib/wines.js" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/website/style.css" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/website/topnav.css" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (10.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/basic/main.css" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/website/jquery.autocomplete.css" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:14) [GET]
+  Parameters: {"1281720920"=>nil}
+
+ActionController::RoutingError (No route matches "/images/icons/header_twitter.gif" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (22.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:14) [GET]
+  Parameters: {"1281720920"=>nil}
+
+ActionController::RoutingError (No route matches "/images/icons/header_rss.gif" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-18 17:06:15) [GET]
+
+ActionController::RoutingError (No route matches "/banner_ads.xml" with {:method=>:get}):
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/ruby-enterprise-1.8.6-20090610/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-18 17:06:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+Redirected to http://localhost:3004/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 197ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-08-18 17:06:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 62ms (View: 40, DB: 0) | 200 OK [http://localhost/user_session/new]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-08-18 17:06:52) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "login"=>"bdoughty", "remember_me"=>"0"}, "action"=>"create", "authenticity_token"=>"7DbAzmuv/BpOwNEfZs4mW2QSFg+4gaMLlmjxZWQY8ls=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (26.1ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".login) = E'bdoughty') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (36.3ms)[0m   [0;1mUPDATE "users" SET "failed_login_count" = 1, "perishable_token" = E'xhzrd4731aNoyQDe7vY', "updated_at" = '2010-08-18 22:06:52.823121' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 358ms (View: 11, DB: 64) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-08-18 17:06:58) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "login"=>"bdoughty", "remember_me"=>"0"}, "action"=>"create", "authenticity_token"=>"7DbAzmuv/BpOwNEfZs4mW2QSFg+4gaMLlmjxZWQY8ls=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".login) = E'bdoughty') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.5ms)[0m   [0;1mUPDATE "users" SET "failed_login_count" = 2, "perishable_token" = E'1ZCsnxOX0ahpYreLJsFD', "updated_at" = '2010-08-18 22:06:58.661495' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 84ms (View: 9, DB: 5) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-08-18 17:07:45) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "login"=>"bdoughty", "remember_me"=>"0"}, "action"=>"create", "authenticity_token"=>"7DbAzmuv/BpOwNEfZs4mW2QSFg+4gaMLlmjxZWQY8ls=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".login) = E'bdoughty') LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.0ms)[0m   [0;1mUPDATE "users" SET "failed_login_count" = 3, "perishable_token" = E'fFchUaJQ9CzUocrhn8', "updated_at" = '2010-08-18 22:07:45.472197' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 313ms (View: 22, DB: 4) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-08-18 17:07:48) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "login"=>"bdoughty", "remember_me"=>"0"}, "action"=>"create", "authenticity_token"=>"7DbAzmuv/BpOwNEfZs4mW2QSFg+4gaMLlmjxZWQY8ls=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".login) = E'bdoughty') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "failed_login_count" = 4, "perishable_token" = E'poLmn7xWdv6iFuW9F76T', "updated_at" = '2010-08-18 22:07:48.202936' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 80ms (View: 9, DB: 4) | 200 OK [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-08-18 17:07:53) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "login"=>"bdoughty", "remember_me"=>"0"}, "action"=>"create", "authenticity_token"=>"7DbAzmuv/BpOwNEfZs4mW2QSFg+4gaMLlmjxZWQY8ls=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".login) = E'bdoughty') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.0ms)[0m   [0;1mUPDATE "users" SET "login_count" = 4, "current_login_ip" = E'127.0.0.1', "failed_login_count" = 0, "perishable_token" = E'a5PcW5C7wDXMxyIshCLH', "last_request_at" = '2010-08-18 22:07:53.416823', "last_login_at" = '2010-08-07 06:10:50.158036', "last_login_ip" = E'71.22.72.65', "updated_at" = '2010-08-18 22:07:53.426173', "current_login_at" = '2010-08-18 22:07:53.296821' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3004/
+Completed in 195ms (DB: 4) | 302 Found [http://localhost/user_session]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-18 17:07:53) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'gSo7ZknXAgTr5PYCB0Qm', "last_request_at" = '2010-08-18 22:07:53.531997', "updated_at" = '2010-08-18 22:07:53.541152' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (25.5ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+  [4;35;1mTransaction Load (0.9ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mTransaction Load (0.4ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (1.4ms)[0m   [0;1mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;35;1mInstitution Load (33.2ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mInstitution Load (0.7ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mInstitution Load (0.4ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (154.1ms)
+Completed in 308ms (View: 134, DB: 67) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-18 17:08:07) [GET]
+  Parameters: {"action"=>"show", "id"=>"9", "controller"=>"accounts"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'v7oaglM4WUIrTbmTuzNZ', "last_request_at" = '2010-08-18 22:08:07.112269', "updated_at" = '2010-08-18 22:08:07.121655' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (74.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 9) [0m
+  [4;36;1mInstitution Load (5.0ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) [0m
+  [4;35;1mTransaction Load (1.2ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 9) ORDER BY date[0m
+  [4;36;1mCategory Load (11.4ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (35.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 9)) AND ("transactions".account_id = 9)) [0m
+Completed in 276ms (View: 58, DB: 98) | 200 OK [http://localhost/accounts/9]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing CategoriesController#index (for 127.0.0.1 at 2010-08-18 17:08:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"categories"}
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'c8z5znUFSo9I6G116HlP', "last_request_at" = '2010-08-18 22:08:46.071347', "updated_at" = '2010-08-18 22:08:46.080265' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCategory Load (0.8ms)[0m   [0mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering categories/index
+Completed in 186ms (View: 11, DB: 5) | 200 OK [http://localhost/categories]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2010-08-18 17:08:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.9ms)[0m   [0;1mUPDATE "users" SET "perishable_token" = E'Lic3jwbEGZzotskDKKdt', "last_request_at" = '2010-08-18 22:08:47.115059', "updated_at" = '2010-08-18 22:08:47.123712' WHERE "id" = 1[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (1.1ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+  [4;35;1mTransaction Load (0.8ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mTransaction Load (0.5ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendering template within layouts/application
+Rendering accounts/index
+  [4;36;1mAccount Load (1.2ms)[0m   [0;1mSELECT * FROM "accounts" ORDER BY name[0m
+  [4;35;1mInstitution Load (1.2ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 15) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 9) [0m
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 14) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 8) [0m
+Rendered accounts/_list (31.0ms)
+Completed in 141ms (View: 32, DB: 10) | 200 OK [http://localhost/accounts]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-18 17:08:51) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"accounts"}
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'feXBV6rxtm09Hny0fzQO', "last_request_at" = '2010-08-18 22:08:51.726872', "updated_at" = '2010-08-18 22:08:51.735893' WHERE "id" = 1[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mInstitution Load (0.6ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) [0m
+  [4;35;1mTransaction Load (1.3ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (0.8ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (120.5ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.8ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 1)) AND ("transactions".account_id = 1)) [0m
+Completed in 253ms (View: 132, DB: 10) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+Migrating to SignTransactionAmountsByType (20100818220250)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (42.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE (transactions.id >= 0) ORDER BY transactions.id ASC LIMIT 1000[0m
+  [4;35;1mAccount Load (1.6ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+Migrating to SignTransactionAmountsByType (20100818220250)
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (2.1ms)[0m   [0;1mSELECT * FROM "transactions" WHERE (transactions.id >= 0) ORDER BY transactions.id ASC LIMIT 1000[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInstitutions (20081007180329)
+Migrating to CreateAccounts (20081007180353)
+Migrating to CreateTransactions (20081007180602)
+Migrating to AddPhoneToInstitution (20081007180903)
+Migrating to CreateCategories (20081007181612)
+Migrating to AddParentIdToCategory (20081007183225)
+Migrating to AddCategoryToTransaction (20081007192553)
+Migrating to AddAccountToTransaction (20081007192635)
+Migrating to AddAccountNumberToAccount (20081007202704)
+Migrating to AddInstitutionToAccount (20081007203007)
+Migrating to CreateTransactionTypes (20081008004451)
+Migrating to AddTransactionTypeToTransaction (20081008004632)
+Migrating to AddRegisteredToTransaction (20081008220648)
+Migrating to AddCheckNumToTransaction (20081020042312)
+Migrating to AddInfoToAccounts (20081025000603)
+Migrating to AddTypeToAccount (20100801231301)
+Migrating to CreateUsers (20100802010814)
+Migrating to CreateWorkgroups (20100802043730)
+Migrating to CreateWorkgroupUsers (20100802043824)
+Migrating to AddAdminToUser (20100802044436)
+Migrating to AddWorkgroupToAccount (20100802045650)
+Migrating to AddWorkgroupToInstitution (20100802045707)
+Migrating to AddWorkgroup (20100802045812)
+Migrating to AddWorkgroupToCategory (20100802051105)
+Migrating to AddDefaultWorkgroupToUser (20100802051740)
+Migrating to ChangeNameToTargetForTranscation (20100802133948)
+Migrating to AddLinkedAccountToTransaction (20100802134125)
+Migrating to AddInterestRateToAccount (20100805231921)
+Migrating to AddLastInterestAccrualToAccount (20100805234928)
+Migrating to AddOpeningDateToAccount (20100806000211)
+Migrating to ChangeAmountToIntegerForTransaction (20100806165006)
+Migrating to ChangeLastInterestTransactionForAccount (20100806231511)
+Migrating to ConvertInterestRateTo4Decimals (20100807212437)
+Migrating to SignTransactionAmountsByType (20100818220250)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTransaction Load (2.4ms)[0m   [0;1mSELECT * FROM "transactions" WHERE (transactions.id >= 0) ORDER BY transactions.id ASC LIMIT 1000[0m
+  [4;35;1mAccount Load (1.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mTransaction Update (32.9ms)[0m   [0mUPDATE "transactions" SET "amount" = -1419404, "updated_at" = '2010-08-18 22:14:35.697100' WHERE "id" = 29[0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mTransaction Update (0.5ms)[0m   [0mUPDATE "transactions" SET "amount" = -45000, "updated_at" = '2010-08-18 22:14:35.785123' WHERE "id" = 50[0m
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 9) [0m
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;35;1mAccount Load (0.5ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 8) [0m
+  [4;36;1mSQL (17.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100818220250')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2010-08-18 17:14:41) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"accounts"}
+  [4;35;1mUser Load (3.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = E'1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.9ms)[0m   [0mUPDATE "users" SET "perishable_token" = E'hCiVq9pp2Y9iLgZydE3K', "last_request_at" = '2010-08-18 22:14:41.217291', "updated_at" = '2010-08-18 22:14:41.227925' WHERE "id" = 1[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Load (0.9ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mInstitution Load (0.7ms)[0m   [0;1mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) [0m
+  [4;35;1mTransaction Load (2.1ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions"."account_id" = 1) ORDER BY date[0m
+  [4;36;1mCategory Load (1.1ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."parent_id" IS NULL) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering accounts/show
+  [4;35;1mInstitution Load (0.5ms)[0m   [0mSELECT * FROM "institutions" WHERE ("institutions"."id" = 1) LIMIT 1[0m
+  [4;36;1mTransaction Load (0.5ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+DEPRECATION WARNING: number_with_precision takes an option hash instead of a separate precision argument.. (called from _run_erb_app47views47accounts47_trans_edit_list46html46erb_locals_object_trans_edit_list at /Users/billdoughty/src/wdd/easybooks/app/views/accounts/_trans_edit_list.html.erb:133)
+Rendered accounts/_trans_edit_list (33.4ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "transactions" WHERE ("transactions".account_id = 1) [0m
+  [4;36;1mTransaction Load (0.7ms)[0m   [0;1mSELECT * FROM "transactions" WHERE ((("transactions"."registered" = 't') AND ("transactions".account_id = 1)) AND ("transactions".account_id = 1)) [0m
+Completed in 175ms (View: 48, DB: 12) | 200 OK [http://localhost/accounts/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPGError: ERROR: database "easybooks_test" is being accessed by other users
+DETAIL: There are 1 other session(s) using the database.
+: DROP DATABASE IF EXISTS "easybooks_test"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPGError: ERROR: database "easybooks_test" is being accessed by other users
+DETAIL: There are 1 other session(s) using the database.
+: DROP DATABASE IF EXISTS "easybooks_test"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPGError: ERROR: database "easybooks_test" is being accessed by other users
+DETAIL: There are 1 other session(s) using the database.
+: DROP DATABASE IF EXISTS "easybooks_test"[0m

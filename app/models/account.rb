@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
   after_save :ensure_interest_accrual
   
   # create the opening balance transaction on create
-  before_create {|record| record.opening_balance ||= Currency.new(0); record.transactions << Transaction.new(:account=>record, :amount=>record.opening_balance.abs, :transaction_type=>(record.opening_balance >= 0 ? :credit : :debit), :target=>'Opening Balance', :description=>'', :date=>record.opening_date)}
+  before_create {|record| record.opening_balance ||= Currency.new(0); record.transactions << Transaction.new(:account=>record, :amount=>record.opening_balance, :transaction_type=>(record.opening_balance >= 0 ? :credit : :debit), :target=>'Opening Balance', :description=>'', :date=>record.opening_date)}
   
   INTEREST_ACCRUALS = %w{monthly annually}
   INTEREST_CONDITIONS = %w{positive_balance negative_balance both none}
@@ -82,29 +82,23 @@ class Account < ActiveRecord::Base
   end
   
   def accrue_interest next_interest_accrual
-    puts "next_interest_accrual: #{next_interest_accrual}"
     balance = self.balance next_interest_accrual
     interest_amount = Currency.new(0)
-    puts "interest_rate: #{interest_rate}"
     case interest_condition
     when 'positive_balance'
       if balance > 0
-        puts "here1"
         interest_amount = balance * interest_rate / 100
       end
     when 'negative_balance'
       if balance < 0
-        puts "here2"
         interest_amount = balance * interest_rate / 100
       end
     when 'both'
-      puts "here3"
       interest_amount = balance * interest_rate / 100
     when 'none'
       return
     end
     @last_interest_transaction = Transaction.new(:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:interest, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
-    puts "balance: #{balance} interest_amount: #{interest_amount} "
     transactions << @last_interest_transaction
     save!
   end
@@ -118,13 +112,8 @@ class Account < ActiveRecord::Base
       transactions = self.transactions.all
     end
     balance = Currency.new
-    for t in transactions
-      amount = t.amount
-      if t.transaction_type.is_debit?
-        balance -= t.amount
-      else
-        balance += t.amount
-      end
+    transactions.each do |t|
+      balance += t.amount
     end
     balance
   end
@@ -137,12 +126,10 @@ class Account < ActiveRecord::Base
     else
       transactions = self.transactions.registered.all
     end
-    balance = Currency.new(0)
+    balance = Currency.new
     for t in transactions
       if t.registered == true
-        if t.transaction_type.is_debit?
-          balance -= t.amount
-        else
+        transactions.each do |t|
           balance += t.amount
         end
       end

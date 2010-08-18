@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  parent_id: nil
-
-two:
-  name: MyString
-  parent_id: 1

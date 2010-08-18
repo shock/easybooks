@@ -26,9 +26,9 @@ describe TransactionType do
   end
   
   it "answers to is_x? appropriately" do
-    transaction = TransactionType.find_by_type(:debit)
-    transaction.is_debit?.should == true
-    transaction.is_credit?.should == false
+    tt = TransactionType.find_by_type(:debit)
+    tt.is_debit?.should == true
+    tt.is_credit?.should == false
   end
   
 end

@@ -47,7 +47,7 @@ describe TransactionType do
     account.balance.should == 12.22
     account = Factory.create(:account, :opening_balance=>-12.22)
     first_transaction = account.transactions.first
-    first_transaction.amount.should == 12.22
+    first_transaction.amount.should == -12.22
     first_transaction.transaction_type.should == :debit
     account.balance.should == -12.22
   end
@@ -83,6 +83,14 @@ describe TransactionType do
     account.balance.should == Currency.new(33.3)
   end
   
+  it "calculates total balance correctly" do
+    account = Factory(:account)
+    10.times do |i|
+      Factory.create(:transaction, :account=>account, :amount=>-3.33, :transaction_type=>TransactionType.debit, :date=>Date.civil(2010,1,i+1))
+    end
+    account.balance.should == Currency.new(-33.3)
+  end
+  
   it "calculates balance to the date" do
     start_date = Date.civil(2010,1,1)
     account = Factory(:account)
@@ -101,12 +109,12 @@ describe TransactionType do
     account.balance(account.transactions.all[4]) == Currency.new(33.3/2)
   end
 
-  it "stores interest rate with two decimal places" do
+  it "stores interest rate with four decimal places" do
     a = Factory.build(:account)
-    a.interest_rate = 4.456
+    a.interest_rate = 4.45678
     a.save!
     a = Account.find(a.id)
-    a.interest_rate.should == 4.45
+    a.interest_rate.should == 4.4567
   end
 
   it "creates one pending interest transaction due today" do
