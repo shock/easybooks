@@ -11,8 +11,6 @@ doc/app
 .*.swp
 public/javascripts/cache
 public/stylesheets/cache
-data/classifier/*
-data/classifier/**/*
 vendor/gems/*/ext
 config/sphinx*.conf
 config/buzzmanager.yml

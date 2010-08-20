@@ -1,0 +1,202 @@
+
+OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+SECURITY:NONE
+ENCODING:USASCII
+CHARSET:1252
+COMPRESSION:NONE
+OLDFILEUID:NONE
+NEWFILEUID:NONE
+
+<OFX>
+	<SIGNONMSGSRSV1>
+		<SONRS>
+			<STATUS>
+				<CODE>0
+				<SEVERITY>INFO
+			</STATUS>
+			<DTSERVER>20100818142914[-5:EST]
+			<LANGUAGE>ENG
+			
+			
+		</SONRS>
+	</SIGNONMSGSRSV1>
+	<BANKMSGSRSV1>
+		<STMTTRNRS>
+			<TRNUID>0
+			<STATUS>
+				<CODE>0
+				<SEVERITY>INFO
+			</STATUS>
+	
+			<STMTRS>
+				<CURDEF>USD
+	
+					<BANKACCTFROM>
+						
+							<BANKID>074014187
+						
+						
+							<ACCTID>134582200
+						
+						
+							<ACCTTYPE>CHECKING
+						
+					</BANKACCTFROM>
+	
+				<BANKTRANLIST>
+					<DTSTART>20100801000000[-5:EST]
+					<DTEND>20100817000000[-5:EST]
+	
+					
+						<STMTTRN>
+							<TRNTYPE>CASH
+							<DTPOSTED>20100802000000[-5:EST]
+							<TRNAMT>-15.33
+							<FITID>20100802000000[-5:EST]*-15.33*0**External Withdrawal HSBC RS -
+							
+							<NAME>External Withdrawal HSBC RS -	
+
+
+                                                        <MEMO>Online Pmt
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>CASH
+							<DTPOSTED>20100802000000[-5:EST]
+							<TRNAMT>-108.22
+							<FITID>20100802000000[-5:EST]*-108.22*0**External Withdrawal AT+T -
+							
+							<NAME>External Withdrawal AT+T -	
+
+
+                                                        <MEMO>PAYMENT
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100807000000[-5:EST]
+							<TRNAMT>-71.89
+							<FITID>20100807000000[-5:EST]*-71.89*13**Point Of Sale Withdrawal HEB
+							
+							<NAME>Point Of Sale Withdrawal HEB	
+
+
+                                                        <MEMO>GROCERY #161 AUSTIN TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100808000000[-5:EST]
+							<TRNAMT>-249.50
+							<FITID>20100808000000[-5:EST]*-249.50*13**Point Of Sale Withdrawal BRAKE
+							
+							<NAME>Point Of Sale Withdrawal BRAKE	
+
+
+                                                        <MEMO>CHECK CORPORATE SAN ANTONIO TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100808000000[-5:EST]
+							<TRNAMT>-30.99
+							<FITID>20100808000000[-5:EST]*-30.99*13**Point Of Sale Withdrawal SHELL
+							
+							<NAME>Point Of Sale Withdrawal SHELL	
+
+
+                                                        <MEMO>Service Station AUSTIN TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100809000000[-5:EST]
+							<TRNAMT>-100.00
+							<FITID>20100809000000[-5:EST]*-100.00*13**Point Of Sale Withdrawal
+							
+							<NAME>Point Of Sale Withdrawal	
+
+
+                                                        <MEMO>ARTGLASSFUSINGCENTER 512-419-9040 TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>CASH
+							<DTPOSTED>20100810000000[-5:EST]
+							<TRNAMT>-140.68
+							<FITID>20100810000000[-5:EST]*-140.68*0**External Withdrawal CITY OF
+							
+							<NAME>External Withdrawal CITY OF	
+
+
+                                                        <MEMO>AUSTIN - WEB_PAY
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100816000000[-5:EST]
+							<TRNAMT>-170.85
+							<FITID>20100816000000[-5:EST]*-170.85*13**Point Of Sale Withdrawal
+							
+							<NAME>Point Of Sale Withdrawal	
+
+
+                                                        <MEMO>EYEMART EXPRESS #69 AUSTIN TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>POS
+							<DTPOSTED>20100816000000[-5:EST]
+							<TRNAMT>-16.08
+							<FITID>20100816000000[-5:EST]*-16.08*13**Point Of Sale Withdrawal
+							
+							<NAME>Point Of Sale Withdrawal	
+
+
+                                                        <MEMO>TEXACO 00305111 AUSTIN TXUS
+
+						</STMTTRN>
+						
+						<STMTTRN>
+							<TRNTYPE>DEP
+							<DTPOSTED>20100817000000[-5:EST]
+							<TRNAMT>1000.00
+							<FITID>20100817000000[-5:EST]*1000.00*501**External Deposit FROST BANK -
+							
+							<NAME>External Deposit FROST BANK -	
+
+
+                                                        <MEMO>INTD
+
+						</STMTTRN>
+						
+	
+				</BANKTRANLIST>
+	
+				<LEDGERBAL>
+					<BALAMT>1406.33
+					<DTASOF>20100818142914[-5:EST]
+				</LEDGERBAL>
+	
+				<AVAILBAL>
+					<BALAMT>1406.33
+					<DTASOF>20100818142914[-5:EST]
+				</AVAILBAL>
+	
+			</STMTRS>
+		</STMTTRNRS>
+	</BANKMSGSRSV1>
+		
+	
+</OFX>
+
