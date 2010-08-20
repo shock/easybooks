@@ -3,17 +3,17 @@ Profiling enabled.
 
 
 Top 10 slowest examples:
-0.2736570 Transaction named_scope latest retuns the most recent transaction
-0.1964900 Main Factory Spec creates a valid user model
-0.0789540 Main Factory Spec creates all models valid
-0.0776810 TransactionType calculates total balance correctly
-0.0730510 TransactionType calculates balance to the transaction
-0.0722500 TransactionType calculates total balance correctly
-0.0717390 TransactionType calculates balance to the date
-0.0460710 TransactionType creates one pending interest transaction due today
-0.0443420 Transaction named_scope by_type retuns the correct results
-0.0428780 TransactionType validates a valid record
+0.3695370 Main Factory Spec creates a valid user model
+0.2480700 Transaction named_scope latest retuns the most recent transaction
+0.1978620 TransactionType calculates balance to the date
+0.1752500 TransactionType validates a valid record
+0.1321370 Main Factory Spec creates all models valid
+0.1060900 TransactionType calculates total balance correctly
+0.0932980 TransactionType calculates balance to the transaction
+0.0893540 TransactionType calculates total balance correctly
+0.0883710 Transaction named_scope by_type retuns the correct results
+0.0646210 TransactionType creates one pending interest transaction due today
 
-Finished in 1.267604 seconds
+Finished in 1.975304 seconds
 
 30 examples, 0 failures

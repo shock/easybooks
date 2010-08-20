@@ -4,5 +4,6 @@ class FinancialFilesController < ApplicationController
   end
   
   def create
+    @ofx = OfxFile.parse_file( params[:upload][:datafile] )
   end
 end
