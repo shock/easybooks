@@ -7,6 +7,7 @@ class Account < ActiveRecord::Base
   
   belongs_to :institution
   has_many :transactions, :dependent=>:destroy
+  has_many :batch_transactions, :dependent=>:destroy
   belongs_to :workgroup
   
   before_validation :ensure_workgroup
@@ -20,6 +21,12 @@ class Account < ActiveRecord::Base
   INTEREST_ACCRUALS = %w{monthly annually}
   INTEREST_CONDITIONS = %w{positive_balance negative_balance both none}
   INTEREST_RATE_PRECISION = 4
+  
+  named_scope :by_user, lambda { |user| 
+    user = User.find(user) if user.is_a? Fixnum
+    {:conditions=>"accounts.workgroup_id in (#{user.workgroups.map{|w|w.id}.join(',')})"}
+  }
+
   def validate
     errors.add(:interest_accrual, "#{interest_accrual} is invalid") unless INTEREST_ACCRUALS.include?( interest_accrual )
     errors.add(:interest_condition, "#{interest_condition} is invalid") unless INTEREST_CONDITIONS.include?( interest_condition )

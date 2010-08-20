@@ -129,5 +129,13 @@ describe TransactionType do
     interest_transactions.first.amount.should == -5
   end
   
+  it "named_scope :by_user returns all accounts accessible to the user" do 
+    user = Factory(:user)
+    account1 = Factory(:account)
+    account2 = Factory(:account)
+    account3 = Factory(:account, :workgroup=>user.default_workgroup)
+    Account.by_user(user).all.should == [account3]
+  end
+  
   
 end

@@ -4,6 +4,7 @@ class FinancialFilesController < ApplicationController
   end
   
   def create
-    @ofx = OfxFile.parse_file( params[:upload][:datafile] )
+    @ofx = Ofx.parse_file( params[:upload][:datafile] )
+    Ofx.process_transactions( @ofx, current_user )
   end
 end

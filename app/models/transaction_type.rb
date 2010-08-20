@@ -1,8 +1,22 @@
 class TransactionType
   TYPES_DEF = {
-    :debit=>[1,'DEB'],
-    :credit=>[2, 'CRD'],
-    :interest=>[3, 'INT'],
+    :DEBIT       => [1,'DEB'],
+    :CREDIT      => [2, 'CRD'],
+    :INT         => [3, 'INT'],
+    :DIV         => [5, "Dividend"],
+    :FEE         => [6, "FI fee"],
+    :SRVCHG      => [7, "Service charge"],
+    :DEP         => [8, "Deposit"],
+    :ATM         => [9, "ATM debit or credit"],
+    :POS         => [10, "Point of sale debit or credit "],
+    :XFER        => [11, "Transfer"],
+    :CHECK       => [12, "Check"],
+    :PAYMENT     => [13, "Electronic payment"],
+    :CASH        => [14, "Cash withdrawal"],
+    :DIRECTDEP   => [15, "Direct deposit"],
+    :DIRECTDEBIT => [16, "Merchant initiated debit"],
+    :REPEATPMT   => [17, "Repeating payment/standing order"],
+    :OTHER       => [18, "Other"]
   }
   TYPES_TO_IDS = {}
   TYPES_TO_NAMES = {}
@@ -59,18 +73,23 @@ class TransactionType
   
   def method_missing method, *args
     if matches = method.to_s.match( /is_(\w*)?/ )
-      type = matches[1].to_sym
+      type = matches[1].upcase.to_sym
       raise "Unknown Transaction Type: #{type.inspect}" unless TYPES.include? type
-      self.type == matches[1].to_sym
+      self.type == type
     else
       super
     end
   end
   
   class << self
-    def debit; TransactionType.new( TYPES_TO_IDS[:debit]); end
-    def credit; TransactionType.new( TYPES_TO_IDS[:credit]); end
-    def interest; TransactionType.new( TYPES_TO_IDS[:interest]); end
+    def method_missing method, *args
+      type = method.to_s.upcase.to_sym
+      if TYPES.include? type
+        TransactionType.new( TYPES_TO_IDS[type] )
+      else
+        super
+      end
+    end
     
     def find( id )
       return TransactionType.all if id == :all
@@ -94,6 +113,7 @@ class TransactionType
     def all
       IDS.map{|id| TransactionType.find(id)}
     end
+    
   end
     
 end

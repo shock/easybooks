@@ -1,19 +1,10 @@
 Profiling enabled.
-..............................
+.
 
 
 Top 10 slowest examples:
-0.3695370 Main Factory Spec creates a valid user model
-0.2480700 Transaction named_scope latest retuns the most recent transaction
-0.1978620 TransactionType calculates balance to the date
-0.1752500 TransactionType validates a valid record
-0.1321370 Main Factory Spec creates all models valid
-0.1060900 TransactionType calculates total balance correctly
-0.0932980 TransactionType calculates balance to the transaction
-0.0893540 TransactionType calculates total balance correctly
-0.0883710 Transaction named_scope by_type retuns the correct results
-0.0646210 TransactionType creates one pending interest transaction due today
+0.1870530 User default_workgroup is created on user creation
 
-Finished in 1.975304 seconds
+Finished in 0.219098 seconds
 
-30 examples, 0 failures
+1 example, 0 failures

@@ -41,6 +41,17 @@ Factory.define :transaction do |i|
   i.transaction_type TransactionType.find(TransactionType::IDS.first)
 end
 
+## Batch Transaction
+
+Factory.define :batch_transaction do |i|
+  i.association :account, :factory=>:account
+  i.target {|i| "Target for Batch Transaction #{String.random}"}
+  i.description {|i| "Batch Transaction Description for #{String.random}"}
+  i.amount 3.33
+  i.date Date.today
+  i.transaction_type TransactionType.find(TransactionType::IDS.first)
+end
+
 ## Category
 
 Factory.define :category do |i|

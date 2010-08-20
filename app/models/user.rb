@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
     def ensure_workgroup
       unless default_workgroup
         self.default_workgroup = Workgroup.find_or_create_by_name(self.login)
+        self.workgroups << self.default_workgroup
       end
     end
 end
