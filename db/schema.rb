@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100820142857) do
+ActiveRecord::Schema.define(:version => 20100820162922) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -23,27 +23,10 @@ ActiveRecord::Schema.define(:version => 20100820142857) do
     t.string   "type"
     t.integer  "workgroup_id"
     t.integer  "interest_rate"
-    t.string   "interest_accrual",   :default => "annually"
-    t.string   "interest_condition", :default => "none"
+    t.string   "interest_accrual",              :default => "annually"
+    t.string   "interest_condition",            :default => "none"
     t.date     "opening_date"
-  end
-
-  create_table "base_transactions", :force => true do |t|
-    t.string   "target"
-    t.string   "description"
-    t.integer  "amount"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "category_id"
-    t.integer  "account_id"
-    t.integer  "transaction_type_id"
-    t.boolean  "registered",            :null => false
-    t.string   "check_num"
-    t.integer  "linked_account_id"
-    t.integer  "linked_transaction_id"
-    t.string   "transaction_id"
-    t.string   "type"
+    t.boolean  "switch_target_and_description", :default => false
   end
 
   create_table "categories", :force => true do |t|
@@ -80,6 +63,24 @@ ActiveRecord::Schema.define(:version => 20100820142857) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "target"
+    t.string   "description"
+    t.integer  "amount"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "account_id"
+    t.integer  "transaction_type_id"
+    t.boolean  "registered",            :null => false
+    t.string   "check_num"
+    t.integer  "linked_account_id"
+    t.integer  "linked_transaction_id"
+    t.string   "transaction_id"
+    t.string   "type"
   end
 
   create_table "users", :force => true do |t|

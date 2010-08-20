@@ -38,3 +38,7 @@
   <%= f.label :interest_rate %><br />
   <%= text_field_tag "account[interest_rate]", @account.interest_rate.to_s %>
 </p>
+<p>
+  <%= f.label :switch_target_and_description, "Switch Payee and Memo for incoming batch files." %><br />
+  <%= f.check_box :switch_target_and_description %>
+</p>

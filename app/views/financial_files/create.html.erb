@@ -1,3 +1,5 @@
+OFX Transactions Loaded
+
 Bank Account
 <table>
   <tr><td>Number</td><td><%= @ofx.bank_account.number %></td></tr>
@@ -12,10 +14,12 @@ Statement
   <tr><td>Transactions</td><td><%= @ofx.bank_account.statement.transactions.size %></td></tr>
 </table>
 <br/>
-Transactions
+New Transactions
 <table>
   <tr><th>Payee</th><th>Type</th><th>Amount</th><th>Memo</th><th>Sic</th><th>TID</th><th>Check #</th></tr>
   <% @ofx.bank_account.statement.transactions.each do |t| %>
     <tr><td><%= t.payee %></td><td><%= t.type %></td><td><%= t.amount %></td><td><%= t.memo %></td><td><%= t.sic %></td><td><%= t.fit_id %></td><td><%= t.check_number %></td></tr>
   <% end -%>
 </table>
+
+<%= link_to "Reconcile Transactions", {:controller=>'accounts', :action=>'show_reconcile_batch', :id=>@account.id } %>

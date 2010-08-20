@@ -3,20 +3,20 @@ class TransactionType
     :DEBIT       => [1,'DEB'],
     :CREDIT      => [2, 'CRD'],
     :INT         => [3, 'INT'],
-    :DIV         => [5, "Dividend"],
-    :FEE         => [6, "FI fee"],
-    :SRVCHG      => [7, "Service charge"],
-    :DEP         => [8, "Deposit"],
-    :ATM         => [9, "ATM debit or credit"],
-    :POS         => [10, "Point of sale debit or credit "],
-    :XFER        => [11, "Transfer"],
-    :CHECK       => [12, "Check"],
-    :PAYMENT     => [13, "Electronic payment"],
-    :CASH        => [14, "Cash withdrawal"],
-    :DIRECTDEP   => [15, "Direct deposit"],
-    :DIRECTDEBIT => [16, "Merchant initiated debit"],
-    :REPEATPMT   => [17, "Repeating payment/standing order"],
-    :OTHER       => [18, "Other"]
+    :DIV         => [5, "DIV"],
+    :FEE         => [6, "FEE"],
+    :SRVCHG      => [7, "CHRG"],
+    :DEP         => [8, "DEP"],
+    :ATM         => [9, "ATM"],
+    :POS         => [10, "POS"],
+    :XFER        => [11, "XFR"],
+    :CHECK       => [12, "CHK"],
+    :PAYMENT     => [13, "PMT"],
+    :CASH        => [14, "CSH"],
+    :DIRECTDEP   => [15, "DDEP"],
+    :DIRECTDEBIT => [16, "DDEB"],
+    :REPEATPMT   => [17, "RPMT"],
+    :OTHER       => [18, "OTH"]
   }
   TYPES_TO_IDS = {}
   TYPES_TO_NAMES = {}
@@ -69,6 +69,10 @@ class TransactionType
     else
       super
     end
+  end
+  
+  def to_s
+    self.type.to_s
   end
   
   def method_missing method, *args

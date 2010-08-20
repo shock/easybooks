@@ -15,12 +15,14 @@
   <div class="menu_item">
     <%=link_to "Accounts", url_for(:action => 'index', :controller => 'accounts'), :class=>"menu_item" %>
   </div>
-  <div>
+  <div class="menu_item">
     <%=link_to "Categories", url_for(:action => 'index', :controller => 'categories'), :class=>"menu_item" %>
-  </div class="menu_item">
-  <div>
-  </div class="menu_item">
+  </div>
+  <div class="menu_item">
     <%=link_to "Institutions", url_for(:action => 'index', :controller => 'institutions'), :class=>"menu_item" %>
+  </div>
+  <div class="menu_item">
+    <%=link_to "Upload", url_for(:action => 'new', :controller => 'financial_files'), :class=>"menu_item" %>
   </div>
 </div>
 <div class="main_container">

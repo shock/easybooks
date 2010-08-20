@@ -98,4 +98,14 @@ class AccountsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def show_reconcile_batch
+    @account = Account.find(params[:id])
+    @transactions = @account.transactions
+    @batch_transactions = @account.batch_transactions
+  end
+  
+  def reconcile_batch
+    @account = Account.find(params[:id])
+  end
 end

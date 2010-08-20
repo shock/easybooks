@@ -6,8 +6,9 @@ class Account < ActiveRecord::Base
   attr_accessor :opening_balance
   
   belongs_to :institution
-  has_many :transactions, :dependent=>:destroy
-  has_many :batch_transactions, :dependent=>:destroy
+  has_many :base_transactions, :dependent=>:destroy
+  has_many :transactions
+  has_many :batch_transactions
   belongs_to :workgroup
   
   before_validation :ensure_workgroup
@@ -63,7 +64,7 @@ class Account < ActiveRecord::Base
   end
   
   def last_interest_accrual
-    @last_interest_transaction ||= self.transactions.by_type(:interest).latest.first
+    @last_interest_transaction ||= self.transactions.by_type(:INT).latest.first
     last_time = @last_interest_transaction ? @last_interest_transaction.date : nil
     # puts "last_time: #{last_time}"
     last_time

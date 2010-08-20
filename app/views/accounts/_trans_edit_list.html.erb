@@ -16,11 +16,7 @@
   <% balance = @starting_balance %> 
   <% i=0 %>
   <% for @transaction in @transactions %>
-    <% if @transaction.transaction_type.is_debit?
-         balance -= @transaction.amount 
-       else
-         balance += @transaction.amount 
-       end 
+    <% balance += @transaction.amount 
        i += 1 %>
     <% remote_form_for(:transaction,
               @transaction,
@@ -72,7 +68,7 @@
             </div>
             <div class='trans_amount'>
               <div class="even">
-                <%= text_field_tag "transaction[amount]", @transaction.amount.to_s, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.transaction_type.is_debit? then 'debit' else 'credit' end} %>
+                <%= text_field_tag "transaction[amount]", @transaction.amount.to_s, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.amount < 0 then 'debit' else 'credit' end} %>
               </div>
               <div class="odd">
               </div>
