@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :transaction_types
-
   map.resources :categories
 
   map.resources :transactions
@@ -8,6 +6,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :accounts
 
   map.resources :institutions
+
+  map.resources :workgroups
+
+  map.resources :financial_files
 
   # The priority is based upon order of creation: first created -> highest priority.
 
