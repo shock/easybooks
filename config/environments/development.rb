@@ -18,5 +18,6 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 # reload certain library classes/modules in the development environment
-ActiveSupport::Dependencies.explicitly_unloadable_constants ||= []
-ActiveSupport::Dependencies.explicitly_unloadable_constants << 'FixedPoint'
+# ActiveSupport::Dependencies.explicitly_unloadable_constants ||= []
+# ActiveSupport::Dependencies.explicitly_unloadable_constants << 'FixedPoint'
+# require_dependency RAILS_ROOT + '/lib/extensions/fixed_point'

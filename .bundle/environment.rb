@@ -204,7 +204,7 @@ module Bundler
         {:name=>"ruby-prof", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/ruby-prof-0.9.1.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/ruby-prof-0.9.1/lib"]},
         {:name=>"settingslogic", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/settingslogic-2.0.6.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/settingslogic-2.0.6/lib"]},
         {:name=>"spork", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/spork-0.8.4.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/spork-0.8.4/lib"]},
-        {:name=>"wdd-ruby-ext", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/wdd-ruby-ext-0.0.10.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/wdd-ruby-ext-0.0.10/lib"]},
+        {:name=>"wdd-ruby-ext", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/wdd-ruby-ext-0.0.11.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/wdd-ruby-ext-0.0.11/lib"]},
       ].map do |hash|
     if hash[:virtual_spec]
       spec = eval(hash[:virtual_spec], TOPLEVEL_BINDING, "<virtual spec for '#{hash[:name]}'>")
