@@ -1,6 +1,4 @@
-# A note on interest_rate:  Interest rates are stored as integers with the first two places representing fractional hundredths of a percent.  The Currency class is used to abstract this internal integer storage as a fixed_point decimal number with two decimal places. in other words, an interest rate of 4.5% is stored in the database as 450.
-
-require 'lib/extensions/currency'
+# A note on interest_rate:  Interest rates are stored as integers with the first two places representing fractional hundredths of a percent.  The FixedPoint class is used to abstract this internal integer storage as a fixed_point decimal number with two decimal places. in other words, an interest rate of 4.5% is stored in the database as 450.
 
 class Account < ActiveRecord::Base
   attr_accessor :opening_balance
@@ -17,7 +15,7 @@ class Account < ActiveRecord::Base
   after_save :ensure_interest_accrual
   
   # create the opening balance transaction on create
-  before_create {|record| record.opening_balance ||= Currency.new(0); record.transactions << Transaction.new(:account=>record, :amount=>record.opening_balance, :transaction_type=>(record.opening_balance >= 0 ? :credit : :debit), :target=>'Opening Balance', :description=>'', :date=>record.opening_date)}
+  before_create {|record| record.opening_balance ||= FixedPoint.new(0); record.transactions << Transaction.new(:account=>record, :amount=>record.opening_balance, :transaction_type=>(record.opening_balance >= 0 ? :credit : :debit), :target=>'Opening Balance', :description=>'', :date=>record.opening_date)}
   
   INTEREST_ACCRUALS = %w{monthly annually}
   INTEREST_CONDITIONS = %w{positive_balance negative_balance both none}
@@ -47,16 +45,16 @@ class Account < ActiveRecord::Base
   end
 
   def interest_rate= interest_rate
-    @interest_rate = Currency.new(interest_rate, nil, INTEREST_RATE_PRECISION)
+    @interest_rate = FixedPoint.new(interest_rate, nil, INTEREST_RATE_PRECISION)
     self[:interest_rate] = @interest_rate.value
   end
   
   def opening_balance= amount
-    @opening_balance = Currency.new(amount)
+    @opening_balance = FixedPoint.new(amount)
   end
   
   def interest_rate
-    @interest_rate || Currency.new(0, self[:interest_rate], INTEREST_RATE_PRECISION)
+    @interest_rate || FixedPoint.new(0, self[:interest_rate], INTEREST_RATE_PRECISION)
   end
 
   def long_name
@@ -91,7 +89,7 @@ class Account < ActiveRecord::Base
   
   def accrue_interest next_interest_accrual
     balance = self.balance next_interest_accrual
-    interest_amount = Currency.new(0)
+    interest_amount = FixedPoint.new(0)
     case interest_condition
     when 'positive_balance'
       if balance > 0
@@ -106,7 +104,7 @@ class Account < ActiveRecord::Base
     when 'none'
       return
     end
-    @last_interest_transaction = Transaction.new(:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:interest, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
+    @last_interest_transaction = Transaction.new(:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:INT, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
     transactions << @last_interest_transaction
     save!
   end
@@ -119,7 +117,7 @@ class Account < ActiveRecord::Base
     else
       transactions = self.transactions.all
     end
-    balance = Currency.new
+    balance = FixedPoint.new
     transactions.each do |t|
       balance += t.amount
     end
@@ -134,7 +132,7 @@ class Account < ActiveRecord::Base
     else
       transactions = self.transactions.registered.all
     end
-    balance = Currency.new
+    balance = FixedPoint.new
     for t in transactions
       if t.registered == true
         transactions.each do |t|

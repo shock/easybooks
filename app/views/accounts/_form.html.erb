@@ -28,11 +28,11 @@
 </p>
 <p>
   <%= f.label :interest_condition %><br />
-  <%= f.select :interest_condition, options_for_select(Account::INTEREST_CONDITIONS) %>
+  <%= f.select :interest_condition, options_for_select(Account::INTEREST_CONDITIONS, @account.interest_condition) %>
 </p>
 <p>
   <%= f.label :interest_accrual %><br />
-  <%= f.select :interest_accrual, options_for_select(Account::INTEREST_ACCRUALS) %>
+  <%= f.select :interest_accrual, options_for_select(Account::INTEREST_ACCRUALS, @account.interest_accrual) %>
 </p>
 <p>
   <%= f.label :interest_rate %><br />

@@ -16,3 +16,7 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+# reload certain library classes/modules in the development environment
+ActiveSupport::Dependencies.explicitly_unloadable_constants ||= []
+ActiveSupport::Dependencies.explicitly_unloadable_constants << 'FixedPoint'

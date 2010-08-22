@@ -76,3 +76,6 @@ def load_factory
   require 'spec/spec_helpers/factory_helper'
   require 'spec/factory/main_factory'
 end
+
+require_dependency RAILS_ROOT + '/lib/extensions/fixed_point'
+# require 'lib/extensions/fixed_point'

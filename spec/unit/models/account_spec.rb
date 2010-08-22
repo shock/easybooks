@@ -43,19 +43,19 @@ describe TransactionType do
     account = Factory.create(:account, :opening_balance=>12.22)
     first_transaction = account.transactions.first
     first_transaction.amount.should == 12.22
-    first_transaction.transaction_type.should == :credit
+    first_transaction.transaction_type.should == :CREDIT
     account.balance.should == 12.22
     account = Factory.create(:account, :opening_balance=>-12.22)
     first_transaction = account.transactions.first
     first_transaction.amount.should == -12.22
-    first_transaction.transaction_type.should == :debit
+    first_transaction.transaction_type.should == :DEBIT
     account.balance.should == -12.22
   end
   
   it "calculates last_interest_accrual date properly" do
     interest_accrual_date = Date.civil(2010,2,1)
     account = Factory.create(:account, :interest_accrual=>'monthly', :opening_date=>Date.civil(2010,1,1))
-    transaction = Factory.create(:transaction, :account=>account, :date=>interest_accrual_date, :transaction_type=>TransactionType.interest)
+    transaction = Factory.create(:transaction, :account=>account, :date=>interest_accrual_date, :transaction_type=>TransactionType.int)
     account.last_interest_accrual.should == interest_accrual_date
   end
   
@@ -80,7 +80,7 @@ describe TransactionType do
     10.times do |i|
       Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>TransactionType.credit, :date=>Date.civil(2010,1,i+1))
     end
-    account.balance.should == Currency.new(33.3)
+    account.balance.should == FixedPoint.new(33.3)
   end
   
   it "calculates total balance correctly" do
@@ -88,7 +88,7 @@ describe TransactionType do
     10.times do |i|
       Factory.create(:transaction, :account=>account, :amount=>-3.33, :transaction_type=>TransactionType.debit, :date=>Date.civil(2010,1,i+1))
     end
-    account.balance.should == Currency.new(-33.3)
+    account.balance.should == FixedPoint.new(-33.3)
   end
   
   it "calculates balance to the date" do
@@ -97,7 +97,7 @@ describe TransactionType do
     10.times do |i|
       Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>TransactionType.credit, :date=>start_date + i.days)
     end
-    account.balance(start_date+5.days) == Currency.new(33.3/2)
+    account.balance(start_date+5.days) == FixedPoint.new(33.3/2)
   end
   
   it "calculates balance to the transaction" do
@@ -106,7 +106,7 @@ describe TransactionType do
     10.times do |i|
       Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>:credit, :date=>start_date + i.days)
     end
-    account.balance(account.transactions.all[4]) == Currency.new(33.3/2)
+    account.balance(account.transactions.all[4]) == FixedPoint.new(33.3/2)
   end
 
   it "stores interest rate with four decimal places" do
@@ -124,7 +124,7 @@ describe TransactionType do
     account = Factory.create(:account, :interest_accrual=>'monthly', :interest_condition=>'negative_balance', :opening_date=>Date.civil(2010,1,1), :opening_balance=>-100.0, :interest_rate=>5.0)
     account.balance.should == -105
     account.next_interest_accrual == today + 1.month
-    interest_transactions = account.transactions.by_type(:interest).all
+    interest_transactions = account.transactions.by_type(:INT).all
     interest_transactions.length.should == 1
     interest_transactions.first.amount.should == -5
   end

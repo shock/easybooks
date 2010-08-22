@@ -28,22 +28,22 @@ describe Transaction do
   
   it "sets the transaction type by symbol" do
     transaction = Factory.build(:transaction)
-    transaction.transaction_type = :interest
-    transaction.transaction_type_id.should == TransactionType::TYPES_TO_IDS[:interest]
+    transaction.transaction_type = :INT
+    transaction.transaction_type_id.should == TransactionType::TYPES_TO_IDS[:INT]
   end
 
   it "named_scope by_type retuns the correct results" do
     start_date = Date.today
     Transaction.count.should == 0
-    Factory.create(:transaction, :transaction_type=>:interest)
-    Factory.create(:transaction, :transaction_type=>:credit)
-    Transaction.by_type(:interest).count.should == 1
-    Transaction.by_type(:debit).count.should == 0
-    Transaction.by_type(:credit).count.should == 3 # because the account creates an opening balance transaction
+    Factory.create(:transaction, :transaction_type=>:INT)
+    Factory.create(:transaction, :transaction_type=>:CREDIT)
+    Transaction.by_type(:INT).count.should == 1
+    Transaction.by_type(:DEBIT).count.should == 0
+    Transaction.by_type(:CREDIT).count.should == 3 # because the account creates an opening balance transaction
   end
 
   it "answers to is_type_x? appropriately" do
-    transaction = Factory.build(:transaction, :transaction_type=>:interest)
-    transaction.is_type_interest.should == true
+    transaction = Factory.build(:transaction, :transaction_type=>:INT)
+    transaction.is_type_int.should == true
   end
 end

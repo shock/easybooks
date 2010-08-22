@@ -1,6 +1,4 @@
-# A note on transaction amounts:  Transaction amounts are stored as integers with the first two places representing cents.  The Currency class is used to abstract this internal integer storage as a fixed_point decimal number with two decimal places. in other words, an transaction amount of $12.38 is stored in the database as 1238.
-
-require 'lib/extensions/currency'
+# A note on transaction amounts:  Transaction amounts are stored as integers with the first two places representing cents.  The FixedPoint class is used to abstract this internal integer storage as a fixed_point decimal number with two decimal places. in other words, an transaction amount of $12.38 is stored in the database as 1238.
 
 class Transaction < ActiveRecord::Base
   belongs_to :account
@@ -44,12 +42,12 @@ class Transaction < ActiveRecord::Base
   end
   
   def amount= amount
-    @amount = Currency.new(amount)
+    @amount = FixedPoint.new(amount)
     self[:amount] = @amount.value
   end
   
   def amount
-    @amount || Currency.new(0, self[:amount])
+    @amount || FixedPoint.new(0, self[:amount])
   end
 
   private

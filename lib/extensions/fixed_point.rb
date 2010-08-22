@@ -1,6 +1,6 @@
 require 'bigdecimal'
 
-class Currency
+class FixedPoint
   
   PRECISION = 2
   
@@ -31,10 +31,9 @@ class Currency
   end
   
   def == obj
-    case obj.class.to_s
-    when 'Fixnum', 'Float'
+    if obj.is_a? Numeric
       @value == (obj * @factor).to_i
-    when 'Currency'
+    elsif obj.is_a? FixedPoint
       @value == obj.value
     else
       false
@@ -43,39 +42,39 @@ class Currency
   
   def abs
     if @value > 0
-      Currency.new(0, @value, @precision)
+      FixedPoint.new(0, @value, @precision)
     else
-      Currency.new(0, -@value, @precision)
+      FixedPoint.new(0, -@value, @precision)
     end
   end
   
   def -@
-    Currency.new(0, -@value, @precision)
+    FixedPoint.new(0, -@value, @precision)
   end
   
   def *( arg )
-    if arg.is_a? Currency
+    if arg.is_a? FixedPoint
       result = (@value * arg.value)/arg.factor
     else
       result = (@value * (arg*@factor).to_i) / @factor
     end
-    new_obj = Currency.new(0, result.to_i, @precision)
+    new_obj = FixedPoint.new(0, result.to_i, @precision)
   end
   
   def /( arg )
-    if arg.is_a? Currency
+    if arg.is_a? FixedPoint
       result = (@value*arg.factor) * arg.value
     else
       result = (@value*@factor) / (arg*@factor).to_i
     end
-    new_obj = Currency.new(0, result.to_i, @precision)
+    new_obj = FixedPoint.new(0, result.to_i, @precision)
   end
   
   def method_missing method, *args
     if ARITHMETIC_METHODS.include? method.to_s
       arg = (args[0] * @factor).to_i
       result = @value.send(method, arg)
-      new_obj = Currency.new(0, result.to_i, @precision)
+      new_obj = FixedPoint.new(0, result.to_i, @precision)
     elsif COMPARE_METHODS.include? method.to_s
       arg = (args[0] * @factor).to_i
       result = @value.send(method, arg)

@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   def index
     @accounts = Account.all
 
-    @net_value = Currency.new(0)
+    @net_value = FixedPoint.new(0)
     for account in @accounts
       @net_value += account.balance
     end
@@ -26,7 +26,7 @@ class AccountsController < ApplicationController
     @transactions = Transaction.all(:conditions => { :account_id => @account.id}, :order => "date" )
     @all_categories = Category.sorted_find_all
     @transaction_types = TransactionType.all
-    @starting_balance = Currency.new(0)
+    @starting_balance = FixedPoint.new(0)
 
     respond_to do |format|
       format.html # show.html.erb
