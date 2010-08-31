@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.sorted_find_all
+    @categories = Category.sorted_find_all current_user.default_workgroup
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.xml
   def new
     @category = Category.new
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     if params[:parent_id]
       @category.parent_id = params[:parent_id]
     end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
-    @other_categories = Category.sorted_find_all
+    @other_categories = Category.sorted_find_all current_user.default_workgroup
     @other_categories.delete(@category)
   end
 
@@ -47,7 +47,8 @@ class CategoriesController < ApplicationController
   # POST /categories.xml
   def create
     @category = Category.new(params[:category])
-    @all_categories = Category.sorted_find_all
+    @category.workgroup = current_user.default_workgroup
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
 
     respond_to do |format|
       if @category.save
@@ -65,6 +66,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category = Category.find(params[:id])
+    @category.workgroup = current_user.default_workgroup
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
@@ -72,6 +74,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to(categories_url) }
         format.xml  { head :ok }
       else
+        @all_categories = Category.sorted_find_all current_user.default_workgroup
         format.html { render :action => "edit" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
       end

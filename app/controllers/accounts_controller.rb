@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+  class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.xml
   def index
@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
 
     @institution = Institution.find(@account.institution_id)
     @transactions = Transaction.all(:conditions => { :account_id => @account.id}, :order => "date" )
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     @transaction_types = TransactionType.all
     @starting_balance = FixedPoint.new(0)
 

@@ -10,16 +10,16 @@
   <tr>
     <td>
     <% if category.parent && category.parent.name != 'None'
-        concat link_to (category.ancestors_name, url_for(:controller => 'categories', :action => 'edit', :id => category.parent_id)) , binding
+        concat link_to( category.ancestors_name, url_for(:controller => 'categories', :action => 'edit', :id => category.parent_id) )
     end 
-    if !category.parent
-        concat category.name , binding
+    if !category.id
+        concat category.name
     else
-        concat link_to (category.name, edit_category_path(category)) , binding
+        concat link_to( category.name, edit_category_path(category) )
     end %>
     </td>
     <td><%= link_to 'Child', url_for( :controller => 'categories', :action => 'new', :params => { :parent_id => category.id} ) %></td>
-    <td><%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to( 'Delete', category, :confirm => 'Are you sure?', :method => :delete ) if category.id %></td>
   </tr>
 <% end %>
 </table>

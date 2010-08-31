@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
   private :ensure_workgroup
 
   def ancestors_name
-    if parent && parent.id != 1
+    if parent
       parent.ancestors_name + parent.name + ':'
     else
       ""
@@ -33,14 +33,18 @@ class Category < ActiveRecord::Base
     results
   end
 
-  def self.sorted_find_all
+  def self.sorted_find_all workgroup_id
     results = []
-    root = find(:first, :conditions => { :parent_id => nil })
+    root = root_for_workgroup workgroup_id
     if( root )
       results[0] = root
       results += self.find_tree( root.id )
     end
     results
+  end
+  
+  def self.root_for_workgroup workgroup_id
+    Category.new(:id=>nil, :name=>'None', :workgroup_id=>workgroup_id)
   end
   
 end

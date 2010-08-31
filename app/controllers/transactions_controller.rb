@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new.xml
   def new
     @transaction = Transaction.new
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     @all_accounts = Account.find(:all)
     @transaction_types = TransactionType.find(:all)
     if params[:account_id]
@@ -44,7 +44,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/tedit
   def edit
     @transaction = Transaction.find(params[:id])
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     @all_accounts = Account.find(:all)
     @transaction_types = TransactionType.find(:all)
   end
@@ -52,7 +52,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/tedit
   def remote_edit
     @transaction = Transaction.find(params[:id])
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     @all_accounts = Account.find(:all)
     @transaction_types = TransactionType.find(:all)
   end
@@ -62,7 +62,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(params[:transaction])
     @account = @transaction.account
-    @all_categories = Category.sorted_find_all
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
     @all_accounts = Account.find(:all)
     @transaction_types = TransactionType.find(:all)
 
@@ -73,7 +73,7 @@ class TransactionsController < ApplicationController
         format.html { redirect_to(rd_url) }
         format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
       else
-        @all_categories = Category.sorted_find_all
+        @all_categories = Category.sorted_find_all current_user.default_workgroup
         @all_accounts = Account.find(:all)
         format.html { render :action => "new" }
         format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
@@ -92,7 +92,7 @@ class TransactionsController < ApplicationController
         format.html { redirect_to(@transaction.account) }
         format.xml  { head :ok }
       else
-        @all_categories = Category.sorted_find_all
+        @all_categories = Category.sorted_find_all current_user.default_workgroup
         @all_accounts = Account.find(:all)
         @transaction_types = TransactionType.find(:all)
         format.html { render :action => "edit" }

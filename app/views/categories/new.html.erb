@@ -1,16 +1,7 @@
 <h1>New category</h1>
 
 <% form_for(@category) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :parent_id, "Parent" %><br />
-    <%= collection_select(:category, :parent_id, @all_categories, :id, :long_name) %>
-  </p>
+  <%= render :partial=>'form', :locals=>{:f=>f} %>
   <p>
     <%= f.submit "Create" %>
   </p>

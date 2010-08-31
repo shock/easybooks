@@ -88,7 +88,7 @@ class Account < ActiveRecord::Base
   end
   
   def accrue_interest next_interest_accrual
-    balance = self.balance next_interest_accrual
+    balance = self.balance( next_interest_accrual - 1.day )
     interest_amount = FixedPoint.new(0)
     case interest_condition
     when 'positive_balance'
