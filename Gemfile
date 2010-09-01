@@ -12,7 +12,7 @@ gem 'ofx-parser'
 
 #gem 'metric_fu'
 
-gem 'wdd-ruby-ext'
+gem 'wdd-ruby-ext', '>=0.0.11'
 
 gem 'ruby-debug', :group=>:test
 
