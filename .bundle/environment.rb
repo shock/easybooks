@@ -174,7 +174,7 @@ end
 module Bundler
   ENV_LOADED   = true
   LOCKED_BY    = '0.9.26'
-  FINGERPRINT  = "91a295dc2d69e052c9a31bded10c57f4bf86477b"
+  FINGERPRINT  = "7e5f0cb8cd5951babb4715a670ee94d3cea12301"
   HOME         = '/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/bundler'
   AUTOREQUIRES = {:profile=>[["factory_girl", false], ["rspec", false], ["rspec-rails", false], ["spork", false]], :test=>[["factory_girl", false], ["rspec", false], ["rspec-rails", false], ["ruby-debug", false], ["spork", false]], :development=>[["factory_girl", false]], :default=>[["authlogic", false], ["mysql", false], ["ofx-parser", false], ["pg", false], ["rails", false], ["ruby-prof", false], ["settingslogic", false], ["wdd-ruby-ext", false]]}
   SPECS        = [
@@ -190,7 +190,7 @@ module Bundler
         {:name=>"factory_girl", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/factory_girl-1.2.4.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/factory_girl-1.2.4/lib"]},
         {:name=>"json_pure", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/json_pure-1.4.6.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/json_pure-1.4.6/lib"]},
         {:name=>"rubyforge", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/rubyforge-2.0.4.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/rubyforge-2.0.4/lib"]},
-        {:name=>"hoe", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/hoe-2.6.1.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/hoe-2.6.1/lib"]},
+        {:name=>"hoe", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/hoe-2.6.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/hoe-2.6.2/lib"]},
         {:name=>"hpricot", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/hpricot-0.8.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/hpricot-0.8.2/lib"]},
         {:name=>"linecache", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/linecache-0.43.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/linecache-0.43/lib"]},
         {:name=>"mysql", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/mysql-2.8.1.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/mysql-2.8.1/lib", "/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/mysql-2.8.1/ext"]},
@@ -201,7 +201,7 @@ module Bundler
         {:name=>"rspec-rails", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/rspec-rails-1.3.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/rspec-rails-1.3.2/lib"]},
         {:name=>"ruby-debug-base", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/ruby-debug-base-0.10.3.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib"]},
         {:name=>"ruby-debug", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/ruby-debug-0.10.3.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/ruby-debug-0.10.3/cli"]},
-        {:name=>"ruby-prof", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/ruby-prof-0.9.1.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/ruby-prof-0.9.1/lib"]},
+        {:name=>"ruby-prof", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/ruby-prof-0.9.2.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/ruby-prof-0.9.2/lib"]},
         {:name=>"settingslogic", :loaded_from=>"/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/specifications/settingslogic-2.0.6.gemspec", :load_paths=>["/Users/billdoughty/src/wdd/easybooks/vendor/bundler_gems/gems/settingslogic-2.0.6/lib"]},
         {:name=>"spork", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/spork-0.8.4.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/spork-0.8.4/lib"]},
         {:name=>"wdd-ruby-ext", :loaded_from=>"/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/specifications/wdd-ruby-ext-0.0.11.gemspec", :load_paths=>["/opt/ruby-enterprise-1.8.6-20090610/lib/ruby/gems/1.8/gems/wdd-ruby-ext-0.0.11/lib"]},
