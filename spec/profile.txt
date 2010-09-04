@@ -3,17 +3,17 @@ Profiling enabled.
 
 
 Top 10 slowest examples:
-0.2580310 Transaction named_scope latest retuns the most recent transaction
-0.1623720 TransactionType named_scope :by_user returns all accounts accessible to the user
-0.1466730 TransactionType calculates balance to the transaction
-0.0765060 Main Factory Spec creates all models valid
-0.0676900 TransactionType calculates total balance correctly
-0.0673590 TransactionType calculates balance to the date
-0.0672220 TransactionType calculates total balance correctly
-0.0432230 TransactionType validates a valid record
-0.0424410 Transaction named_scope by_type retuns the correct results
-0.0381870 TransactionType creates one pending interest transaction due today
+0.1704460 Transaction named_scope latest retuns the most recent transaction
+0.1626160 TransactionType named_scope :by_user returns all accounts accessible to the user
+0.1376820 TransactionType calculates balance to the date
+0.0992410 Transaction stores amounts with cents as integer
+0.0749820 Main Factory Spec creates all models valid
+0.0649500 TransactionType calculates total balance correctly
+0.0634810 TransactionType calculates balance to the transaction
+0.0632400 TransactionType calculates total balance correctly
+0.0414010 TransactionType validates a valid record
+0.0404140 Transaction named_scope by_type retuns the correct results
 
-Finished in 1.287545 seconds
+Finished in 1.239487 seconds
 
 34 examples, 0 failures

@@ -11,8 +11,6 @@ class Transaction < ActiveRecord::Base
     @transaction_type = TransactionType.find(transaction_type_id)
   end
   
-  default_scope :order=>"date ASC, amount"
-  
   named_scope :registered, lambda { |*args| 
     if( args[0] )
       {:conditions=>{:registered=>args[0]}} 

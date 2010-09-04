@@ -64,7 +64,7 @@ class Account < ActiveRecord::Base
   def last_interest_accrual
     @last_interest_transaction ||= self.transactions.by_type(:INT).latest.first
     last_time = @last_interest_transaction ? @last_interest_transaction.date : nil
-    # puts "last_time: #{last_time}"
+    # puts "last_time: #{last_time}"         
     last_time
   end
   
@@ -77,11 +77,16 @@ class Account < ActiveRecord::Base
     when 'annually'
       last_time + 1.year
     end
+    # puts "next_time: #{next_time}"
     next_time
   end
   
+  def interest_account
+    interest_condition != 'none'
+  end
+  
   def ensure_interest_accrual
-    return if interest_condition == 'none'
+    return unless interest_account
     while (n_i_c = next_interest_accrual) <= Date.today
       accrue_interest n_i_c
     end
@@ -104,9 +109,7 @@ class Account < ActiveRecord::Base
     when 'none'
       return
     end
-    @last_interest_transaction = Transaction.new(:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:INT, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
-    transactions << @last_interest_transaction
-    save!
+    @last_interest_transaction = Transaction.create!(:account_id=>self.id,:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:INT, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
   end
 
   def balance date_or_transaction_id=nil
