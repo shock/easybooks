@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :transactions
 
-  map.resources :accounts
+  map.resources :accounts do |account|
+  end
+  map.account_reconcile 'accounts/:id/reconcile', :controller=>'accounts', :action=>'show_reconcile_batch'
 
   map.resources :institutions
 

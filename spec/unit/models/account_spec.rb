@@ -138,6 +138,23 @@ describe TransactionType do
   end
   
   describe "transaction importing" do
+    it "honors the switch_target_and_description flag" do
+      account = Factory( :account, :switch_target_and_description=>true )
+      new_transaction = Factory.build(:transaction, {:account=>nil})
+      tar = new_transaction.target
+      desc = new_transaction.description
+      account.process_import_transactions( [new_transaction] )
+      new_transaction.target.should == desc
+      new_transaction.description.should == tar
+      account = Factory( :account, :switch_target_and_description=>false )
+      new_transaction = Factory.build(:transaction, {:account=>nil})
+      tar = new_transaction.target
+      desc = new_transaction.description
+      account.process_import_transactions( [new_transaction] )
+      new_transaction.target.should == tar
+      new_transaction.description.should == desc
+    end
+
     describe "existing transaction id" do
       it "registers transactions with matching amounts" do
         account = Factory(:account)

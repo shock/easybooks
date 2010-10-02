@@ -8,8 +8,26 @@ Bank Account
 
 Transactions
 <table>
-  <tr><th>Payee</th><th>Type</th><th>Amount</th><th>Memo</th><th>Check #</th></tr>
-  <% @account.transactions.each do |t| %>
-    <tr><td><%= t.target %></td><td><%= t.transaction_type.to_s %></td><td><%= t.amount %></td><td><%= t.description %></td><td><%= t.check_num %></td></tr>
+  <tr>
+    <th>Date</th>
+    <th>Check #</th>
+    <th>Payee</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Memo</th>
+    <th>Reg</th>
+  </tr>
+  <% @account.transactions.sorted.each do |t| %>
+    <tr>
+      <td><%= t.date.strftime("%m/%d/%y") %></td>
+      <td><%= t.check_num %></td>
+      <td><%= t.target %></td>
+      <td><%= t.transaction_type.to_s %></td>
+      <td><%= t.amount %></td>
+      <td><%= t.description %></td>
+      <td>
+        <%= t.registered ? "X" : '' %>
+      </td>
+    </tr>
   <% end -%>
 </table>

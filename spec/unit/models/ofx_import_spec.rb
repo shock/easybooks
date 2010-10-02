@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe Ofx do
+describe OfxImport do
   TEST_FILE = File.expand_path(File.dirname(__FILE__) + '/../../data/Money.ofx')
   
   TEST_DATA = <<-DATA
@@ -81,28 +81,28 @@ describe Ofx do
 DATA
 
   before( :all ) do
-    @ofx = Ofx.new( TEST_DATA )
+    @ofx_import = OfxImport.new( TEST_DATA )
   end
 
   it "parses a valid Ofx file" do
-    Ofx.parse_file( TEST_DATA )
+    OfxImport.parse_file( TEST_DATA )
   end
   
   it "returns the account number" do
-    @ofx.account_number.should == '134582200'
+    @ofx_import.account_number.should == '134582200'
   end
   
   it "returns the correct number of transactions" do
-    @ofx.transactions.size.should == 3
+    @ofx_import.transactions.size.should == 3
   end
   
   it "returns the correct account balance" do
-    @ofx.account_balance.should == 1406.33
+    @ofx_import.account_balance.should == 1406.33
   end
   
   it "returns valid transactions" do
     account = Factory(:account)
-    @ofx.transactions.each do |transaction|
+    @ofx_import.transactions.each do |transaction|
       transaction.account = account
       transaction.valid?.should == true
     end

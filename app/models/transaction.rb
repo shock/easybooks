@@ -29,8 +29,14 @@ class Transaction < ActiveRecord::Base
     end
   }
 
-  named_scope :latest, {:order=>'date DESC', :limit=>1} 
-
+  named_scope :latest, {:order=>'date DESC', :limit=>1}
+  named_scope :sorted, lambda { |*args| 
+    if( args[0] )
+      {:order=>args[0]}
+    else
+      {:order=>'date'}
+    end
+  }
   
   def transaction_type= transaction_type
     transaction_type = TransactionType.send(transaction_type) if transaction_type.is_a? Symbol

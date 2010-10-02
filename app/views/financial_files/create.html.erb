@@ -16,9 +16,9 @@ Statement
 <br/>
 New Transactions
 <table>
-  <tr><th>Payee</th><th>Type</th><th>Amount</th><th>Memo</th><th>Sic</th><th>TID</th><th>Check #</th></tr>
-  <% @ofx.bank_account.statement.transactions.each do |t| %>
-    <tr><td><%= t.payee %></td><td><%= t.type %></td><td><%= t.amount %></td><td><%= t.memo %></td><td><%= t.sic %></td><td><%= t.fit_id %></td><td><%= t.check_number %></td></tr>
+  <tr><th>Date</th><th>Payee</th><th>Type</th><th>Amount</th><th>Memo</th><th>Sic</th><th>TID</th><th>Check #</th></tr>
+  <% @ofx.bank_account.statement.transactions.sort{|a,b| a.date <=> b.date}.each do |t| %>
+    <tr><td><%= t.date.strftime("%m/%d/%y") %></td><td><%= t.payee %></td><td><%= t.type %></td><td><%= t.amount %></td><td><%= t.memo %></td><td><%= t.sic %></td><td><%= t.fit_id %></td><td><%= t.check_number %></td></tr>
   <% end -%>
 </table>
 

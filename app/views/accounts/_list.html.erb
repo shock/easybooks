@@ -19,7 +19,7 @@
     <td align=center><%= link_to 'Show', account %></td>
     <td align=center><%= link_to 'New Trans', url_for( :controller => 'transactions', :action => 'new') %></td>
 -->
-    <td align='center'><%= link_to 'Edit', edit_account_path(account) %></td>
+    <td align='center'><%= link_to 'Edit', edit_account_path(account) %> <%= link_to 'Reconcile', account_reconcile_path(account.id) %> </td>
 <!--
     <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
 -->

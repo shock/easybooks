@@ -148,6 +148,11 @@ class Account < ActiveRecord::Base
   
   def process_import_transactions import_transactions
     import_transactions.each do |new_transaction|
+      if self.switch_target_and_description?
+        tmp = new_transaction.target
+        new_transaction.target = new_transaction.description
+        new_transaction.description = tmp
+      end
       if existing_transaction = self.transactions.find_by_transaction_id( new_transaction.transaction_id )
         if existing_transaction.amount == new_transaction.amount
           # we already have this transaction.  mark it as registered

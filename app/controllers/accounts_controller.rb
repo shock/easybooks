@@ -2,7 +2,7 @@
   # GET /accounts
   # GET /accounts.xml
   def index
-    @accounts = Account.all
+    @accounts = Account.by_user(current_user).all
 
     @net_value = FixedPoint.new(0)
     for account in @accounts
@@ -18,7 +18,7 @@
   # GET /accounts/1
   # GET /accounts/1.xml
   def show
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
     @new_transaction = Transaction.new
     @new_transaction.account_id = @account.id
 
@@ -48,7 +48,7 @@
 
   # GET /accounts/1/edit
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
     @all_institutions = Institution.all
   end
 
@@ -72,7 +72,7 @@
   # PUT /accounts/1
   # PUT /accounts/1.xml
   def update
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
@@ -90,7 +90,7 @@
   # DELETE /accounts/1
   # DELETE /accounts/1.xml
   def destroy
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
     @account.destroy
 
     respond_to do |format|
@@ -100,12 +100,12 @@
   end
   
   def show_reconcile_batch
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
     @transactions = @account.transactions
     @batch_transactions = @account.batch_transactions
   end
   
   def reconcile_batch
-    @account = Account.find(params[:id])
+    @account = Account.by_user(current_user).find(params[:id])
   end
 end
