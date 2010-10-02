@@ -1,4 +1,5 @@
 class TransactionType
+  # These types are based on the types defined by the OFX data format.
   TYPES_DEF = {
     :DEBIT       => [1,'DEB'],
     :CREDIT      => [2, 'CRD'],

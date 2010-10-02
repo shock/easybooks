@@ -38,6 +38,7 @@ Factory.define :transaction do |i|
   i.description {|i| "Transaction Description for #{String.random}"}
   i.amount 3.33
   i.date Date.today
+  i.transaction_id {"TID_#{Factory.next(:counter)}"}
   i.transaction_type TransactionType.find(TransactionType::IDS.first)
 end
 
@@ -60,3 +61,6 @@ Factory.define :category do |i|
   i.parent_id -1
 end
 
+Factory.sequence :counter do |n|
+  n
+end

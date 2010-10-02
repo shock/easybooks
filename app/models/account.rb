@@ -146,5 +146,37 @@ class Account < ActiveRecord::Base
     balance
   end
   
-
+  def process_import_transactions import_transactions
+    import_transactions.each do |new_transaction|
+      if existing_transaction = self.transactions.find_by_transaction_id( new_transaction.transaction_id )
+        if existing_transaction.amount == new_transaction.amount
+          # we already have this transaction.  mark it as registered
+          existing_transaction.set_registered
+        else
+          # we have this transaction with a different amount.  we'll leave it
+          # and make sure it isn't marked as registered
+          existing_transaction.clear_registered
+          # plus we'll add the one from the bank
+          transactions << new_transaction
+        end
+      elsif !new_transaction.check_num.blank? && (existing_transaction = self.transactions.find_by_check_num( new_transaction.check_num ))
+        if existing_transaction.amount == new_transaction.amount
+          # we already have this transaction.  set it's transaction id and mark it as registered
+          existing_transaction.transaction_id = new_transaction.transaction_id
+          existing_transaction.registered = true
+          existing_transaction.save!
+        else
+          # we have this transaction with a different amount.  we'll leave it
+          # and make sure it isn't marked as registered
+          existing_transaction.clear_registered
+          # plus we'll add the one from the bank
+          transactions << new_transaction
+        end
+      else
+        # this is a new transaction without an existing transaction id or check #
+        # we'll add it to the account as unregistered
+        self.transactions << new_transaction
+      end 
+    end
+  end
 end

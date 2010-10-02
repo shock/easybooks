@@ -47,6 +47,14 @@ class Transaction < ActiveRecord::Base
   def amount
     @amount || FixedPoint.new(0, self[:amount])
   end
+  
+  def set_registered
+    update_attribute(:registered,true)
+  end
+  
+  def clear_registered
+    update_attribute(:registered,false)
+  end
 
   private
     def before_validation_callback

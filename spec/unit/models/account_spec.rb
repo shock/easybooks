@@ -137,5 +137,72 @@ describe TransactionType do
     Account.by_user(user).all.should == [account3]
   end
   
+  describe "transaction importing" do
+    describe "existing transaction id" do
+      it "registers transactions with matching amounts" do
+        account = Factory(:account)
+        transaction = Factory(:transaction, :account=>account)
+        transaction.registered.should == false
+        new_transaction = Factory.build(:transaction, {:transaction_id=>transaction.transaction_id, :amount=>transaction.amount, :account=>nil})
+        account.process_import_transactions( [new_transaction] )
+        transaction.reload
+        transaction.registered.should == true
+      end
+
+      it "creates unregistered transactions with unmatching amounts" do
+        account = Factory(:account)
+        transaction = Factory(:transaction, :account=>account)
+        transaction.registered.should == false
+        new_transaction = Factory.build(:transaction, {:transaction_id=>transaction.transaction_id, :amount=>transaction.amount + 2, :account=>nil})
+        account.process_import_transactions( [new_transaction] )
+        transaction.reload
+        transaction.registered.should == false
+        new_transaction.registered.should == false
+        new_transaction.new_record?.should == false
+        new_transaction.account.should == account
+      end
+
+    end
+
+    describe "new transaction id" do
+      describe "existing check number" do
+        it "registers transactions with matching amounts" do
+          account = Factory(:account)
+          transaction = Factory(:transaction, :account=>account, :check_num=>'1')
+          transaction.registered.should == false
+          new_transaction = Factory.build(:transaction, {:check_num=>transaction.check_num, :amount=>transaction.amount, :account=>nil})
+          new_transaction.transaction_id.should_not == transaction.transaction_id
+          new_transaction.check_num.should == transaction.check_num
+          account.process_import_transactions( [new_transaction] )
+          transaction.reload
+          transaction.registered.should == true
+        end
+
+        it "creates unregistered transactions with unmatching amounts" do
+          account = Factory(:account)
+          transaction = Factory(:transaction, :account=>account, :check_num=>'1')
+          transaction.registered.should == false
+          new_transaction = Factory.build(:transaction, {:check_num=>transaction.check_num, :amount=>transaction.amount + 2, :account=>nil})
+          account.process_import_transactions( [new_transaction] )
+          transaction.reload
+          transaction.registered.should == false
+          new_transaction.registered.should == false
+          new_transaction.new_record?.should == false
+          new_transaction.account.should == account
+        end
+      end
+      
+      describe "no matching check number" do
+        it "creates a new unregistered transaction" do
+          account = Factory(:account)
+          new_transaction = Factory.build(:transaction, {:account=>nil})
+          account.process_import_transactions( [new_transaction] )
+          new_transaction.registered.should == false
+          new_transaction.new_record?.should == false
+          new_transaction.account.should == account
+        end
+      end
+    end
+  end
   
 end
