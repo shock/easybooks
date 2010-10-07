@@ -156,14 +156,16 @@ describe TransactionType do
     end
 
     describe "existing transaction id" do
-      it "registers transactions with matching amounts" do
+      it "does not create new transaction when amounts match" do
         account = Factory(:account)
         transaction = Factory(:transaction, :account=>account)
         transaction.registered.should == false
         new_transaction = Factory.build(:transaction, {:transaction_id=>transaction.transaction_id, :amount=>transaction.amount, :account=>nil})
         account.process_import_transactions( [new_transaction] )
         transaction.reload
-        transaction.registered.should == true
+        transaction.registered.should == false
+        new_transaction.account.should == nil
+        new_transaction.new_record?.should == true
       end
 
       it "creates unregistered transactions with unmatching amounts" do

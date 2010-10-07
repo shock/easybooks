@@ -155,8 +155,7 @@ class Account < ActiveRecord::Base
       end
       if existing_transaction = self.transactions.find_by_transaction_id( new_transaction.transaction_id )
         if existing_transaction.amount == new_transaction.amount
-          # we already have this transaction.  mark it as registered
-          existing_transaction.set_registered
+          # we already have this transaction.
         else
           # we have this transaction with a different amount.  we'll leave it
           # and make sure it isn't marked as registered
