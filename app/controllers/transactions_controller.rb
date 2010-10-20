@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+  include ActionView::Helpers::JavaScriptHelper
+  
 #skip_before_filter :verify_authenticity_token
   # GET /transactions
   # GET /transactions.xml
@@ -113,6 +115,7 @@ class TransactionsController < ApplicationController
         @status_msg = "<span style='color:red'>Error</span>"
       end
       format.html { render :partial => "status" }
+      format.js { render :text => "$('#update_status_#{@transaction.id}').html('#{escape_javascript(@status_msg)}')" }
     end
   end
 

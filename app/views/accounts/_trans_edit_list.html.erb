@@ -15,15 +15,14 @@
 <div class='transactions'>
   <% balance = @starting_balance %> 
   <% i=0 %>
-  <% for @transaction in @transactions %>
-    <% balance += @transaction.amount 
+  <% for transaction in @transactions %>
+    <% balance += transaction.amount 
        i += 1 %>
-    <% remote_form_for(:transaction,
-              @transaction,
+    <% form_for(:transaction,
+              transaction,
                :url => { :controller => 'transactions', 
-               :action => 'remote_update', :id => @transaction },
-               :update => 'update_status_'+@transaction.id.to_s,
-               :complete => visual_effect(:highlight, 'update_status_'+@transaction.id.to_s)
+               :action => 'remote_update', :id => transaction },
+               :html=>{:id=>"trans_#{transaction.id}_form", :class=>"trans_form"}
            ) do |f| %>
       <div class='transaction'>
             <div class='trans_date'>
@@ -31,7 +30,7 @@
                 <%= f.date_select :date %>
               </div>
               <div class="odd">
-                <%= link_to 'Delete', @transaction, :confirm => 'Are you sure?', :method => :delete, :class=>'link_button' %>
+                <%= link_to 'Delete', transaction, :confirm => 'Are you sure?', :method => :delete, :class=>'link_button' %>
                 <%= f.submit "Update" %>
               </div>
             </div>
@@ -40,7 +39,7 @@
                 <%= f.text_field :check_num, :size=>10 %>
               </div>
               <div class="odd">
-                <div id='update_status_<%=@transaction.id.to_s%>'></div>
+                <div id='update_status_<%=transaction.id.to_s%>'></div>
               </div>
             </div>
             <div class='trans_payee'>
@@ -48,27 +47,27 @@
                 <%= f.text_field :target, :size=>48  %>
               </div>
               <div class="odd">
-                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', @transaction.category_id) %>
+                <%= select_tag 'transaction[category_id]', options_from_collection_for_select(@all_categories, 'id', 'long_name', transaction.category_id) %>
                 <%= f.text_field :description, :size=>26  %>
               </div>
             </div>
             <div class='trans_type'>
               <div class="even">
-                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', @transaction.transaction_type_id) %>
+                <%= select_tag 'transaction[transaction_type_id]', options_from_collection_for_select(@transaction_types, 'id', 'name', transaction.transaction_type_id) %>
               </div>
               <div class="odd">
               </div>
             </div>
             <div class='trans_clr'>
               <div class="even">
-                <%= f.check_box :registered %>
+                <%= f.check_box :registered, :onchange=>"$('#trans_#{transaction.id}_form').trigger('submit');" %>
               </div>
               <div class="odd">
               </div>
             </div>
             <div class='trans_amount'>
               <div class="even">
-                <%= text_field_tag "transaction[amount]", @transaction.amount.to_s, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if @transaction.amount < 0 then 'debit' else 'credit' end} %>
+                <%= text_field_tag "transaction[amount]", transaction.amount.to_s, {:size =>7, :text_align=>'right', :id=>'transaction_amount', :class => if transaction.amount < 0 then 'debit' else 'credit' end} %>
               </div>
               <div class="odd">
               </div>
@@ -78,7 +77,7 @@
                 <%= balance %>
               </div>
               <div class="odd">
-                <a name="<%=@transaction.id.to_s%>"/>
+                <a name="<%=transaction.id.to_s%>"></a>
               </div>
             </div>
       </div>
@@ -136,7 +135,7 @@
                 <%= f.submit "Create" %>
               </div>
               <div class="odd">
-                <a name="end"/>
+                <a name="end"></a>
               </div>
             </div>
       </div>
@@ -144,3 +143,7 @@
   <% end %>
 </div>
 <br/>
+
+<script>
+  $('.trans_form').submitWithAjax();
+</script>
