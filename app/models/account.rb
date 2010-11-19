@@ -347,4 +347,33 @@ class Account < ActiveRecord::Base
     end
   end
   
+  def create_transaction
+    print "Enter target: "
+    $stdout.flush
+    target = gets.chomp
+    print "Enter description: "
+    $stdout.flush
+    description = gets.chomp
+    print "Enter date: "
+    $stdout.flush
+    date = Date.parse(gets.chomp)
+    print "Enter amount: "
+    $stdout.flush
+    amount = gets.chomp
+    transaction = Transaction.new(:target=>target, :date=>date, :amount=>amount, :description=>description)
+    if transaction.amount < 0
+      transaction.transaction_type = :DEBIT
+    else
+      transaction.transaction_type = :CREDIT
+    end
+    puts format_transaction( transaction )
+    answer = get_answer("Commit Transaction?", ["Y", "n"])
+    if answer == "y"
+      transactions << transaction 
+      puts "Transaction committed."
+    else
+      puts "Transaction aborted."
+    end
+  end
+  
 end
