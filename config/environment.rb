@@ -76,4 +76,3 @@ def load_factory
   require 'spec/spec_helpers/factory_helper'
   require 'spec/factory/main_factory'
 end
-

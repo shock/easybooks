@@ -183,4 +183,126 @@ class Account < ActiveRecord::Base
       end 
     end
   end
+
+  DEDUP_TIME_TOLERANCE_DAYS = 5
+  def find_next_potential_duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
+    account = self
+    transactions = account.transactions.all
+    amount_groups = transactions.group_by{|t|t.amount.value}
+    amount_groups.each do |amount, transactions|
+      transactions.sort!{|a,b| a.date <=> b.date}
+      next if transactions.length < 2
+      # puts amount.inspect
+      # puts transactions.inspect
+      transactions.each_with_index do |t1,i|
+        break if t1 == transactions.last
+        t2 = transactions[i+1]
+        next if !(t1.transaction_id.blank? || t2.transaction_id.blank?)
+        time_diff = t2.date - t1.date
+        # puts time_diff
+        next if time_diff > duplicate_proximity_tolerance
+        [t1,t2].each do |transaction, i|
+          puts "T#{i}: #{transaction.date.strftime("%D")} - #{transaction.amount} - #{transaction.target} - #{transaction.description} - #{transaction.transaction_id}"
+        end
+        puts "--"
+      end
+    end
+    nil
+  end
+
+  def duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
+    account = self
+    transactions = account.transactions.all
+    amount_groups = transactions.group_by{|t|t.amount.value}
+    dup_counts = 0
+    amount_groups.each do |amount, transactions|
+      transactions.sort!{|a,b| a.date <=> b.date}
+      next if transactions.length < 2
+      # puts amount.inspect
+      # puts transactions.inspect
+      transactions.each_with_index do |t1,i|
+        break if t1 == transactions.last
+        t2 = transactions[i+1]
+        next if !(t1.transaction_id.blank? || t2.transaction_id.blank?)
+        # next if t1.registered? && t2.registered?
+        time_diff = t2.date - t1.date
+        # puts time_diff
+        next if time_diff > duplicate_proximity_tolerance
+        yield( t1, t2 ) if block_given?
+        dup_counts += 1
+      end
+    end
+    dup_counts
+  end
+  
+  def show_duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
+    duplicate_transactions( duplicate_proximity_tolerance ) do |t1, t2|
+      [t1,t2].each do |transaction, i|
+        puts "T#{i}: #{transaction.date.strftime("%D")} - #{transaction.amount} - [#{transaction.registered? ? "X" : " "}] - #{transaction.target} - #{transaction.description} - #{transaction.transaction_id}"
+      end
+      puts "--"
+    end
+    nil
+  end
+  
+  def format_transaction( transaction )
+    "#{transaction.date.strftime("%D")} - [#{transaction.registered? ? "X" : " "}] : #{transaction.amount} - #{transaction.target} - #{transaction.description} - #{transaction.transaction_id}"
+  end
+  
+  def get_answer( question, answers )
+    answer = ""
+    while !answers.include?(answer)
+      print "#{question} [#{answers.join(",")}] "
+      $stdout.flush
+      answer = gets.chomp.downcase.first
+    end
+    answer
+  end
+
+  def merge_duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
+    merged_count = 0
+    dup_counts = duplicate_transactions( duplicate_proximity_tolerance ) do |t1, t2|
+      [t1,t2].each do |transaction, i|
+        puts "T#{i}: #{format_transaction( transaction )}"
+      end
+      answer = get_answer("Merge transactions?", ["y","n"])
+      if answer=="y"
+        answer = get_answer("Keep which description?", ["1","2"])
+        case answer
+        when "1"
+          base = t1
+          extra = t2
+        when "2"
+          base = t2
+          extra = t1
+        end
+        transaction_id = [t1,t2].map{|t| t.transaction_id}.reject(&:blank?).first
+        base.transaction_id = transaction_id
+        puts "Merged transaction:"
+        puts format_transaction( base )
+        answer = get_answer("Commit?", ["y","n"])
+        if answer == "y"
+          unless base.registered?
+            answer = get_answer("Clear merged transaction?", ["y","n"])
+            base.registered = (answer == "y")
+          end
+          merged_count += 1
+          extra.destroy
+          base.save!
+        else
+          puts "Skipping..."
+        end
+      else
+        puts "Skipping..."
+      end
+      puts "--"
+    end
+    if dup_counts > 0
+      puts "#{merged_count} transactions merged."
+      puts "#{dup_counts - merged_count} transactions skipped."
+    else
+      puts "No duplicates found."
+    end
+    nil
+  end
 end

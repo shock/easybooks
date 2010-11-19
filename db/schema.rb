@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100820162922) do
+ActiveRecord::Schema.define(:version => 20101119124421) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20100820162922) do
     t.string   "transaction_id"
     t.string   "type"
   end
+
+  add_index "transactions", ["account_id", "transaction_id"], :name => "aid_tid", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                               :null => false
