@@ -251,10 +251,17 @@ class Account < ActiveRecord::Base
   
   def get_answer( question, answers )
     answer = ""
-    while !answers.include?(answer)
-      print "#{question} [#{answers.join(",")}] "
+    defaults = answers.reject{|a| a.upcase.first != a.first || a.upcase.first =~ /\d/}
+    raise "Too many default answers: #{answers.inspect}" if defaults.length > 1
+    default = defaults.first
+    puts "default: #{default}"
+    normalized_answers = answers.map{|a| a.downcase}
+    while !normalized_answers.include?(answer)
+      print "#{question} [#{answers.join("/")}] "
       $stdout.flush
       answer = gets.chomp.downcase.first
+      puts "answer: #{answer}"
+      return default.downcase if default && answer.blank?
     end
     answer
   end
@@ -262,10 +269,10 @@ class Account < ActiveRecord::Base
   def merge_duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
     merged_count = 0
     dup_counts = duplicate_transactions( duplicate_proximity_tolerance ) do |t1, t2|
-      [t1,t2].each do |transaction, i|
+      [t1,t2].each_with_index do |transaction, i|
         puts "T#{i}: #{format_transaction( transaction )}"
       end
-      answer = get_answer("Merge transactions?", ["y","n"])
+      answer = get_answer("Merge transactions?", ["Y","n"])
       if answer=="y"
         answer = get_answer("Keep which description?", ["1","2"])
         case answer
@@ -283,7 +290,7 @@ class Account < ActiveRecord::Base
         answer = get_answer("Commit?", ["y","n"])
         if answer == "y"
           unless base.registered?
-            answer = get_answer("Clear merged transaction?", ["y","n"])
+            answer = get_answer("Clear merged transaction?", ["Y","n"])
             base.registered = (answer == "y")
           end
           merged_count += 1
@@ -305,4 +312,39 @@ class Account < ActiveRecord::Base
     end
     nil
   end
+
+  def clear_transactions
+    answer = get_answer("Merge duplicates first?", ["Y", "n"])
+    merge_duplicate_transactions if answer == "y"
+    transactions.registered(false).find_each do |transaction|
+      puts format_transaction( transaction )
+      answer = get_answer("Clear transaction?", %w(y n x))
+      case answer
+      when "y"
+        transaction.update_attribute(:registered, true) 
+        puts "Transaction cleared."
+      when "n" 
+        puts "Skipped transaction."
+      when "x"
+        puts "Aborting."
+        break
+      end
+    end
+  end
+  
+  def clear_all_transactions
+    answer = get_answer("Merge duplicates first?", ["Y", "n"])
+    merge_duplicate_transactions if answer == "y"
+    count = transactions.registered(false).count
+    puts "#{count} un-cleared transactions."
+    return unless count > 0
+    answer = get_answer("Clear All Transactions?", ["y", "N"])
+    if answer == "y"
+      transactions.update_all(:registered=>true) 
+      puts "All transactions cleared."
+    else
+      puts "No transactions changed."
+    end
+  end
+  
 end

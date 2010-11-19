@@ -12,7 +12,7 @@ class Transaction < ActiveRecord::Base
   end
   
   named_scope :registered, lambda { |*args| 
-    if( args[0] )
+    if( args.length > 0 )
       {:conditions=>{:registered=>args[0]}} 
     else
       {:conditions=>{:registered=>true}}
