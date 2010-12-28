@@ -270,7 +270,7 @@ class Account < ActiveRecord::Base
     merged_count = 0
     dup_counts = duplicate_transactions( duplicate_proximity_tolerance ) do |t1, t2|
       [t1,t2].each_with_index do |transaction, i|
-        puts "T#{i}: #{format_transaction( transaction )}"
+        puts "T#{i+1}: #{format_transaction( transaction )}"
       end
       answer = get_answer("Merge transactions?", ["Y","n"])
       if answer=="y"
@@ -287,7 +287,7 @@ class Account < ActiveRecord::Base
         base.transaction_id = transaction_id
         puts "Merged transaction:"
         puts format_transaction( base )
-        answer = get_answer("Commit?", ["y","n"])
+        answer = get_answer("Commit?", ["Y","n"])
         if answer == "y"
           unless base.registered?
             answer = get_answer("Clear merged transaction?", ["Y","n"])
@@ -318,7 +318,7 @@ class Account < ActiveRecord::Base
     merge_duplicate_transactions if answer == "y"
     transactions.registered(false).find_each do |transaction|
       puts format_transaction( transaction )
-      answer = get_answer("Clear transaction?", %w(y n x))
+      answer = get_answer("Clear transaction (x aborts)?", %w(Y n x))
       case answer
       when "y"
         transaction.update_attribute(:registered, true) 
@@ -347,6 +347,8 @@ class Account < ActiveRecord::Base
     end
   end
   
+  alias :merge_transactions :merge_duplicate_transactions
+  
   def create_transaction
     print "Enter target: "
     $stdout.flush
@@ -357,6 +359,7 @@ class Account < ActiveRecord::Base
     print "Enter date: "
     $stdout.flush
     date = Date.parse(gets.chomp)
+    date = Date.civil(date.year + 2000, date.month, date.day) if date.year < 2000
     print "Enter amount: "
     $stdout.flush
     amount = gets.chomp

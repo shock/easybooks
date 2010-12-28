@@ -20,3 +20,4 @@ vendor/bundler_gems/**/*
 Gemfile.lock
 tmtags
 spec/profile.txt
+.rvmrc

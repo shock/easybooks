@@ -76,3 +76,13 @@ def load_factory
   require 'spec/spec_helpers/factory_helper'
   require 'spec/factory/main_factory'
 end
+
+class Object
+  def fib
+    @_act_fib ||= Account.find_by_account_number('134582200')
+  end
+  
+  def frost
+    @_act_frost ||= Account.find_by_account_number('591489119')
+  end
+end
