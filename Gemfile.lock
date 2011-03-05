@@ -14,6 +14,8 @@ GEM
     authlogic (2.1.6)
       activesupport
     columnize (0.3.1)
+    comma (0.4.1)
+      activesupport (>= 2.2.2)
     factory_girl (1.2.4)
     hoe (2.6.2)
       rake (>= 0.8.7)
@@ -56,6 +58,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
+  comma
   factory_girl (= 1.2.4)
   mysql (= 2.8.1)
   ofx-parser

@@ -8,7 +8,7 @@ gem 'authlogic'
 gem 'settingslogic'
 gem 'pg'
 gem 'ofx-parser'
-
+gem 'comma'
 
 #gem 'metric_fu'
 
