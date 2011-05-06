@@ -24,12 +24,6 @@ development:
   username: postgres
   password: buzzcapman
 
-# development:
-#   adapter: mysql
-#   database: easybook_development
-#   username: root
-#   password:
-
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -38,7 +32,6 @@ test:
     encoding: utf8
     reconnect: false
     database: easybooks_test
-  #  database: boxboss_development
     pool: 30
     username: postgres
     password: buzzcapman
