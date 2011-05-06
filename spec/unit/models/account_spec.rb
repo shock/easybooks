@@ -97,16 +97,17 @@ describe TransactionType do
     10.times do |i|
       Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>TransactionType.credit, :date=>start_date + i.days)
     end
-    account.balance(start_date+5.days) == FixedPoint.new(33.3/2)
+    account.balance(start_date+5.days).should == FixedPoint.new(33.3/2)
   end
   
   it "calculates balance to the transaction" do
     start_date = Date.civil(2010,1,1)
     account = Factory(:account)
+    trans = []
     10.times do |i|
-      Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>:credit, :date=>start_date + i.days)
+      trans << Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>:credit, :date=>start_date + i.days)
     end
-    account.balance(account.transactions.all[4]) == FixedPoint.new(33.3/2)
+    account.balance(trans[5].id).should == FixedPoint.new(33.3/2)
   end
 
   it "stores interest rate with four decimal places" do

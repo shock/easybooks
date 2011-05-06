@@ -15,28 +15,6 @@
     end
   end
 
-  # GET /accounts/1
-  # GET /accounts/1.xml
-  def show
-    @account = Account.by_user(current_user).find(params[:id])
-    @new_transaction = Transaction.new
-    @new_transaction.account_id = @account.id
-
-    find_conditions = {:account_id => @account.id}
-    find_conditions.merge!(get_filter_conditions)
-    @institution = Institution.find(@account.institution_id)
-    @all_categories = Category.sorted_find_all current_user.default_workgroup
-    @transaction_types = TransactionType.all
-    @starting_balance = @account.balance(find_conditions[:date].first)
-    
-    @transactions = Transaction.all(:conditions => find_conditions, :order => "date" )
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @account }
-    end
-  end
-
   # GET /accounts/new
   # GET /accounts/new.xml
   def new
@@ -112,43 +90,163 @@
     @account = Account.by_user(current_user).find(params[:id])
   end
   
+  # GET /accounts/1
+  # GET /accounts/1.xml
+  def show
+    @account = Account.by_user(current_user).find(params[:id])
+    @new_transaction = Transaction.new
+    @new_transaction.account_id = @account.id
+
+    find_options = {:conditions=>{:account_id => @account.id}}
+    find_options = get_sort_options(params, find_options)
+    # find_options = get_filter_options(params, find_options)
+    # find_options = get_paging_options(params, find_options)
+    @institution = Institution.find(@account.institution_id)
+    @all_categories = Category.sorted_find_all current_user.default_workgroup
+    @transaction_types = TransactionType.all
+    
+    @transactions = Transaction.all(find_options)
+    @starting_balance = @account.balance(@transactions.first.id)
+
+    update_action_params
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @account }
+    end
+  end
+
 private
-  def get_filter_conditions
-    find_conditions={}
-    filter_msgs = []
+
+  # Sets the sort conditions according the input params
+  # Returns an options hash to be passed to the AR find methods.
+  #
+  # +params+ - params supplied by the user form.
+  # +find_options+ - an ActiveRecord find options hash to be extended with sort criteria.
+  def get_sort_options( params, find_options )
+    find_options[:order] = "date ASC"
+    find_options
+  end
+    
+  # Sets the filter conditions according the input params.
+  # Returns an options hash to be passed to the AR find methods.
+  #
+  # +params+ - params supplied by the user form.
+  # +find_options+ - an ActiveRecord find options hash to be extended with filter criteria.  
+  def get_filter_options( params, find_options )
     # check for category filter
     unless (category_name = params[:category]).blank?
       category = Category.find_by_workgroup_id_and_name(current_user.default_workgroup_id, category_name)
       if category
-        find_conditions[:category_id]=category.id
-        filter_msgs << "Showing transactions from category '#{category_name}'"
-      else
-        filter_msgs << "Category '#{category_name}' does not exist."
+        find_options[:category_id]=category.id
       end
     end
-    
-    # check for date filter
-    unless params[:start_date].blank?
-      begin
-        @start_date = Date.parse(params[:start_date])
-      rescue
-        @start_date = Date.civil(1600,1,1)
-      end
-    else
-      @start_date = Date.today-30.days
-    end
-    unless params[:end_date].blank?
-      @end_date = Date.parse(params[:end_date])
-    else
-      @end_date = Date.today + 10.years
-    end
-    
-    filter_msgs << "Showing transactions on or before #{@end_date.to_s(:db)}"
-    filter_msgs << "Showing transactions on or after #{@start_date.to_s(:db)}"
-    find_conditions[:date] = (@start_date..@end_date)
-  
-    flash.now[:notice] = filter_msgs * "<br/>"
-    find_conditions
+    find_options
   end
+  
+  # determines paging options according to input params.
+  # page start can be determined by start date
+  # transaction ID, or transaction offset.
+  # defaults to last full page if none is specified.
+  #
+  # +params+ - input params from the user form.  Can be as follows
+  #
+  #   :offset - direct offset to use.  if the number is negative, the offset is calculated to show the last full page of transactions.
+  #   :start_date - sets the page whose first transaction is the first transaction with the start date
+  #   :trans_id - sets the page that begins with this transaction id.
+  #   :rpp - results per page.  Defaults to 10.
+  #
+  # +find_options+ - an ActiveRecord find options hash to be extended with paging criteria.  Must contain any filtering and sorting options prior to this method being called.
+  def get_paging_options( params, find_options )    
+    # We need to turn the page defining parameters into an SQL limit and offset    
+        
+    count_options = find_options.deep_dup
+    count_options.delete(:order)
+
+    # check for start_date options
+    if !params[:offset].blank?
+      @offset = params[:offset].to_i
+    elsif !params[:trans_id].blank?
+      count_options[:conditions].merge!(:id=>(nil..start_trans_id))
+      @offset = Transaction.count(count_options)
+    elsif !params[:start_date].blank?
+      begin
+        start_date = Date.parse(params[:start_date])
+        count_options[:conditions].merge!(:date=>(nil..start_date))
+        @offset = Transaction.count(count_options)
+      rescue
+        @offset = 0
+      end
+    else
+      @offset = -1
+    end
+    
+    @rpp = (params[:rpp] || Transaction.per_page)
+    count_options = find_options.deep_dup
+    count_options.delete(:order)
+    @transaction_count = Transaction.count(count_options)
+
+    # ensure the offset is within appropriate bounds
+    if @offset < 0
+      @offset = @transaction_count - @rpp
+      if @offset < 0 
+        @offset = 0
+      end
+    end
+    if @offset + @rpp > @transaction_count
+      @offset = @transaction_count - 1
+    end
+    
+    find_options[:limit] = @rpp
+    find_options[:offset] = @offset
+    find_options
+  end
+  
+  # update the action params from the class instance variables
+  def update_action_params
+    params[:rpp] = @rpp
+    params[:offset] = @offset
+  end
+
+  # # gets filter conditions using date range
+  # # and category
+  # # Obsolete.  
+  # def get_filter_conditions
+  #   find_options={}
+  #   filter_msgs = []
+  #   # check for category filter
+  #   unless (category_name = params[:category]).blank?
+  #     category = Category.find_by_workgroup_id_and_name(current_user.default_workgroup_id, category_name)
+  #     if category
+  #       find_options[:category_id]=category.id
+  #       filter_msgs << "Showing transactions from category '#{category_name}'"
+  #     else
+  #       filter_msgs << "Category '#{category_name}' does not exist."
+  #     end
+  #   end
+  #   
+  #   # check for date filter
+  #   unless params[:start_date].blank?
+  #     begin
+  #       @start_date = Date.parse(params[:start_date])
+  #     rescue
+  #       @start_date = Date.civil(1600,1,1)
+  #     end
+  #   else
+  #     @start_date = Date.today-30.days
+  #   end
+  #   unless params[:end_date].blank?
+  #     @end_date = Date.parse(params[:end_date])
+  #   else
+  #     @end_date = Date.today + 10.years
+  #   end
+  #   
+  #   filter_msgs << "Showing transactions on or before #{@end_date.to_s(:db)}"
+  #   filter_msgs << "Showing transactions on or after #{@start_date.to_s(:db)}"
+  #   find_options[:date] = (@start_date..@end_date)
+  # 
+  #   flash.now[:notice] = filter_msgs * "<br/>"
+  #   find_options
+  # end
   
 end

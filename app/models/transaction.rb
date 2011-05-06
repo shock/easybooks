@@ -3,6 +3,8 @@
 class Transaction < ActiveRecord::Base
   belongs_to :account
   belongs_to :category
+  cattr_accessor :per_page
+  self.per_page = 10
 
   before_validation :before_validation_callback
   validates_presence_of :amount, :account, :date, :transaction_type_id
@@ -10,6 +12,7 @@ class Transaction < ActiveRecord::Base
   def transaction_type
     @transaction_type = TransactionType.find(transaction_type_id)
   end
+  
   
   named_scope :registered, lambda { |*args| 
     if( args.length > 0 )

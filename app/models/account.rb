@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
   
   belongs_to :institution
   has_many :base_transactions, :dependent=>:destroy
-  has_many :transactions
+  has_many :transactions, :order=>:date
   has_many :batch_transactions
   belongs_to :workgroup
   
@@ -112,22 +112,26 @@ class Account < ActiveRecord::Base
     @last_interest_transaction = Transaction.create!(:account_id=>self.id,:date=>next_interest_accrual, :amount=>interest_amount, :transaction_type=>:INT, :target=>"Interest Charge", :description=>"Interest Accrued on $#{balance} balance.")
   end
 
+  # Returns the account balance just prior to the transaction specified by the argument.
+  # If the argument is a date, then the balance is the closing balance of the previous date.
+  # If the argument is a transaction ID, then the the balance is the balance prior to that transaction.
   def balance date_or_transaction_id=nil
     if date_or_transaction_id.is_a? Date
       transactions = self.transactions.all(:conditions => "date < '#{date_or_transaction_id.to_s(:db)}'")
     elsif date_or_transaction_id.is_a? Fixnum
-      transactions = self.transactions.all(:conditions => "id <= #{date_or_transaction_id.to_s}")
+      transactions = self.transactions.all(:conditions => "id < #{date_or_transaction_id}")
     else
       transactions = self.transactions.all
     end
     FixedPoint.new(transactions.map(&:amount).sum)
   end
 
+  # Same as the method :balance, but only considers registered transactions
   def cleared_balance date_or_transaction_id=nil
     if date_or_transaction_id.is_a? Date
-      transactions = self.transactions.registered.all(:conditions => "date <= '#{date_or_transaction_id.to_s(:db)}'")
+      transactions = self.transactions.registered.all(:conditions => "date < '#{date_or_transaction_id.to_s(:db)}'")
     elsif date_or_transaction_id.is_a? Fixnum
-      transactions = self.transactions.registered.all(:conditions => "id <= #{date_or_transaction_id.to_s}")
+      transactions = self.transactions.registered.all(:conditions => "id < #{date_or_transaction_id.to_s}")
     else
       transactions = self.transactions.registered.all
     end
