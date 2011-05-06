@@ -22,11 +22,14 @@
     @new_transaction = Transaction.new
     @new_transaction.account_id = @account.id
 
+    find_conditions = {:account_id => @account.id}
+    find_conditions.merge!(get_filter_conditions)
     @institution = Institution.find(@account.institution_id)
-    @transactions = Transaction.all(:conditions => { :account_id => @account.id}, :order => "date" )
     @all_categories = Category.sorted_find_all current_user.default_workgroup
     @transaction_types = TransactionType.all
-    @starting_balance = FixedPoint.new(0)
+    @starting_balance = @account.balance(find_conditions[:date].first)
+    
+    @transactions = Transaction.all(:conditions => find_conditions, :order => "date" )
 
     respond_to do |format|
       format.html # show.html.erb
@@ -108,4 +111,44 @@
   def reconcile_batch
     @account = Account.by_user(current_user).find(params[:id])
   end
+  
+private
+  def get_filter_conditions
+    find_conditions={}
+    filter_msgs = []
+    # check for category filter
+    unless (category_name = params[:category]).blank?
+      category = Category.find_by_workgroup_id_and_name(current_user.default_workgroup_id, category_name)
+      if category
+        find_conditions[:category_id]=category.id
+        filter_msgs << "Showing transactions from category '#{category_name}'"
+      else
+        filter_msgs << "Category '#{category_name}' does not exist."
+      end
+    end
+    
+    # check for date filter
+    unless params[:start_date].blank?
+      begin
+        @start_date = Date.parse(params[:start_date])
+      rescue
+        @start_date = Date.civil(1600,1,1)
+      end
+    else
+      @start_date = Date.today-30.days
+    end
+    unless params[:end_date].blank?
+      @end_date = Date.parse(params[:end_date])
+    else
+      @end_date = Date.today + 10.years
+    end
+    
+    filter_msgs << "Showing transactions on or before #{@end_date.to_s(:db)}"
+    filter_msgs << "Showing transactions on or after #{@start_date.to_s(:db)}"
+    find_conditions[:date] = (@start_date..@end_date)
+  
+    flash.now[:notice] = filter_msgs * "<br/>"
+    find_conditions
+  end
+  
 end

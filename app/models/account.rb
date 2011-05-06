@@ -120,11 +120,7 @@ class Account < ActiveRecord::Base
     else
       transactions = self.transactions.all
     end
-    balance = FixedPoint.new
-    transactions.each do |t|
-      balance += t.amount
-    end
-    balance
+    FixedPoint.new(transactions.map(&:amount).sum)
   end
 
   def cleared_balance date_or_transaction_id=nil
@@ -135,15 +131,7 @@ class Account < ActiveRecord::Base
     else
       transactions = self.transactions.registered.all
     end
-    balance = FixedPoint.new
-    for t in transactions
-      if t.registered == true
-        transactions.each do |t|
-          balance += t.amount
-        end
-      end
-    end
-    balance
+    FixedPoint.new(transactions.map(&:amount).sum)
   end
   
   def process_import_transactions import_transactions

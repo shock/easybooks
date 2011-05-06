@@ -24,6 +24,10 @@
   <%=h number_to_currency @account.balance %>
 </div>
 -->
+<div>
+  <b>Balance on <%= @start_date %>:</b>
+  <%=h number_to_currency @starting_balance %>
+</div>
 
 <%= render :partial => 'accounts/trans_edit_list' %>
   
@@ -33,6 +37,18 @@
   <br/>
   <b>Cleared Balance:</b>
   <%=h number_to_currency @account.cleared_balance %>
+  <br/>
+  <b>Debit Sum:</b>
+  <%=h number_to_currency @transactions.reject{|r|r.amount>0}.map(&:amount).sum %>
+  <br/>
+  <b>Credit Sum:</b>
+  <%=h number_to_currency @transactions.reject{|r|r.amount<0}.map(&:amount).sum %>
+  <br/>
+  <b>Total Sum:</b>
+  <%=h number_to_currency @transactions.map(&:amount).sum %>
+  <br/>
+  <b>Cleared Sum:</b>
+  <%=h number_to_currency @transactions.reject{|r|!r.registered}.map(&:amount).sum %>
 </div>
 <!--
 <%= link_to 'New Transaction', url_for( :controller => :transactions, :action => 'new', :account_id => @account.id ) %> |
