@@ -107,7 +107,7 @@ describe TransactionType do
     10.times do |i|
       trans << Factory.create(:transaction, :account=>account, :amount=>3.33, :transaction_type=>:credit, :date=>start_date + i.days)
     end
-    account.balance(trans[5].id).should == FixedPoint.new(33.3/2)
+    account.balance(5).should == FixedPoint.new(33.3/2)
   end
 
   it "stores interest rate with four decimal places" do

@@ -1,70 +1,93 @@
-
 body, p, ol, ul, td, input, select {
-/*  font-family: verdana, arial, helvetica, sans-serif; */
+  /*  font-family: verdana, arial, helvetica, sans-serif; */
   font-family: Lucida Grande, verdana, fixed, sans-serif;
-  font-size:   11px;
+  font-size: 11px;
   line-height: 14px;
   background: #EEEEEE;
   color: #333; }
-}
 
 pre {
   background: #EEEEEE;
   padding: 10px;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+a {
+  color: #000; }
 
+a:visited {
+  color: #666; }
 
-body {
-}
+a:hover {
+  color: #fff;
+  background-color: #000; }
 
 .odd, tr.odd, .odd input[type='text'], .odd select {
-    background: #E8E8E8;
-}
+  background: #E8E8E8; }
 
 .even, tr.even, .even input[type='text'], .even select, .even td {
-    background: #FFFFFF;
-}
+  background: #FFFFFF; }
 
 .odd, .even {
   height: 20px;
-  padding: 1px;
-}
+  padding: 1px; }
 
-.transaction
-{
+.transaction {
   height: 46px;
-  clear: right;
-}
+  clear: right; }
+  .transaction > div {
+    text-align: left; }
 
-.transactions { 
-  height: 500px; 
-  width: 890px; 
-  overflow: auto;
+.transactions {
+  height: 460px;
+  overflow: auto; }
+
+.transactions_header {
+  height: 18px;
+  text-align: center; }
+
+.new_transaction, .transactions_header,
+.transactions {
   border: 4px solid black;
-}
+  width: 895px; }
 
-.trans_balance { width: 76px; }
+.trans_header {
+  border: 1px solid #AAAAAA !important;
+  background: #BBBBBB !important;
+  height: 16px !important; }
 
-.trans_date, .trans_num, .trans_payee, .trans_type, .trans_clr, .trans_amount, .trans_balance
-{
-  float:left;
+.trans_balance {
+  width: 80px; }
+
+.trans_date, .trans_num, .trans_payee, .trans_type, .trans_clr, .trans_amount, .trans_balance {
+  float: left;
   height: 44px;
-  border: 1px solid #AAAAAA;
-  text-align: center;
-}
+  border: 1px solid #aaaaaa; }
 
-.trans_date { width: 206px; }
-.trans_num { width: 86px; }
-.trans_payee { width: 344px; }
-.trans_type { width: 54px; }
-.trans_clr { width: 23px; }
-.trans_amount { width: 65px; }
-.trans_balance { width: 75px; }
+.trans_date {
+  width: 206px; }
+
+.trans_num {
+  width: 65px; }
+  .trans_num input {
+    width: 61px; }
+
+.trans_payee {
+  width: 372px; }
+
+.trans_type {
+  width: 70px; }
+
+.trans_clr {
+  width: 23px; }
+
+.trans_amount {
+  width: 65px; }
+
+.trans_balance {
+  width: 80px; }
+  .trans_balance > div {
+    text-align: right;
+    padding-right: 8px; }
 
 .odd a:focus,
 .even a:focus,
@@ -72,40 +95,26 @@ body {
 .even input:focus,
 .odd select:focus,
 .even select:focus {
-    background: #FFFFCC;
-}
+  background: #FFFFCC; }
 
-.trans_header {
-  border: 1px solid #AAAAAA;
-  background: #BBBBBB;
-}
-
-.transactions_header {
-  border: 4px solid black;
-  height: 16px;
-}
-
-table { 
+table {
   border-spacing: 0px 0px;
   font-size: 11px;
-  border: 1px solid #CCCCCC;
-
-}
+  border: 1px solid #CCCCCC; }
 
 td {
   padding-left: 4px;
   padding-right: 4px;
   margin: 0px;
-  border: 1px solid #CCCCCC;
-}
+  border: 1px solid #CCCCCC; }
 
-input#transaction_amount { text-align: right; }
+input#transaction_amount {
+  text-align: right; }
 
 .transaction input, .transaction select {
   border: 0px solid black;
   /* padding: 2px; */
-  margin: 0px;
-}
+  margin: 0px; }
 
 input[type='submit'], a.link_button {
   background: #DFDFDF;
@@ -113,47 +122,37 @@ input[type='submit'], a.link_button {
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #888888;
   border-bottom: 1px solid #888888;
-  color: blue;
-}
+  color: blue; }
 
 input[type='submit'] {
-  padding: 0px;
-}
+  padding: 0px; }
 
 a.link_button {
   text-decoration: none;
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 1px;
-  padding-bottom: 1px;
-}
+  padding-bottom: 1px; }
 
 input[type='checkbox'] {
-  margin: 2px;
-}
+  margin: 2px; }
 
 .credit {
-  color: green;
-}
+  color: green; }
 
 .debit {
-  color: red;
-}
+  color: red; }
 
 .menu_bar {
   background: #66DD66;
-  padding: 5px;
-}
+  padding: 5px; }
 
 .menu_item {
-  padding: 1px;
-}
- 
+  padding: 1px; }
+
 a.menu_item {
-  text-decoration: none;
-}  
+  text-decoration: none; }
 
 .main_container {
   margin-left: 100px;
-  left: 100px;
-}
+  left: 100px; }

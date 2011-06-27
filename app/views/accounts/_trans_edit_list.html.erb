@@ -1,26 +1,33 @@
-<a href="#end">Jump to Last</a>
+Showing <%= @offset + 1 %> - <%= @offset + @rpp %> of <%= @transaction_count %> transactions.
 <br/>
+<div id="trans_nav">
+  <%= link_to "<<", url_for(params.merge(:offset=>params[:offset]-10)) %>
+  <%= link_to "<", url_for(params.merge(:offset=>params[:offset]-1)) %>
+  <%= link_to ">", url_for(params.merge(:offset=>params[:offset]+1)) %>
+  <%= link_to ">>", url_for(params.merge(:offset=>params[:offset]+10)) %>
+  <%= link_to "Jump To Last", url_for(params.merge(:offset=>@account.transactions.count)) %>
+</div>
 <br/>
 <div class='transactions_header'>
-    <div class="trans_header" style="text-align:center;float:left;width:206px">Date</div>
-    <div class="trans_header" style="text-align:center;float:left;width:86px">Num</div>
-    <div class="trans_header" style="text-align:center;float:left;width:344px">Payee / Category / Memo</div>
-    <div class="trans_header" style="text-align:center;float:left;width:54px">Type</div>
-    <div class="trans_header" style="text-align:center;float:left;width:23px">Clr</div>
-    <div class="trans_header" style="text-align:center;float:left;width:65px">Amount</div>
-    <div class="trans_header" style="text-align:center;float:left;width:75px">Balance</div>
+    <div class="trans_date trans_header">Date</div>
+    <div class="trans_num trans_header">Num</div>
+    <div class="trans_payee trans_header">Payee / Category / Memo</div>
+    <div class="trans_type trans_header">Type</div>
+    <div class="trans_clr trans_header">Clr</div>
+    <div class="trans_amount trans_header">Amount</div>
+    <div class="trans_balance trans_header">Balance</div>
 </div>
 <!--
 -->
 <div class='transactions'>
-  <% balance = @starting_balance %> 
+  <% balance = @starting_balance %>
   <% i=0 %>
   <% for transaction in @transactions %>
-    <% balance += transaction.amount 
+    <% balance += transaction.amount
        i += 1 %>
     <% form_for(:transaction,
               transaction,
-               :url => { :controller => 'transactions', 
+               :url => { :controller => 'transactions',
                :action => 'remote_update', :id => transaction },
                :html=>{:id=>"trans_#{transaction.id}_form", :class=>"trans_form"}
            ) do |f| %>
@@ -74,7 +81,7 @@
             </div>
             <div class='trans_balance'>
               <div class="even">
-                <%= balance %>
+                <%= balance.to_s %>
               </div>
               <div class="odd">
                 <a name="<%=transaction.id.to_s%>"></a>
@@ -84,8 +91,8 @@
     <% end %>
   <% end %>
 </div>
-<div>
-  <% form_for(@new_transaction) do |f| %>
+<div class="new_transaction">
+  <% form_for(@new_transaction, {:html=>{:class=>''}}) do |f| %>
       <div class='transaction'>
             <div class='trans_date'>
               <div class="even">
@@ -147,5 +154,5 @@
 <br/>
 
 <script>
-  $('.trans_form').submitWithAjax();
+  // $('.trans_form').submitWithAjax();
 </script>

@@ -114,12 +114,12 @@ class Account < ActiveRecord::Base
 
   # Returns the account balance just prior to the transaction specified by the argument.
   # If the argument is a date, then the balance is the closing balance of the previous date.
-  # If the argument is a transaction ID, then the the balance is the balance prior to that transaction.
-  def balance date_or_transaction_id=nil
-    if date_or_transaction_id.is_a? Date
-      transactions = self.transactions.all(:conditions => "date < '#{date_or_transaction_id.to_s(:db)}'")
-    elsif date_or_transaction_id.is_a? Fixnum
-      transactions = self.transactions.all(:conditions => "id < #{date_or_transaction_id}")
+  # If the argument is an offset, then the the balance is the balance prior to the transaction with that offset.
+  def balance date_or_offset=nil
+    if date_or_offset.is_a? Date
+      transactions = self.transactions.all(:conditions => "date < '#{date_or_offset.to_s(:db)}'", :order=>"date")
+    elsif date_or_offset.is_a? Fixnum
+      transactions = self.transactions.all(:limit => date_or_offset, :order=>"date")
     else
       transactions = self.transactions.all
     end
@@ -127,11 +127,11 @@ class Account < ActiveRecord::Base
   end
 
   # Same as the method :balance, but only considers registered transactions
-  def cleared_balance date_or_transaction_id=nil
-    if date_or_transaction_id.is_a? Date
-      transactions = self.transactions.registered.all(:conditions => "date < '#{date_or_transaction_id.to_s(:db)}'")
-    elsif date_or_transaction_id.is_a? Fixnum
-      transactions = self.transactions.registered.all(:conditions => "id < #{date_or_transaction_id.to_s}")
+  def cleared_balance date_or_offset=nil
+    if date_or_offset.is_a? Date
+      transactions = self.transactions.registered.all(:conditions => "date < '#{date_or_offset.to_s(:db)}'")
+    elsif date_or_offset.is_a? Fixnum
+      transactions = self.transactions.registered.all(:conditions => "id < #{date_or_offset.to_s}")
     else
       transactions = self.transactions.registered.all
     end

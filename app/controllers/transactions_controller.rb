@@ -114,7 +114,10 @@ class TransactionsController < ApplicationController
       else
         @status_msg = "<span style='color:red'>Error</span>"
       end
-      format.html { render :partial => "status" }
+      format.html do
+        flash[:notice] = @status_msg
+        redirect_to(:back) 
+      end
       format.js { render :text => "$('#update_status_#{@transaction.id}').html('#{escape_javascript(@status_msg)}')" }
     end
   end

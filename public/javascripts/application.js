@@ -32,3 +32,7 @@ jQuery.fn.submitWithAjax = function() {
 //
 /////////////////////
 
+
+jQuery(document).ready( function() {
+  jQuery('.date_picker').AnyTime_picker( { format: "%m / %d / %z", firstDOW: 1 } );
+});

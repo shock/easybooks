@@ -9,6 +9,7 @@ gem 'pg'
 gem 'ofx-parser'
 gem 'comma'
 gem 'iconv'
+gem 'sass'
 
 #gem 'metric_fu'
 
