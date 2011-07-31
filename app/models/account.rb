@@ -2,26 +2,26 @@
 
 class Account < ActiveRecord::Base
   attr_accessor :opening_balance
-  
+
   belongs_to :institution
   has_many :base_transactions, :dependent=>:destroy
   has_many :transactions, :order=>:date
   has_many :batch_transactions
   belongs_to :workgroup
-  
+
   before_validation :ensure_workgroup
   validates_presence_of :workgroup, :institution, :name, :opening_date
   after_find :ensure_interest_accrual
   after_save :ensure_interest_accrual
-  
+
   # create the opening balance transaction on create
   before_create {|record| record.opening_balance ||= FixedPoint.new(0); record.transactions << Transaction.new(:account=>record, :amount=>record.opening_balance, :transaction_type=>(record.opening_balance >= 0 ? :credit : :debit), :target=>'Opening Balance', :description=>'', :date=>record.opening_date)}
-  
+
   INTEREST_ACCRUALS = %w{monthly annually}
   INTEREST_CONDITIONS = %w{positive_balance negative_balance both none}
   INTEREST_RATE_PRECISION = 4
-  
-  named_scope :by_user, lambda { |user| 
+
+  named_scope :by_user, lambda { |user|
     user = User.find(user) if user.is_a? Fixnum
     {:conditions=>"accounts.workgroup_id in (#{user.workgroups.map{|w|w.id}.join(',')})"}
   }
@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
     errors.add(:interest_accrual, "#{interest_accrual} is invalid") unless INTEREST_ACCRUALS.include?( interest_accrual )
     errors.add(:interest_condition, "#{interest_condition} is invalid") unless INTEREST_CONDITIONS.include?( interest_condition )
   end
-  
+
   def ensure_workgroup
     self.workgroup ||= current_user.try(:default_workgroup)
   end
@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
   def institution
     i = Institution.find(:first, :conditions => { :id => institution_id })
   end
-    
+
   def institution_name
     institution.name
   end
@@ -48,11 +48,11 @@ class Account < ActiveRecord::Base
     @interest_rate = FixedPoint.new(interest_rate, nil, INTEREST_RATE_PRECISION)
     self[:interest_rate] = @interest_rate.value
   end
-  
+
   def opening_balance= amount
     @opening_balance = FixedPoint.new(amount)
   end
-  
+
   def interest_rate
     @interest_rate || FixedPoint.new(0, self[:interest_rate], INTEREST_RATE_PRECISION)
   end
@@ -60,17 +60,17 @@ class Account < ActiveRecord::Base
   def long_name
     institution_name + ":" + name
   end
-  
+
   def last_interest_accrual
-    @last_interest_transaction ||= self.transactions.by_type(:INT).latest.first
+    @last_interest_transaction ||= self.transactions.by_type(:INT).first
     last_time = @last_interest_transaction ? @last_interest_transaction.date : nil
-    # puts "last_time: #{last_time}"         
+    # puts "last_time: #{last_time}"
     last_time
   end
-  
+
   def next_interest_accrual
     last_time = last_interest_accrual || opening_date
-    
+
     next_time = case interest_accrual
     when 'monthly'
       last_time + 1.month
@@ -80,18 +80,18 @@ class Account < ActiveRecord::Base
     # puts "next_time: #{next_time}"
     next_time
   end
-  
+
   def interest_account
     interest_condition != 'none'
   end
-  
+
   def ensure_interest_accrual
     return unless interest_account
     while (n_i_c = next_interest_accrual) <= Date.today
       accrue_interest n_i_c
     end
   end
-  
+
   def accrue_interest next_interest_accrual
     balance = self.balance( next_interest_accrual - 1.day )
     interest_amount = FixedPoint.new(0)
@@ -137,7 +137,7 @@ class Account < ActiveRecord::Base
     end
     FixedPoint.new(transactions.map(&:amount).sum)
   end
-  
+
   def process_import_transactions import_transactions
     import_transactions.each do |new_transaction|
       if self.switch_target_and_description?
@@ -172,7 +172,7 @@ class Account < ActiveRecord::Base
         # this is a new transaction without an existing transaction id or check #
         # we'll add it to the account as unregistered
         self.transactions << new_transaction
-      end 
+      end
     end
   end
 
@@ -226,7 +226,7 @@ class Account < ActiveRecord::Base
     end
     dup_counts
   end
-  
+
   def show_duplicate_transactions( duplicate_proximity_tolerance = DEDUP_TIME_TOLERANCE_DAYS )
     duplicate_transactions( duplicate_proximity_tolerance ) do |t1, t2|
       [t1,t2].each do |transaction, i|
@@ -236,11 +236,11 @@ class Account < ActiveRecord::Base
     end
     nil
   end
-  
+
   def format_transaction( transaction )
     "#{transaction.date.strftime("%D")} - [#{transaction.registered? ? "X" : " "}] : #{transaction.amount} - #{transaction.target} - #{transaction.description} - #{transaction.transaction_id}"
   end
-  
+
   def get_answer( question, answers )
     answer = ""
     defaults = answers.reject{|a| a.upcase.first != a.first || a.upcase.first =~ /\d/}
@@ -313,9 +313,9 @@ class Account < ActiveRecord::Base
       answer = get_answer("Clear transaction (x aborts)?", %w(Y n x))
       case answer
       when "y"
-        transaction.update_attribute(:registered, true) 
+        transaction.update_attribute(:registered, true)
         puts "Transaction cleared."
-      when "n" 
+      when "n"
         puts "Skipped transaction."
       when "x"
         puts "Aborting."
@@ -323,7 +323,7 @@ class Account < ActiveRecord::Base
       end
     end
   end
-  
+
   def clear_all_transactions
     answer = get_answer("Merge duplicates first?", ["Y", "n"])
     merge_duplicate_transactions if answer == "y"
@@ -332,15 +332,15 @@ class Account < ActiveRecord::Base
     return unless count > 0
     answer = get_answer("Clear All Transactions?", ["y", "N"])
     if answer == "y"
-      transactions.update_all(:registered=>true) 
+      transactions.update_all(:registered=>true)
       puts "All transactions cleared."
     else
       puts "No transactions changed."
     end
   end
-  
+
   alias :merge_transactions :merge_duplicate_transactions
-  
+
   def create_transaction
     print "Enter target: "
     $stdout.flush
@@ -364,11 +364,11 @@ class Account < ActiveRecord::Base
     puts format_transaction( transaction )
     answer = get_answer("Commit Transaction?", ["Y", "n"])
     if answer == "y"
-      transactions << transaction 
+      transactions << transaction
       puts "Transaction committed."
     else
       puts "Transaction aborted."
     end
   end
-  
+
 end

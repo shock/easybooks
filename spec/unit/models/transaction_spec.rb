@@ -17,15 +17,6 @@ describe Transaction do
     t.amount.should == 10.33
   end
 
-  it "named_scope latest retuns the most recent transaction" do
-    start_date = Date.today
-    transactions = []
-    10.times do |i|
-      transactions << Factory.create(:transaction, :date=>start_date + i.days)
-    end
-    Transaction.latest.first.should == transactions.last
-  end
-  
   it "sets the transaction type by symbol" do
     transaction = Factory.build(:transaction)
     transaction.transaction_type = :INT

@@ -8,21 +8,21 @@ class Transaction < ActiveRecord::Base
 
   before_validation :before_validation_callback
   validates_presence_of :amount, :account, :date, :transaction_type_id
-  
+
   def transaction_type
     @transaction_type = TransactionType.find(transaction_type_id)
   end
-  
-  
-  named_scope :registered, lambda { |*args| 
+
+
+  named_scope :registered, lambda { |*args|
     if( args.length > 0 )
-      {:conditions=>{:registered=>args[0]}} 
+      {:conditions=>{:registered=>args[0]}}
     else
       {:conditions=>{:registered=>true}}
     end
   }
 
-  named_scope :by_type, lambda { |*args| 
+  named_scope :by_type, lambda { |*args|
     if( type = args[0] )
       type = TransactionType.send(type) if type.is_a? Symbol
       raise "Unknown Transaction Type #{type.inspect}" unless type.is_a? TransactionType
@@ -32,35 +32,34 @@ class Transaction < ActiveRecord::Base
     end
   }
 
-  named_scope :latest, {:order=>'date DESC', :limit=>1}
-  named_scope :sorted, lambda { |*args| 
+  named_scope :sorted, lambda { |*args|
     if( args[0] )
       {:order=>args[0]}
     else
       {:order=>'date'}
     end
   }
-  
+
   def transaction_type= transaction_type
     transaction_type = TransactionType.send(transaction_type) if transaction_type.is_a? Symbol
     return "Invalid transaction type" unless transaction_type && transaction_type.is_a?( TransactionType ) && transaction_type.valid?
     @transaction_type = transaction_type
     self.transaction_type_id = transaction_type.id
   end
-  
+
   def amount= amount
     @amount = FixedPoint.new(amount)
     self[:amount] = @amount.value
   end
-  
+
   def amount
     @amount || FixedPoint.new(0, self[:amount])
   end
-  
+
   def set_registered
     update_attribute(:registered,true)
   end
-  
+
   def clear_registered
     update_attribute(:registered,false)
   end
@@ -76,7 +75,7 @@ class Transaction < ActiveRecord::Base
         end
       end
     end
-    
+
     def method_missing method, *args
       if matches = method.to_s.match( /is_type_(\w*)?/ )
         eval "self.transaction_type.is_#{matches[1]}?"
@@ -84,6 +83,6 @@ class Transaction < ActiveRecord::Base
         super
       end
     end
-    
+
 
 end
