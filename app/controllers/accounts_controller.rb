@@ -179,7 +179,7 @@ private
         @offset = 0
       end
     else
-      @offset = -1
+      @offset = @account.transactions.count
     end
 
     @rpp = (params[:rpp] || Transaction.per_page).to_i

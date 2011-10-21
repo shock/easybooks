@@ -62,7 +62,7 @@ class Account < ActiveRecord::Base
   end
 
   def last_interest_accrual
-    @last_interest_transaction ||= self.transactions.by_type(:INT).first
+    @last_interest_transaction ||= self.transactions.by_type(:INT).last
     last_time = @last_interest_transaction ? @last_interest_transaction.date : nil
     # puts "last_time: #{last_time}"
     last_time
