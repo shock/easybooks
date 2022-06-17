@@ -1,7 +1,7 @@
 source :gemcutter
 #source 'http://gems.github.com'
 
-gem 'rails', '2.3.8'
+gem 'rails', '3.2.17'
 gem 'ruby-prof'
 gem 'authlogic'
 gem 'settingslogic'
